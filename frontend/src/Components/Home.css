@@ -1,0 +1,25 @@
+.left_bar{
+    background-color: #F1FFE5;
+    width: 19%;
+    margin-left: 0;
+    position: absolute;
+}
+h3{
+    font-family: sans-serif;
+    padding-top: 12px;
+    color: #568B65;
+}
+
+.middle_bar{
+    background-color: #D0E7D9;
+    width: 60%;
+    position: absolute;
+    margin-left: 19.5%;
+}
+
+.right_bar{
+    background-color: #F1FFE5;
+    width: 20%;
+    margin-left: 80%;
+    position: absolute;
+}

@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+    
+body {
+    margin: 0;
+    background-color: white;
+    text-align: center;
+    font-family: 'Mukta', sans-serif;
+}
+
+.navbar{
+    height: 116px;
+    background-color: white;
+    display: block;
+    position: static;
+}
+ul{
+    text-decoration: none;
+    display: inline;
+}
+.navbar_list{
+    margin-top: 17px;
+    margin-left: 900px;
+    padding-left: 30px;
+}
+li{
+    display: flex;
+    padding-left: 30px;
+    display: inline;
+}
+
