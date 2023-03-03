@@ -1,0 +1,50 @@
+.qn_wrapper{
+    background-color: #DAE6CF;
+    text-align: left;
+    padding-top: 5px;
+    margin-top: 1.5%;
+}
+
+
+.answer_img{
+    margin-top: 0.4%;
+    margin-left: 0.6%;
+    height: 6%;
+    width: 4%;
+    position: absolute;
+}
+
+.solver_identity{
+    position: relative;
+    margin-top: 5px;
+    margin-left: 60px;
+    background-color: #C1E3B5;
+    width: 10%;
+    border-radius: 10px;
+}
+
+.solver{
+    font-weight: 600;
+    padding: 0;
+    margin-left: 5%;
+    margin-top: 0;
+}
+
+.solver_designation{
+    padding: 0;
+    margin-left: 5%;   
+    margin-top: -8px;
+    font-size: smaller;
+}
+
+.qn_answering{
+    padding-top: 15px;
+    font-weight: 700;
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+.answer{
+    margin-left: 2%;
+    margin-right: 2%;
+}

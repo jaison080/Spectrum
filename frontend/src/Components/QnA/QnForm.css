@@ -1,0 +1,20 @@
+.qn_form_control{
+    align-items: center;
+}
+
+.qn_form{
+    height: 5%;
+}
+
+.input_control{
+    border: none;
+    width: 50%;
+    position: relative;
+    height: 25px;
+    border-radius: 50px;
+    background-color: #DAE6CF;
+}
+
+::placeholder{
+    text-align: center;
+}

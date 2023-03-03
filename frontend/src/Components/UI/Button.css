@@ -1,7 +1,14 @@
 button{
     background-color: #a7c8b0;
     border: none;
-    text-decoration: underline;
+    text-decoration: none;
     font-weight:600;
     text-align: right;
+    height: 20px;
+    border-radius: 10px;
+    padding: auto;
+}
+
+button:hover{
+    background-color: rgb(94, 165, 107);
 }

@@ -1,0 +1,23 @@
+.Recent_Qn{
+    width: 23%;
+    background-color: #D0E7D9;
+    position: absolute;
+    margin-left: 6px;
+    text-align: left;
+}
+
+.heading_recent{
+    text-align: center;
+}
+
+.recent_qn_list{
+    margin-left: 5px;
+}
+
+.Questions{
+    width: 73.6%;
+    background-color: #F1FFE5;
+    position: absolute;
+    margin-left: 25.5%;
+    padding: 28px;
+}

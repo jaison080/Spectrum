@@ -7,7 +7,7 @@ const Navbar = () => {
             <ul>
             <div className="navbar_list">
                 <li> Home</li>
-                <li>QnA</li>
+                <li><a href='#components/QnA/QnA' >QnA</a></li>
                 <li>Job</li>
                 <li>Housing</li>
                 <li>Therapy</li>

@@ -1,10 +1,12 @@
 import Home from "./Components/Home";
+import QnA from "./Components/QnA/QnA";
 
 function App() {
   
   return (
     <div>
-      <Home />
+      <QnA />
+      {/* <Home /> */}
     </div>
   );
 }

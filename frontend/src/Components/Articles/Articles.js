@@ -3,7 +3,6 @@ import './Articles.css';
 import JobDate from '../Jobs/JobDate';
 import Button from '../UI/Button';
 // import Overlay from '../UI/Overlay';
-import NewArticle from './NewArticle';
 
 
 const Articles = (props) => {
