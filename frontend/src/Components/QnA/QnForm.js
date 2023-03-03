@@ -27,10 +27,12 @@ const QnForm = (props) => {
     <div>
       <form className='qn_form_control' onSubmit={qnSubmitHandler}>
         <div className='qn_form'>
-                <input type="text" id="qn_input" onChange={qnChangeHandler} className='input_control' value={enteredQn} placeholder='Clear Your Doubts' />
-                <div className='qn_submission'>
-                    <Button type='qn_submit' className='qn_button'>Submit</Button>
-                </div>
+                    <div className='b1'>
+                        <input type="text" id="qn_input" onChange={qnChangeHandler} className='input_control' value={enteredQn} placeholder='Clear Your Doubts' />
+                    </div>
+                    <div className='b2'>
+                        <button type='qn_submit' className='qn_button'>Submit</button>
+                    </div>
         </div>      
       </form>
     </div>

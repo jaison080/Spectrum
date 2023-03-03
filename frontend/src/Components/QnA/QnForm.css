@@ -6,6 +6,10 @@
     height: 5%;
 }
 
+.b1,.b2{
+    display: inline;
+}
+
 .input_control{
     border: none;
     width: 50%;
@@ -18,3 +22,10 @@
 ::placeholder{
     text-align: center;
 }
+
+.b2{
+    padding-left: 10px;
+}
+
+
+
