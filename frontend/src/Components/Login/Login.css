@@ -1,0 +1,24 @@
+
+.login_form{
+    background-color: #84BE94;
+    width: 30%;
+    margin: 8% auto;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.login_logo{
+    margin-top: 2%;
+    height: 8%;
+    width: 20%;
+    margin-bottom: 2%;
+}
+
+.login_data{
+    width: 60%;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    background-color: #DAE6CF;
+}
