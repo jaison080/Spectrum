@@ -15,6 +15,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING)
 }).catch((err) => console.log(err));
 
 app.use('/api/users', require('./routes/userRoutes'))
+app.use('/api/blogs', require('./routes/blogRoutes'))
 
 
 app.listen(process.env.PORT || 5000, () => {
