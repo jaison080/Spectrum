@@ -1,0 +1,11 @@
+.new_article_btn{
+    position: fixed;
+    margin-left: 26%;
+    margin-top: 35%;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background-color: #6E769F;
+    font-size: x-large;
+}

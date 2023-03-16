@@ -7,6 +7,7 @@ const NewArticleForm = (props) => {
     const [enteredArticle, setEnteredArticle] = useState('');
     const [enteredAuthor, setEnteredAuthor] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
+    const [enteredImageUrl, setEnteredImageUrl] = useState('')
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -21,6 +22,10 @@ const NewArticleForm = (props) => {
         setEnteredDate(event.target.value);
     }
 
+    const imageChangeHandler = (event) => {
+        setEnteredImageUrl(event.target.value);
+    }
+
     const articleSubmitHandler = (event) => {
         event.preventDefault();
 
@@ -29,37 +34,39 @@ const NewArticleForm = (props) => {
             article: enteredArticle,
             author: enteredAuthor,
             date: new Date(enteredDate),
+            image: enteredImageUrl,
         }
 
         props.onSaveArticleData(articleData);
         setEnteredTitle('');
         setEnteredArticle('');
         setEnteredAuthor('');
+        setEnteredImageUrl('');
         setEnteredDate('');
     }
 
   return (
     <div>
-      <form onSubmit={articleSubmitHandler}>
+      <form onSubmit={articleSubmitHandler} className='new_article_form'>
         <div className='newFormControls'>
-            <div className='newFormControl'>
-                <label>Title: </label>
-                <input type='text' onChange={titleChangeHandler} value={enteredTitle} ></input>
+            <div>
+                <input type='text' onChange={titleChangeHandler} value={enteredTitle} placeholder='Title' className='newFormControl'></input>
             </div>
-            <div className='newFormControl'>
-                <label>Article:</label>
-                <textarea type='text' onChange={articleChangeHandler} value={enteredArticle}></textarea>
+            <div>
+                <textarea type='text' onChange={articleChangeHandler} value={enteredArticle} placeholder='Article' className='newFormArticle'></textarea>
             </div>
-            <div className='newFormControl'>
-                <label>Author:</label>
-                <input type='text' onChange={authorChangeHandler} value={enteredAuthor} ></input>
+            <div>
+                <input type='text' onChange={imageChangeHandler} value={enteredImageUrl} placeholder='image' className='newFormControl'></input>
             </div>
-            <div className='newFormControl'>
-                <label>Date:</label>
-                <input type='date' onChange={dateChangeHandler} value={enteredDate} ></input>
+            <div>
+                <input type='text' onChange={authorChangeHandler} value={enteredAuthor} placeholder='Author' className='newFormControl'></input>
             </div>
+            <div>
+                <input type='date' onChange={dateChangeHandler} value={enteredDate} placeholder='date' className='newFormdateControl'></input>
+            </div>
+            
             <div className='article_submission'>
-                <button type='submit'>Submit</button>
+            <button type='button' onClick={props.onCancel}>Cancel</button> <button type='submit'>Submit</button>
             </div>
             
         </div>

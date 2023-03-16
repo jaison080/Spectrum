@@ -1,38 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from '../Navbar';
 import './QnA.css';
 import Recent_qn from './Recent_qn';
 import Qns from './Qns';
 import NewQn from './NewQn';
 
-const Recent_Qns = [
+const Dummy_Recent_Qns = [
     {
         id: 'e1',
-        qn: 'Qn:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+    },
+    {
+        id: 'e2',
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+    },
+    {
+        id: 'e3',
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+    },
+    {
+        id: 'e4',
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+    },
+    {
+        id: 'e5',
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
     },
     {
         id: 'e1',
-        qn: 'Qn:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
-    },
-    {
-        id: 'e1',
-        qn: 'Qn:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
-    },
-    {
-        id: 'e1',
-        qn: 'Qn:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
-    },
-    {
-        id: 'e1',
-        qn: 'Qn:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
-    },
-    {
-        id: 'e1',
-        qn: 'Qn:Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
     },
 ]
 
-const Qns_list = [
+const Dummy_Qns_list = [
     {
         id: 'e1',
         image: '/images/prof.png',
@@ -60,11 +60,20 @@ const Qns_list = [
 ]
 
 
+
+
 const QnA = (props) => {
 
-    const addQnHandler = qns =>{
-        console.log(qns);
+    const[recentQns, setRecentQns] = useState(Dummy_Recent_Qns);
+
+    const addQnHandler = recentQns =>{
+        setRecentQns((prevRecentQns) => {
+            return [recentQns, ...prevRecentQns];
+        })
     }
+
+    const[qns, setQns] = useState(Dummy_Qns_list);
+
 
   return (
     <div>
@@ -72,11 +81,10 @@ const QnA = (props) => {
       <div className='Recent_Qn'>
             <div className='heading_recent'><h3>Unanswered Questions</h3></div>
             <div className='recent_qn_list'>
-            <Recent_qn qn={Recent_Qns[0].qn} />
-            <Recent_qn qn={Recent_Qns[1].qn} />
-            <Recent_qn qn={Recent_Qns[2].qn} />
-            <Recent_qn qn={Recent_Qns[3].qn} />
-            <Recent_qn qn={Recent_Qns[4].qn} />
+                {recentQns.map((recentqn) => (
+                    <Recent_qn qn={recentqn.qn}/>
+                ))}
+                
             </div>
             
       </div>
@@ -84,12 +92,10 @@ const QnA = (props) => {
             <div>
                 <NewQn onAddQn={addQnHandler} />
             </div>
-            <Qns image={Qns_list[0].image} solver = {Qns_list[0].solver} designation={Qns_list[0].designation} qn={Qns_list[0].qn}
-            answer={Qns_list[0].answer} />
-            <Qns image={Qns_list[1].image} solver = {Qns_list[1].solver} designation={Qns_list[1].designation} qn={Qns_list[1].qn}
-            answer={Qns_list[1].answer} />
-            <Qns image={Qns_list[2].image} solver = {Qns_list[2].solver} designation={Qns_list[2].designation} qn={Qns_list[2].qn}
-            answer={Qns_list[2].answer} />
+            {qns.map((qnssolved) => (
+                    <Qns image={qnssolved.image} solver = {qnssolved.solver} designation={qnssolved.designation} qn={qnssolved.qn}
+                    answer={qnssolved.answer}/>
+            ))}
       </div>
     </div>
   )

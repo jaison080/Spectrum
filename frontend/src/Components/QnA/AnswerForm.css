@@ -1,0 +1,14 @@
+.answer_area{
+    background-color: #DAE6CF;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 90%;
+    height: 100px;
+}
+textarea{
+    resize: none;
+}
+
+.answer_buttons{
+    margin-left: 25%;
+}
