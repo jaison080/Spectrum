@@ -48,3 +48,46 @@
     margin-left: 2%;
     margin-right: 2%;
 }
+
+@media screen and (max-width:768px) { 
+    .answer_img{
+        margin-top: 0.4%;
+        margin-left: 6%;
+        width: 10%;
+        float: right;
+    }
+    
+    .solver_identity{
+        margin-top: 1.5%;
+        margin-left: 20%;
+        background-color: #C1E3B5;
+        width: 20%;
+        border-radius: 10px;
+    }
+    
+    .solver{
+        font-weight: 600;
+        padding: 0;
+        margin-left: 5%;
+        margin-top: 0;
+    }
+    
+    .solver_designation{
+        padding: 0;
+        margin-left: 5%;   
+        margin-top: -8px;
+        font-size: smaller;
+    }
+    
+    .qn_answering{
+        padding-top: 15px;
+        font-weight: 700;
+        margin-left: 6%;
+        margin-right: 6%;
+    }
+    
+    .answer{
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+}

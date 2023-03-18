@@ -16,7 +16,6 @@ body {
     position: static;
 }
 ul{
-    text-decoration: none;
     display: inline;
 }
 .navbar_list{
@@ -29,4 +28,50 @@ li{
     padding-left: 30px;
     display: inline;
 }
+li a{
+    text-decoration: none;
+}
+li a:hover,
+li a:active{
+    color: rgb(214, 11, 11);
+    text-decoration: underline;
+}
+
+.hamburger-menu{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar{
+        display: none;
+    }
+    .navbar_list{
+        display: none;
+    }
+    li{
+        display: block;
+    }
+    .mobile_navbar{
+        
+    }
+    .hamburger-menu{
+        display: block;
+        margin-left: 20%;
+    }
+    .navbar_list_mobile{
+        display: block;
+        position: static;
+        padding: auto;
+    }
+    li a{
+        text-decoration: none;
+        
+    }
+    li a:hover,
+    li a:active{
+        color: rgb(214, 11, 11);
+        text-decoration: underline;
+    }
+}
+
 

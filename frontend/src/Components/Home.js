@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import Navbar from './Navbar';
 import './Home.css';
 import JobItems from './Jobs/JobItems';
 import Articles from './Articles/Articles';
 import Apartments from './Apartments/Apartments';
 import NewArticle from './Articles/NewArticle';
+import { Link } from 'react-router-dom';
 
 const dummy_articles = [
   {
@@ -114,7 +114,6 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
       <div className='left_bar'>
           <h3>Trending Jobs</h3>
           {enteredJobs.map((job)=>(
@@ -131,6 +130,11 @@ const Home = () => {
           {articles.map((article)=>(
             <Articles
             title ={article.title} image={article.image} article={article.article} author={article.author} date={article.date} />
+          ))}
+          {articles.map((article)=>(
+            <li key={article.id}>
+              <Link to={`/blogs/${article.id}`}>{article.title}</Link>
+            </li>
           ))}
           
       </div>

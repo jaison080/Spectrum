@@ -34,3 +34,14 @@
     border: none;
     background-color: #DAE6CF;
 }
+
+@media screen and (max-width: 768px) {
+    .new_article_form{
+        background-color: #84BE94;
+        width: 96%;
+        margin: auto;
+        padding: 5%;
+        border-radius: 10px;
+    }
+    
+}

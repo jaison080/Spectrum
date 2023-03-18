@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Navbar from '../Navbar';
 import './QnA.css';
 import Recent_qn from './Recent_qn';
 import Qns from './Qns';
@@ -77,7 +76,6 @@ const QnA = (props) => {
 
   return (
     <div>
-      <Navbar />
       <div className='Recent_Qn'>
             <div className='heading_recent'><h3>Unanswered Questions</h3></div>
             <div className='recent_qn_list'>

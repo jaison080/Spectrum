@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Jobs.css';
-import Navbar from '../Navbar';
 import JobItems from './JobItems';
 const DUMMY_JOBS = [
   {
@@ -49,7 +48,6 @@ const Jobs = () => {
 
   return (
     <div>
-        <Navbar />
         <div className='job_list_left_container'>
           <h3>Trending Jobs</h3>
           {enteredJobs.map((job)=>(

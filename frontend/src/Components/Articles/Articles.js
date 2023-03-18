@@ -18,7 +18,7 @@ const Articles = (props) => {
             <div className='a_description'>
                 <div className='a_title'>{props.title}</div>
                 <div className='blog'>{props.article} 
-                      <Button className='blog_btn' type='submit' onClick={readMoreHandler} >Read More..</Button>
+                      <button className='blog_btn' type='submit' onClick={readMoreHandler} >Read More..</button>
                 </div>
                 <div className='author'>{props.author} </div>
                 <div className='a_date'><JobDate date={props.date} /> </div>
