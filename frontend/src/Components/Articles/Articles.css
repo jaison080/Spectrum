@@ -1,9 +1,13 @@
-
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
 .article{
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 5px;
     margin-right: 10px;
-    padding-top: 0px;
     padding-left: 5px;
     padding-top: 20px;
     background-color: #EAF5E4;
@@ -54,4 +58,66 @@
     height: 10px;
     width: 50px;
     text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .article{
+        padding-bottom: 20px;
+        margin-left: 3%;
+        margin-right: 1%;
+        background-color: #EAF5E4;
+        text-align: left;
+        border-radius: 12px;
+        height: fit-content;
+        width: 94%;
+    }
+    .img{
+        margin-left: 3%;
+        margin-right: 3%;
+        height: 30%;
+        width: 92%;
+        border-radius: 10px;
+        float: none;
+    }
+    .a_description{
+        margin-left: 3%;
+        margin-right: 3%;
+        background-color: #a7c8b0;
+        height: fit-content;
+        width: 92%;
+        border-radius: 8px;
+    }
+    .a_title{
+        padding-top: 10px;
+        padding-left: 30%;
+        font-weight: 600;
+        font-size: small;
+    }
+    
+    .blog{
+        padding-left: 10px;
+        align-items: center;
+        font-weight: 100;
+        font-size: xx-small;
+    }
+    
+    .author{
+        padding-top: 8px;
+        padding-left: 2%;
+        font-weight: 700;
+        font-size: xx-small;
+    }
+    
+    .a_date{
+        padding-left: 2%;
+        font-family: 'Charmonman', cursive;
+        font-size: x-small;
+    }
+    .blog_btn{
+        height: 1px;
+        width: 50%;
+        font-weight: 200;
+        font-size: xx-small;
+        text-decoration: underline;
+    }
 }

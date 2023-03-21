@@ -1,3 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
 .left_bar{
     background-color: #F1FFE5;
     width: 19%;
@@ -17,9 +25,31 @@ h3{
     margin-left: 19.5%;
 }
 
+
 .right_bar{
     background-color: #F1FFE5;
     width: 20%;
     margin-left: 80%;
     position: absolute;
+}
+
+@media screen and (max-width: 768px) {
+    .left_bar{
+        display: none;
+    }
+    h3{
+        font-family: sans-serif;
+        padding-top: 5px;
+        color: #568B65;
+        font-size: smaller;
+    }
+    .middle_bar{
+        background-color: #D0E7D9;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .right_bar{
+        display: none;
+    }
 }

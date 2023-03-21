@@ -1,12 +1,7 @@
 import React from 'react';
 import './Qns.css';
-import NewQn from './NewQn';
 
 const Qns = (props) => {
-
-    const addQnHandler = (qns) => {
-        console.log(qns);
-    }
 
   return (
     <div>

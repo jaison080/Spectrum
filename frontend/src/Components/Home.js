@@ -1,10 +1,76 @@
-import React from 'react';
-import Navbar from './Navbar';
+import React, {useState} from 'react';
 import './Home.css';
 import JobItems from './Jobs/JobItems';
 import Articles from './Articles/Articles';
 import Apartments from './Apartments/Apartments';
 import NewArticle from './Articles/NewArticle';
+import { Link } from 'react-router-dom';
+
+const dummy_articles = [
+  {
+    id: 'e1',
+    image:'/images/article1.jpg',
+    title: 'Love Is Love',
+    article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,......',
+    author: 'Dr.Fayaz AP',
+    date: new Date(2020, 7, 14),
+  },
+  {
+    id: 'e2',
+    image:'/images/article1.jpg',
+    title: 'Love Is Love',
+    article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam......',
+    author: 'Dr.Fayaz AP',
+    date: new Date(2020, 7, 14),
+  },
+  {
+    id: 'e3',
+    image:'/images/article1.jpg',
+    title: 'Love Is Love',
+    article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam......',
+    author: 'Dr.Fayaz AP',
+    date: new Date(2020, 9, 14),
+  },
+]
+
+const dummy_jobs =[
+  {
+  id: 'e1',
+  title: 'Registrar Assistant',
+  company: 'New York University',
+  rating:'4.2',
+  mode:'hybrid',
+  location:'New York',
+  amount: 94.12,
+  timing:'full-time',
+  skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
+  date: new Date(2020, 7, 14),
+},
+{
+  id: 'e2',
+  title: 'Registrar Assistant',
+  company: 'New York University',
+  rating:'4.2',
+  mode:'hybrid',
+  location:'New York',
+  amount: 94.12,
+  timing:'full-time',
+  skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
+  date: new Date(2020, 7, 14),
+},
+{
+  id: 'e3',
+  title: 'Registrar Assistant',
+  company: 'New York University',
+  rating:'4.2',
+  mode:'hybrid',
+  location:'New York',
+  amount: 94.12,
+  timing:'full-time',
+  skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
+  date: new Date(2020, 7, 14),
+},
+]
 
 const Home = () => {
 
@@ -32,96 +98,47 @@ const Home = () => {
     
   ]
 
-  const articles = [
-    {
-      id: 'e1',
-      image:'/images/article1.jpg',
-      title: 'Love Is Love',
-      article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,......',
-      author: 'Dr.Fayaz AP',
-      date: new Date(2020, 7, 14),
-    },
-    {
-      id: 'e2',
-      image:'/images/article1.jpg',
-      title: 'Love Is Love',
-      article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam......',
-      author: 'Dr.Fayaz AP',
-      date: new Date(2020, 7, 14),
-    },
-    {
-      id: 'e3',
-      image:'/images/article1.jpg',
-      title: 'Love Is Love',
-      article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam......',
-      author: 'Dr.Fayaz AP',
-      date: new Date(2020, 9, 14),
-    },
-  ]
   
-  const jobs =[
-    {
-    id: 'e1',
-    title: 'Registrar Assistant',
-    company: 'New York University',
-    rating:'4.2',
-    mode:'hybrid',
-    location:'New York',
-    amount: 94.12,
-    timing:'full-time',
-    skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
-    date: new Date(2020, 7, 14),
-  },
-  {
-    id: 'e2',
-    title: 'Registrar Assistant',
-    company: 'New York University',
-    rating:'4.2',
-    mode:'hybrid',
-    location:'New York',
-    amount: 94.12,
-    timing:'full-time',
-    skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
-    date: new Date(2020, 7, 14),
-  },
-  {
-    id: 'e3',
-    title: 'Registrar Assistant',
-    company: 'New York University',
-    rating:'4.2',
-    mode:'hybrid',
-    location:'New York',
-    amount: 94.12,
-    timing:'full-time',
-    skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
-    date: new Date(2020, 7, 14),
-  },
-]
+  
+  
+
+  const[articles, setArticles] = useState(dummy_articles);
+  const[enteredJobs, setEnteredJobs] = useState(dummy_jobs);
+
 
   const addArticleHandler = articles => {
-    console.log(articles);
+    setArticles((prevArticles)=>{
+      return [articles, ...prevArticles];
+    })
   }
 
   return (
     <div>
-      <Navbar />
       <div className='left_bar'>
-          <h3>Trending Jobes</h3>
-          <JobItems title={jobs[0].title} company={jobs[0].company} rating={jobs[0].rating} mode={jobs[0].mode} location = {jobs[0].location}
-          amount = {jobs[0].amount} timing={jobs[0].timing} skills={jobs[0].skills} date ={jobs[0].date} />
-          <JobItems title={jobs[1].title} company={jobs[1].company} rating={jobs[1].rating} mode={jobs[1].mode} location = {jobs[1].location}
-          amount = {jobs[1].amount} timing={jobs[1].timing} skills={jobs[1].skills} date ={jobs[1].date} />
-          <JobItems title={jobs[2].title} company={jobs[2].company} rating={jobs[2].rating} mode={jobs[2].mode} location = {jobs[2].location}
-          amount = {jobs[2].amount} timing={jobs[2].timing} skills={jobs[2].skills} date ={jobs[2].date} />
+          <h3>Trending Jobs</h3>
+          {enteredJobs.map((job)=>(
+            <JobItems
+            title={job.title} company={job.company} rating={job.rating} mode={job.mode} location = {job.location}
+            amount = {job.amount} timing={job.timing} skills={job.skills} date ={job.date} />
+          ))}
       </div>
+
 
       <div className='middle_bar'>
           <h3>ARTICLES</h3>
-          <NewArticle onAddArticle={addArticleHandler} />
-          <Articles title ={articles[0].title} image={articles[0].image} article={articles[0].article} author={articles[0].author} date={articles[0].date} />
-          <Articles title ={articles[1].title} image={articles[1].image} article={articles[1].article} author={articles[1].author} date={articles[1].date} />
-          <Articles title ={articles[2].title} image={articles[2].image} article={articles[2].article} author={articles[2].author} date={articles[2].date} />
+          <NewArticle onAddArticle={addArticleHandler} className='new_article_button'/>
+          {articles.map((article)=>(
+            <Articles
+            title ={article.title} image={article.image} article={article.article} author={article.author} date={article.date} />
+          ))}
+          {articles.map((article)=>(
+            <li key={article.id}>
+              <Link to={`/blogs/${article.id}`}>{article.title}</Link>
+            </li>
+          ))}
+          
       </div>
+        
 
       <div className='right_bar'>
           <h3>Apartments Nearby</h3>

@@ -21,3 +21,17 @@
     margin-left: 25.5%;
     padding: 28px;
 }
+
+@media screen and (max-width: 768px) {
+    .Recent_Qn{
+        display: none;
+    }
+    
+    .Questions{
+        width: 100%;
+        background-color: #F1FFE5;
+        position: absolute;
+        margin-left: 0;
+        padding: 28px;
+    }
+}

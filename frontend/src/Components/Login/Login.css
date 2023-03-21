@@ -22,3 +22,45 @@
     border: none;
     background-color: #DAE6CF;
 }
+
+@media screen and (max-width: 768px) {
+    .login_form{
+        background-color: #84BE94;
+        width: 97%;
+        margin: 8% auto;
+        border-radius: 5px;
+        padding: 20px;
+        
+    }
+    
+    .login_logo{
+        margin-top: 2%;
+        width: 30%;
+        margin-bottom: 2%;
+    }
+    
+    .login_data{
+        margin-top: 30px;
+        width: 90%;
+        height: 50px;
+        padding-top: 25px;
+        padding-bottom: 5%;
+        margin-bottom: 3%;
+        border-radius: 10px;
+        border: none;
+        background-color: #DAE6CF;
+    }
+
+    .login_data::placeholder{
+        font-size: 27px;
+    }
+    .login_form button{
+        height: 50px;
+        width: max-content;
+        font-size: 30px;
+    }
+    .login_form p{
+        font-size: 24px;
+        font-weight: 600;
+    }
+}

@@ -1,5 +1,4 @@
 
-
 .form_bg{
     background-color: #84BE94;
     width: 30%;
@@ -33,4 +32,62 @@
     background-color: #DAE6CF;
     padding-left: 17%;
     padding-right: 17%;
+}
+
+@media screen and (max-width:768px) {
+    
+.form_bg{
+    background-color: #84BE94;
+    width: 97%;
+    margin: 8% auto;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.signup_logo{
+    margin-top: 2%;
+    height: 5%;
+    width: 18%;
+}
+
+.input_data::placeholder{
+    font-size: 26px;
+}
+
+.input_data{
+    width: 60%;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #DAE6CF;
+}
+
+
+.dob{
+    width: 60%;
+    font-size: 26px;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #DAE6CF;
+    padding-left: 17%;
+    padding-right: 17%;
+}
+.dob::placeholder{
+    font-size: 26px;
+}
+.form_bg button{
+    height: 40px;
+    width: max-content;
+    font-size: 28px;
+    padding: auto auto 20px 20px;
+}
+p{
+    font-size: 25px;
+    font-weight: 600;
+}
 }
