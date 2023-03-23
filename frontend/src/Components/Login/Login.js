@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import './Login.css'
+import './Login.css';
+
 
 const Login = () => {
 
+  const [isLoggedIn,setIsLoggedIn] = useState(false);
   const [item,setItem] = useState({
     email:'',
     password:''
@@ -43,6 +45,7 @@ const Login = () => {
         if (blogsResponse.ok) {
           const blogsData = await blogsResponse.json();
           console.log(blogsData);
+          window.location.href = '/blogs';
         } else {
           console.log('Error fetching blogs:', blogsResponse.statusText);
         }

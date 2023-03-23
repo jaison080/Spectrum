@@ -19,8 +19,9 @@ const Navbar = () => {
     return(
         <div>
         <div className="navbar">
+        <div className="navbar_list">
             <ul>
-            <div className="navbar_list">
+            
                 <li> <NavLink to="/blogs" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }
@@ -41,15 +42,18 @@ const Navbar = () => {
                 <li><NavLink to="/contact" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }>Contact</NavLink></li>
-            </div>
+            
             </ul>
+            </div>
         </div>
         <div className='mobile_navbar'>
         <div className='hamburger-menu'>
             <GiHamburgerMenu onClick={navbarHandler} className='' />
         </div>
-        {showNavbar && <ul>
-            <div className="navbar_list_mobile">
+        <div className="navbar_list_mobile">
+            {showNavbar && 
+            <ul>
+            
                 <li> <NavLink to="/blogs" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }
@@ -70,8 +74,9 @@ const Navbar = () => {
                 <li><NavLink to="/contact" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }>Contact</NavLink></li>
-            </div>
+            
             </ul>}
+        </div>
         </div>
         </div>
     )
