@@ -5,6 +5,7 @@ const {getBlogsById} = require('../controllers/blogs/getBlogsById')
 const {getBlogsByUser} = require('../controllers/blogs/getBlogsByUser')
 const {createBlog} = require('../controllers/blogs/createBlog')
 const {editBlog} = require('../controllers/blogs/editBlogs')
+const {likeBlog} = require('../controllers/blogs/likeBlog')
 const {verifyToken} = require('../middlewares/userAuth')
 const storage = require('../utils/cloudinary');
 const multer = require('multer');
@@ -17,5 +18,6 @@ router.get('/:id', verifyToken, getBlogsById);
 router.get('/user', verifyToken, getBlogsByUser);
 router.post('/create', verifyToken, upload.single('image'), createBlog);
 router.put('/edit',verifyToken, editBlog);
+router.put('/like/:id',verifyToken,likeBlog);
 
 module.exports = router

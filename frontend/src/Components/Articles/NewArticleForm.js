@@ -7,7 +7,8 @@ const NewArticleForm = (props) => {
     const [enteredArticle, setEnteredArticle] = useState('');
     const [enteredAuthor, setEnteredAuthor] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
-    const [enteredImageUrl, setEnteredImageUrl] = useState('')
+    const [imageFile, setImageFile] = useState(null);
+
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -23,7 +24,7 @@ const NewArticleForm = (props) => {
     }
 
     const imageChangeHandler = (event) => {
-        setEnteredImageUrl(event.target.value);
+        setImageFile(event.target.files[0])
     }
 
     const articleSubmitHandler = (event) => {
@@ -34,14 +35,13 @@ const NewArticleForm = (props) => {
             article: enteredArticle,
             author: enteredAuthor,
             date: new Date(enteredDate),
-            image: enteredImageUrl,
+            image: URL.createObjectURL(imageFile),
         }
 
         props.onSaveArticleData(articleData);
         setEnteredTitle('');
         setEnteredArticle('');
         setEnteredAuthor('');
-        setEnteredImageUrl('');
         setEnteredDate('');
     }
 
@@ -56,7 +56,7 @@ const NewArticleForm = (props) => {
                 <textarea type='text' onChange={articleChangeHandler} value={enteredArticle} placeholder='Article' className='newFormArticle'></textarea>
             </div>
             <div>
-                <input type='text' onChange={imageChangeHandler} value={enteredImageUrl} placeholder='image' className='newFormControl'></input>
+                <input type='file' onChange={imageChangeHandler}  placeholder='image' className='newFormControl'></input>
             </div>
             <div>
                 <input type='text' onChange={authorChangeHandler} value={enteredAuthor} placeholder='Author' className='newFormControl'></input>

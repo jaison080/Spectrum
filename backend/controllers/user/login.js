@@ -6,7 +6,8 @@ const loginUser = async (req, res) => {
 
     try {
       const { email, password } = req.body;
-  
+      console.log(email);
+      console.log(password);
       if (!(email && password)) {
         res.status(400).send("All input is required");
       }

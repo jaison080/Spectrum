@@ -10,18 +10,21 @@ body {
 }
 
 .navbar{
-    height: 116px;
-    background-color: white;
-    display: block;
-    position: static;
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
 }
-ul{
-    display: inline;
-}
+
 .navbar_list{
-    margin-top: 17px;
-    margin-left: 900px;
-    padding-left: 30px;
+    flex: 1;
+    text-align: right;
+}
+.navbar_list ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
 }
 li{
     display: flex;
@@ -56,15 +59,19 @@ li a:active{
     }
     .hamburger-menu{
         display: block;
-        margin-left: 20%;
+        text-align: right;
     }
     .navbar_list_mobile{
+        margin-left: 65%;
+        width: 30%;
         display: block;
         position: static;
         padding: auto;
+        text-align: right;
     }
     li a{
-        text-decoration: none;
+        display: block;
+        padding-right: 10px;
         
     }
     li a:hover,
@@ -73,5 +80,4 @@ li a:active{
         text-decoration: underline;
     }
 }
-
 

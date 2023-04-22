@@ -70,6 +70,7 @@ const Signup = () => {
         if (blogsResponse.ok) {
           const blogsData = await blogsResponse.json();
           console.log(blogsData);
+          window.location.href = '/blogs';
         } else {
           console.log('Error fetching blogs:', blogsResponse.statusText);
         }
