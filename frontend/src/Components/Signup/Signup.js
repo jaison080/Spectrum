@@ -1,4 +1,5 @@
 import React,{ useState} from 'react';
+import { Link } from 'react-router-dom';
 
 import './Signup.css';
 
@@ -99,7 +100,7 @@ const Signup = () => {
         <div className='u_Img'><input type='img' placeholder='Profile_pic' className='input_data' onChange={profilePicChangeHandler} value={item.ProfilePicture}/></div>
         <div><button className='u_submit'>Submit</button> </div>
       </form>
-      <p>Already A User? <a href='login'>Login</a></p>
+      <p>Already A User?  <Link to={`/`}>Login</Link></p>
     </div>
   )
 }
