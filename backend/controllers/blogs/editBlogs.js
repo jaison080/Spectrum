@@ -2,7 +2,7 @@ const Blogs = require('../../models/blogs');
 const editBlog = async (req, res) => {
     try{
         const blog = await Blogs.findById(req.params.id);
-        if(blog.author.toString() === req.user.id){
+        if(blog.author.toString() === req.user.user_id){
             
             res.status(200).json({blog});
         }

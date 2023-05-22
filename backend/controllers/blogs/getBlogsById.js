@@ -5,7 +5,8 @@ const getBlogsById = async (req, res) => {
         res.status(200).send(blog);
     }
     catch(err){
-        res.status(500).send(blog);
+        console.log(err); 
+        res.status(500).send(err)
     }
 }
 module.exports = { getBlogsById }
