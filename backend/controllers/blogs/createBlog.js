@@ -15,7 +15,6 @@ const createBlog = async (req, res) => {
             title: title,
             content: content,
             author: user,
-            likes:[user],
             image: result.secure_url,
             });
         res.status(200).send(blog);
