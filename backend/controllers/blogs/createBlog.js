@@ -16,7 +16,7 @@ const createBlog = async (req, res) => {
             content: content,
             author: user,
             image: result.secure_url,
-        });
+            });
         res.status(200).send(blog);
     }
     catch(err){
