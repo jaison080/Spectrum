@@ -7,27 +7,33 @@ import NewQn from './NewQn';
 const Dummy_Recent_Qns = [
     {
         id: 'e1',
-        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+        answered: false,
     },
     {
         id: 'e2',
-        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+        answered: false,
     },
     {
         id: 'e3',
-        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+        answered: false,
     },
     {
         id: 'e4',
-        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+        answered: false,
     },
     {
         id: 'e5',
-        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+        answered: false,
     },
     {
         id: 'e1',
-        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+        qn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+        answered: false,
     },
 ]
 
@@ -79,8 +85,8 @@ const QnA = (props) => {
       <div className='Recent_Qn'>
             <div className='heading_recent'><h3>Unanswered Questions</h3></div>
             <div className='recent_qn_list'>
-                {recentQns.map((recentqn) => (
-                    <Recent_qn qn={recentqn.qn}/>
+                {recentQns.map((recentqn, index) => (
+                    <Recent_qn qn={recentqn.qn} index={index}/>
                 ))}
                 
             </div>
@@ -91,7 +97,8 @@ const QnA = (props) => {
                 <NewQn onAddQn={addQnHandler} />
             </div>
             {qns.map((qnssolved) => (
-                    <Qns image={qnssolved.image} solver = {qnssolved.solver} designation={qnssolved.designation} qn={qnssolved.qn}
+                    
+                    <Qns id={qnssolved.id} image={qnssolved.image} solver = {qnssolved.solver} designation={qnssolved.designation} qn={qnssolved.qn}
                     answer={qnssolved.answer}/>
             ))}
       </div>

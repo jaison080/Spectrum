@@ -4,11 +4,13 @@ import JobDate from './JobDate';
 
 const JobItems = (props) => {
 
-  const[isJobdetails,setIsJobDetails] = useState(false);
+  const[isJobdetails,setIsJobDetails] = useState(true);
 
   const startReadmore = () => {
     setIsJobDetails(true);
+    props.onSeeMore(isJobdetails);
   }
+  
 
     return (
       <div className='job_item'>
@@ -16,7 +18,7 @@ const JobItems = (props) => {
             <div className='details'>
               <div className='title'>{props.title}</div>
               <div className='font_size'>
-                <div className='company'>{props.company}  {props.rating}⭐</div>            
+                <div className='company'>{props.company}</div>            
                 <div>{props.location}</div>
                 <span><div className='amount'>${props.amount}  {props.timing}</div></span>
               </div>

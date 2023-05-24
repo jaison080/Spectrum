@@ -14,6 +14,7 @@ const NewArticle = (props) => {
         }
         props.onAddArticle(articleData);
         setIsEditing(false);
+    
     }
 
     const startEditingHandler = () =>{

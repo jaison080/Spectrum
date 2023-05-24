@@ -16,7 +16,8 @@ const AnswerForm = (props) => {
     const answerData = {
       ans: enteredAnswer,
     }
-    props.onSaveAnswerHandler(answerData);
+    // console.log(answerData);
+    props.onSaveAnswerData(answerData);
     setEnteredAnswer('');
 
   }
