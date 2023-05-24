@@ -6,7 +6,7 @@ const BlogSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
     image: { type: String },
     tags: { type: [String] },
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User',unique: true }],
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     comments: [{
         commenter: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
         content: { type: String, required: true },
