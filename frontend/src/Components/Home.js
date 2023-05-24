@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Home.css';
 import JobItems from './Jobs/JobItems';
 import Articles from './Articles/Articles';
@@ -6,32 +6,6 @@ import Apartments from './Apartments/Apartments';
 import NewArticle from './Articles/NewArticle';
 import { Link } from 'react-router-dom';
 
-const dummy_articles = [
-  {
-    id: 'e1',
-    image:'/images/article1.jpg',
-    title: 'Love Is Love',
-    article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniamLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-    author: 'Dr.Fayaz AP',
-    date: new Date(2020, 7, 14),
-  },
-  {
-    id: 'e2',
-    image:'/images/article1.jpg',
-    title: 'Love Is Love',
-    article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam......',
-    author: 'Dr.Fayaz AP',
-    date: new Date(2020, 7, 14),
-  },
-  {
-    id: 'e3',
-    image:'/images/article1.jpg',
-    title: 'Love Is Love',
-    article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam......',
-    author: 'Dr.Fayaz AP',
-    date: new Date(2020, 9, 14),
-  },
-]
 
 const dummy_jobs =[
   {
@@ -98,19 +72,33 @@ const Home = () => {
     
   ]
 
-  
-  
-  
+    const token = localStorage.getItem("token");
 
-  const[articles, setArticles] = useState(dummy_articles);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/blogs/');
+      if (response.ok) {
+        const data = await response.json();
+        setArticles(data);
+      } else {
+        console.log('Error fetching articles:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const addArticleHandler = (article) => {
+    setArticles((prevArticles) => [article, ...prevArticles]);
+  };
+
   const[enteredJobs, setEnteredJobs] = useState(dummy_jobs);
-
-
-  const addArticleHandler = articles => {
-    setArticles((prevArticles)=>{
-      return [articles, ...prevArticles];
-    })
-  }
 
   return (
     <div>
@@ -122,22 +110,29 @@ const Home = () => {
             amount = {job.amount} timing={job.timing} skills={job.skills} date ={job.date} />
           ))}
       </div>
-
+      
 
       <div className='middle_bar'>
-          <h3>ARTICLES</h3>
-          <NewArticle onAddArticle={addArticleHandler} className='new_article_button'/>
-          {articles.map((article)=>(
-            <Articles
-            title ={article.title} image={article.image} article={article.article} author={article.author} date={article.date} />
-          ))}
-          {articles.map((article)=>(
-            <li key={article.id}>
-              <Link to={`/blogs/${article.id}`}>{article.title}</Link>
-            </li>
-          ))}
-          
+        <h3>ARTICLES</h3>
+        <NewArticle onAddArticle={addArticleHandler} className='new_article_button' />
+        {console.log(token)}
+        {articles.map((article) => (
+          <Articles
+            key={article.id}
+            title={article.title}
+            image={article.image}
+            article={article.article}
+            author={article.author}
+            date={article.date}
+          />
+        ))}
+        {/* {articles.map((article) => (
+          <li key={article.id}>
+            <Link to={`/blogs/${article.id}`}>{article.title}</Link>
+          </li>
+        ))} */}
       </div>
+      
         
 
       <div className='right_bar'>

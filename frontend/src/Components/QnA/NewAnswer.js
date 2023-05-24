@@ -10,7 +10,9 @@ const NewAnswer = (props) => {
             ...enteredAnswerData,
             id: Math.random().toString(),
         }
-        props.onAddAnswer(answerData);
+        // console.log(answerData);
+        props.onSolveQuestion(answerData);
+        // props.onAddAnswer(answerData);
         setIsSolving(false);
     }
 
