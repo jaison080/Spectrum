@@ -1,11 +1,12 @@
-const House = require('../../models/house');
-const cloudinary = require('../../utils/cloudinary');
-const createPost = async (req,res) =>
+const House = require('../../models/house')
+
+const editHouse = async (req,res) =>
 {
-    
-    try{
+    try
+    {
         const {rent,type,rooms,bathrooms,isTerrace,squareFeet,misc,contact,address} =req.body
         const user= req.user.user_id;
+        const postId=req.params.id;
         let result = {
             secure_url: ''
         }
@@ -13,7 +14,7 @@ const createPost = async (req,res) =>
         {
             result=await cloudinary.uploder.upload(req.file.path);
         }
-        const house = await House.create({
+        const house = await House.updateMany({_id:postId},{$set:{
             rent:rent,
             type:type,
             rooms:rooms,
@@ -26,8 +27,8 @@ const createPost = async (req,res) =>
             image:result.secure_url,
             address:address,
             lastModified: new Date(),
-        })
-        res.status(200).send(house);
+        }})
+        res.status(200).send(house)
     }
     catch(error)
     {
@@ -35,5 +36,4 @@ const createPost = async (req,res) =>
         res.status(500).send(error);
     }
 }
-
-module.exports = {createPost}
+module.exports = {editHouse}
