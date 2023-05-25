@@ -18,6 +18,12 @@ const storage = new CloudinaryStorage({
     }
 });
 
+const storageHouse = new CloudinaryStorage({
+  cloudinary:cloudinary,
+  params:{
+    folder:'house-images',
+    allowed_formats:['jpg','png'],
+  }
+})
 
-
-module.exports = storage;
+module.exports = {storage:storage,storageHouse:storageHouse};
