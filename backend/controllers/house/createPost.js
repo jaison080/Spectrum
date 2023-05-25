@@ -4,7 +4,7 @@ const createPost = async (req,res) =>
 {
     
     try{
-        const {rent,type,rooms,bathrooms,isTerrace,squareFeet,misc,contact} =req.body
+        const {rent,type,rooms,bathrooms,isTerrace,squareFeet,misc,contact,address} =req.body
         const user= req.user.user_id;
         let result = {
             secure_url: ''
@@ -24,6 +24,7 @@ const createPost = async (req,res) =>
             contact:contact,
             owner:user,
             image:result.secure_url,
+            address:address,
         })
         res.status(200).send(house);
     }
