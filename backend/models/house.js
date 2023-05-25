@@ -9,7 +9,8 @@ const HouseSchema = new mongoose.Schema({
     squareFeet: {type: Number},
     misc:{type: String},
     contact:{type: String},  
-    owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}  
+    owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    address: {type: String}  
 })
 
 module.exports = mongoose.model('House',HouseSchema);
