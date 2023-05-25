@@ -10,7 +10,8 @@ const HouseSchema = new mongoose.Schema({
     misc:{type: String},
     contact:{type: String},  
     owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    address: {type: String}  
+    address: {type: String},
+    lastModified: {type: Date}  
 })
 
 module.exports = mongoose.model('House',HouseSchema);
