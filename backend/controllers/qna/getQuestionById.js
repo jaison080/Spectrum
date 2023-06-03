@@ -1,7 +1,7 @@
-const QnA = require('../../models/qna');
+const {Question} = require('../../models/qna');
 const getQuestionById = async (req, res) => {
     try{
-        const question = await QnA.findById(req.params.id);
+        const question = await Question.findById(req.params.id).populate('answers').populate('author');
         res.status(200).send(question);
     }
     catch(err){

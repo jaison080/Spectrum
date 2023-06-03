@@ -10,8 +10,11 @@ const {getAllUnansweredQuestions} = require('../controllers/qna/getAllUnanswered
 const {getAllQuestionsByUser} = require('../controllers/qna/getAllQuestionsByUser')
 const {getAllAnswersByUser} = require('../controllers/qna/getAllAnswersByUser')
 const {deleteQuestion} = require('../controllers/qna/deleteQuestion')
-
-
+const {likeQuestion} = require('../controllers/qna/likeQuestion')
+const {dislikeQuestion} = require('../controllers/qna/dislikeQuestion')
+const { deleteAnswer } = require('../controllers/qna/deleteAnswer')
+const { addComment } = require('../controllers/qna/addComment')
+const { deleteComment } = require('../controllers/qna/deleteComment')
 
 // Base URL: /api/qna
 router.post('/postQuestion', verifyToken,  createQuestion);
@@ -23,6 +26,10 @@ router.get('/getQuestionById/:id', verifyToken, getQuestionById);
 router.get('/getAllQuestionsByUser', verifyToken, getAllQuestionsByUser);
 router.get('/getAllAnswersByUser', verifyToken, getAllAnswersByUser);
 router.delete('/deleteQuestion/:id', verifyToken, deleteQuestion);
-
+router.delete('/deleteAnswer/:id', verifyToken, deleteAnswer);
+router.post('/likeQuestion/:questionId', verifyToken, likeQuestion);
+router.post('/dislikeQuestion/:questionId', verifyToken, dislikeQuestion);
+router.post('/answer/:id/comment', verifyToken, addComment);
+router.delete('/answer/:answerId/comment/:commentId', verifyToken, deleteComment)
 
 module.exports = router;

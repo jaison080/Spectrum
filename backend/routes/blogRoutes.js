@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {getAllBlogs} = require('../controllers/blogs/getAllBlogs')
-const {getBlogsById} = require('../controllers/blogs/getBlogsById')
+const {getBlogById} = require('../controllers/blogs/getBlogById')
 const {getBlogsByUser} = require('../controllers/blogs/getBlogsByUser')
 const {createBlog} = require('../controllers/blogs/createBlog')
 const {editBlog} = require('../controllers/blogs/editBlogs')
@@ -16,7 +16,7 @@ const upload = multer({ storage: storage });
 
 // Base URL: /api/blogs
 router.get('/', getAllBlogs);
-router.get('/:id', verifyToken, getBlogsById);
+router.get('/:id', verifyToken, getBlogById);
 router.get('/user', verifyToken, getBlogsByUser);
 router.post('/create', verifyToken, upload.single('image'), createBlog);
 router.put('/edit',verifyToken, editBlog);

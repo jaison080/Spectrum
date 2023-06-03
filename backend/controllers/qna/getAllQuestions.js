@@ -1,8 +1,8 @@
 //api to get all question and return them
-const QnA = require("../../models/qna");
+const {Question} = require("../../models/qna");
 const getAllQuestions = async (req, res) => {
   try {
-    const questions = await QnA.find();
+    const questions = await Question.find().populate('answers').populate('author');
     res.status(200).send(questions);
   } catch (err) {
     console.log(err); 

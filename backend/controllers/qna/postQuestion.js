@@ -1,9 +1,9 @@
-const QnA = require('../../models/qna');
+const {Question} = require('../../models/qna');
 const createQuestion = async (req, res) => {
     try{
         const { title, content, isAnonymous, topics } = req.body;
         const user = req.user.user_id;
-        const question = await QnA.create({
+        const question = await Question.create({
             title: title,
             content: content,
             author: user,

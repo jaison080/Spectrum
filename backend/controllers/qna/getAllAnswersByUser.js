@@ -1,10 +1,7 @@
-const QnA = require("../../models/qna");
+const {Answer} = require("../../models/qna");
 const getAllAnswersByUser = async (req, res) => {
   try {
-    const answers = await QnA.find({
-      answers: { $exists: true, $ne: [] },
-      "answers.answerer": req.user.user_id,
-    });
+    const answers = await Answer.find({ answerer: req.user.user_id}).populate('question').populate('answerer').populate('comments.commenter');
     res.status(200).send(answers);
   } catch (err) {
     console.log(err); 
