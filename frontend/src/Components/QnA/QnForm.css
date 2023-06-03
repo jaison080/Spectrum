@@ -6,17 +6,18 @@
     height: 5%;
 }
 
-.b1,.b2{
+.b3,.b2{
     display: inline;
 }
 
-.input_control{
+.question_area{
     border: none;
     width: 50%;
     position: relative;
-    height: 25px;
-    border-radius: 50px;
+    height: 80px;
+    border-radius: 10px;
     background-color: #DAE6CF;
+    font-size: larger;
 }
 
 ::placeholder{
@@ -30,5 +31,19 @@
 .qn_button{
     height: 25px;
 }
+.checkbox_description{
+    background-color: rgb(236, 248, 233);
+    justify-content: space-between;
+    font-weight: 600;
+    border-radius: 10px;
+    font-size: medium;
+    padding: 0px 5px 0px 5px;
+}
+
+.qn_checkbox{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
 
 

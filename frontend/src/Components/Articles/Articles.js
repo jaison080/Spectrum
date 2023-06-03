@@ -25,8 +25,8 @@ const handleLike = () => {
 };
 
 const maxWordsToShow = 40; // or whatever maximum number of words you want to show initially
-const words = props.article.split(' ');
-const truncatedText = words.slice(0, maxWordsToShow).join(' ');
+// const words = props.article.split(' ');
+// const truncatedText = words.slice(0, maxWordsToShow).join(' ');
 
 const handleShowMoreClick = () => {
   setShowFullText(true);
@@ -51,7 +51,7 @@ return (
     <div className='a_description'>
       <div className='a_title'>{props.title}</div>
       <div className='blog'>
-          <p>{truncatedText}</p>
+          {/* <p>{truncatedText}</p> */}
           {!showFullText && (
               <button className='showmorebutton' onClick={handleShowMoreClick}>
               Show more

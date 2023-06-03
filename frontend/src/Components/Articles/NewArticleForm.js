@@ -5,8 +5,7 @@ const NewArticleForm = (props) => {
     
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredArticle, setEnteredArticle] = useState('');
-    const [enteredAuthor, setEnteredAuthor] = useState('');
-    const [enteredDate, setEnteredDate] = useState('');
+
     const [imageFile, setImageFile] = useState(null);
 
 
@@ -16,33 +15,44 @@ const NewArticleForm = (props) => {
     const articleChangeHandler = (event) => {
         setEnteredArticle(event.target.value);
     }
-    const authorChangeHandler = (event) => {
-        setEnteredAuthor(event.target.value);
-    }
-    const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
-    }
 
     const imageChangeHandler = (event) => {
-        setImageFile(event.target.files[0])
-    }
+        setImageFile(event.target.files[0]);
+      };
 
-    const articleSubmitHandler = (event) => {
+    const articleSubmitHandler = async(event) => {
         event.preventDefault();
 
-        const articleData={
-            title: enteredTitle,
-            article: enteredArticle,
-            author: enteredAuthor,
-            date: new Date(enteredDate),
-            image: URL.createObjectURL(imageFile),
-        }
+        const formData = new FormData();
+        formData.append('title', enteredTitle);
+        formData.append('content', enteredArticle);
+        formData.append('image', imageFile);
 
-        props.onSaveArticleData(articleData);
+        props.onSaveArticleData(formData);
         setEnteredTitle('');
         setEnteredArticle('');
-        setEnteredAuthor('');
-        setEnteredDate('');
+        const token = localStorage.getItem('token');
+  
+        try {
+          const response = await fetch('http://localhost:5000/api/blogs/create', {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            //   'Content-Type': `multipart/form-data`
+            },
+            body: formData,
+          });
+      
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+          } else {
+            const errorText = await response.text();
+            console.error('Error:', errorText);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
     }
 
   return (
@@ -56,14 +66,14 @@ const NewArticleForm = (props) => {
                 <textarea type='text' onChange={articleChangeHandler} value={enteredArticle} placeholder='Article' className='newFormArticle'></textarea>
             </div>
             <div>
-                <input type='file' onChange={imageChangeHandler}  placeholder='image' className='newFormControl'></input>
-            </div>
-            <div>
-                <input type='text' onChange={authorChangeHandler} value={enteredAuthor} placeholder='Author' className='newFormControl'></input>
-            </div>
-            <div>
-                <input type='date' onChange={dateChangeHandler} value={enteredDate} placeholder='date' className='newFormdateControl'></input>
-            </div>
+            <input
+              type='file'
+              onChange={imageChangeHandler}
+              placeholder='image'
+              className='newFormControl'
+              accept='image/*'
+            />
+          </div>
             
             <div className='article_submission'>
             <button type='button' onClick={props.onCancel}>Cancel</button> <button type='submit'>Submit</button>

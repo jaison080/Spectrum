@@ -39,10 +39,9 @@ const Qns = (props) => {
                   {liked ? 'Dislike' : 'Like'}
                 </button>
               </div>
-              <div>
+              <div className='report_qn_details'>
                 <form onSubmit={handleReport}>
-                    <input name='report-message' placeholder='Report Message' value={reportMessage} onChange={(e) => setReportMessage(e.target.value)}></input>
-                  
+                    <input name='report-message' className='report_qn' placeholder='Report Message' value={reportMessage} onChange={(e) => setReportMessage(e.target.value)}></input>
                     <button type='submit'>Report</button>
                 </form>
               </div>

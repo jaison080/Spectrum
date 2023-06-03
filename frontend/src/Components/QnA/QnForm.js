@@ -3,14 +3,34 @@ import './QnForm.css';
 import Button from '../UI/Button';
 
 const QnForm = (props) => {
-
+//const { title, content, isAnonymous, topics } = req.body;
     const[enteredQn, setEnteredQn] = useState('');
+    const [isChecked, setIsChecked] = useState(false)
+    const [item,setItem] = useState({
+      title:'',
+      content:'',
+      isAnonymous:'',
+      topics:'',
+    });
+
+    const titleChangeHandler = (event) => {
+      setItem((prevItem) => ({...prevItem, title: event.target.value}))
+  }
 
     const qnChangeHandler = (event) => {
-        setEnteredQn(event.target.value)
+        setItem((prevItem) => ({...prevItem, content: event.target.value}))
     }
 
-    const qnSubmitHandler = (event) => {
+    const checkBoxChangeHandler = (event) => {
+      setItem((prevItem) => ({...prevItem, isAnonymous: event.target.value}))
+      // setIsChecked(event.target.checked);
+    }
+
+    const topicsChangeHandler = (event) => {
+      setItem((prevItem) => ({...prevItem, topics: event.target.value}))
+  }
+
+    const qnSubmitHandler = async(event) => {
         event.preventDefault();
 
         const qnData ={
@@ -29,8 +49,18 @@ const QnForm = (props) => {
     <div>
       <form className='qn_form_control' onSubmit={qnSubmitHandler}>
         <div className='qn_form'>
-                    <div className='b1'>
-                        <input type="text" id="qn_input" onChange={qnChangeHandler} className='input_control' value={enteredQn} placeholder='Clear Your Doubts' />
+                    <div className='title_qn'>
+                      <input type='text' className='qn_title' placeholder='title' onChange={titleChangeHandler}></input>
+                    </div>
+                    <div className='qn_details'>
+                        <textarea type="text" id="qn_input" onChange={qnChangeHandler} className='question_area' value={enteredQn} placeholder='Clear Your Doubts' />                    
+                    </div>
+                    <div className='b2'>
+                        <label className='checkbox_description'>Ask Anonymously<input type='checkbox' className='qn_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} /></label>
+                        
+                    </div>
+                    <div className='topics_qn'>
+                      <input type='text' className='qn_topic' placeholder='topics' onChange={topicsChangeHandler}></input>
                     </div>
                     <div className='b2'>
                         <button type='qn_submit' className='qn_button'>Submit</button>
