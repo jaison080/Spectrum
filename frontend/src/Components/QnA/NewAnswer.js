@@ -8,9 +8,9 @@ const NewAnswer = (props) => {
     const saveAnswerDataHandler = (enteredAnswerData) => {
         const answerData = {
             ...enteredAnswerData,
-            id: Math.random().toString(),
+            id: props.id,
         }
-        // console.log(answerData);
+        console.log(answerData);
         props.onSolveQuestion(answerData);
         // props.onAddAnswer(answerData);
         setIsSolving(false);
@@ -27,7 +27,7 @@ const NewAnswer = (props) => {
   return (
     <div className='new_answer'>
         {!isSolving && <button onClick={startAnsweringHandler} className='new_answer_btn'>Solve</button>}
-        {isSolving && <AnswerForm onSaveAnswerData ={saveAnswerDataHandler} onCancel={stopAnsweringHandler} />}
+        {isSolving && <AnswerForm id={props.id} onSaveAnswerData ={saveAnswerDataHandler} onCancel={stopAnsweringHandler} />}
     </div>
   )
 }

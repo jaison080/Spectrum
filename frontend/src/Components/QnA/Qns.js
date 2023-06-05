@@ -8,13 +8,26 @@ const Qns = (props) => {
   const [reported, setReported] = useState(false);
   const [reportMessage, setReportMessage] = useState('');
 
-  const handleLike = () => {
-    if (liked) {
-      setLikes(likes - 1);
-      setLiked(false);
-    } else {
-      setLikes(likes + 1);
-      setLiked(true);
+  const token = localStorage.getItem('token');
+  
+  const handleLike = async() => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/qna/like/${props.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ likes: liked ? likes - 1 : likes + 1,id:props.id }),
+      });
+      if (response.ok) {
+        setLiked(!liked);
+        setLikes(liked ? likes - 1 : likes + 1);
+      } else {
+        console.error('Error updating likes');
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
   
@@ -26,14 +39,17 @@ const Qns = (props) => {
   return (
     <div>
           <div>
-            <div className='qn_wrapper'>
-              <div><img src={props.image} alt='profile' className='answer_img' /></div>
+            <div className='qn_wrapper' id={props.id}>
+              {/* <div><img src={props.image} alt='profile' className='answer_img' /></div> */}
               <div className='solver_identity'> 
                   <div className='solver'>{props.solver}</div>
-                  <div className='solver_designation'>{props.designation}</div>
+                  {/* <div className='solver_designation'>{props.designation}</div> */}
               </div>
+              <div className='qn_title'>{props.title} </div>
               <div className='qn_answering' >{props.qn}? </div>
+              <div className='topics'>{props.topics} </div>
               <div className='answer'>{props.answer} </div>
+              <div className='qn_likes'>{props.likes} </div>
               <div className='likes'>Likes: {likes}
                 <button className='likebutton' onClick={handleLike}>
                   {liked ? 'Dislike' : 'Like'}

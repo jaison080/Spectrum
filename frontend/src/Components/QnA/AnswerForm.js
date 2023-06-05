@@ -5,20 +5,48 @@ import './AnswerForm.css';
 const AnswerForm = (props) => {
 
   const[enteredAnswer, setEnteredAnswer] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
 
   const answerChangeHandler = (event) => {
     setEnteredAnswer(event.target.value);
   }
+  const checkBoxChangeHandler = (event) => {
+    setIsChecked(true);
+    // setIsChecked(event.target.checked);
+  }
 
 
-  const answerSubmitHandler = (event) => {
+  const answerSubmitHandler = async(event) => {
     event.preventDefault();
     const answerData = {
-      ans: enteredAnswer,
+      content: enteredAnswer,
+      isAnonymous: isChecked,
     }
     // console.log(answerData);
     props.onSaveAnswerData(answerData);
     setEnteredAnswer('');
+    const token = localStorage.getItem('token');
+    try{
+      const response = await fetch(`http://localhost:5000/api/qna/postAnswer/${props.id}`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(answerData),  
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+
+      } else {
+        const errorText = await response.text();
+        console.error('Error:', errorText);
+      }
+
+    }catch(error) {
+      console.log('Error : ',error);
+    }
 
   }
   
@@ -28,6 +56,9 @@ const AnswerForm = (props) => {
     <div>
       <form onSubmit={answerSubmitHandler} className='new_answer_form'>
         <textarea type='text' placeholder='Answer Here' className='answer_area' onChange={answerChangeHandler} value={enteredAnswer}></textarea>
+        <div className='b2'>
+          <label className='checkbox_description'>Answer Anonymously<input type='checkbox' className='ans_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} /></label>           
+        </div>
         <div className='answer_buttons'><button type='button' onClick={props.onCancel}>Cancel</button> <button type='submit'>Submit</button></div>
         </form>
     </div>
