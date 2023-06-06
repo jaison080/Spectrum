@@ -37,7 +37,7 @@ const AnswerForm = (props) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        console.log('answer data received');
 
       } else {
         const errorText = await response.text();

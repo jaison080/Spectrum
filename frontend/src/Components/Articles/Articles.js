@@ -172,7 +172,7 @@ return (
                       </>
                     )}
                   </div>
-                  {comments.map((comment, index) => ( <div key={index}>{comment}</div> ))}
+                  {/* {comments.map((comment, index) => ( <div key={index}>{comment}</div> ))} */}
                   <form className='addComment' onSubmit={commentSubmitHandler}>
                     <input type='text' name='comment' placeholder='Add a comment'></input>
                     <button type='submit'>Comment</button>
