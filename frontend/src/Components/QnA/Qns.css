@@ -1,6 +1,7 @@
 .qn_wrapper{
     background-color: #DAE6CF;
-    text-align: left;
+    text-align: center;
+    align-items: center;
     padding-top: 5px;
     margin-top: 1.5%;
 }
@@ -16,10 +17,8 @@
 
 .solver_identity{
     position: relative;
-    margin-top: 5px;
-    margin-left: 60px;
-    background-color: #C1E3B5;
-    width: 10%;
+    /* background-color: #C1E3B5; */
+    /* width: 10%; */
     border-radius: 10px;
 }
 
@@ -37,18 +36,32 @@
     font-size: smaller;
 }
 
-.qn_answering{
+.qn_title{
     padding-top: 15px;
     font-weight: 700;
-    margin-left: 6%;
-    margin-right: 6%;
+    
+}
+
+.qn_answering{
+    margin: auto;
+    padding: 0 0 6px 10px;
+    font-weight: 600;
+    text-align: left;
 }
 
 .answer{
-    margin-left: 2%;
-    margin-right: 2%;
+    text-align: left;
+    padding: 0 10px 0 10px;
 }
 
+.qn_topic{
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: underline;
+}
+.ans_title{
+    font-weight: 700;
+}
 .report_qn{
     background-color: #d8ebd2;
     border-radius: 6px;

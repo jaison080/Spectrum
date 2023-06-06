@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import './QnA.css';
 import Recent_qn from './Recent_qn';
 import Qns from './Qns';
@@ -70,6 +70,7 @@ const Dummy_Qns_list = [
 const QnA = (props) => {
 
     const[recentQns, setRecentQns] = useState(Dummy_Recent_Qns);
+    const [qnaDetails, setQnaDetails] = useState([]);
 
     const addQnHandler = recentQns =>{
         setRecentQns((prevRecentQns) => {
@@ -78,6 +79,29 @@ const QnA = (props) => {
     }
 
     const[qns, setQns] = useState(Dummy_Qns_list);
+    const token = localStorage.getItem('token');
+    useEffect(() => {
+        fetchQnA();
+    }, []);
+
+    const fetchQnA = async () => {
+        try {
+        const response = await fetch('http://localhost:5000/api/qna//getAllAnsweredQuestions', {
+                method: 'GET',
+                headers: {
+                Authorization: `Bearer ${token}`,
+                },
+        });
+        if (response.ok) {
+            const data = await response.json();
+            setQnaDetails(data);
+        } else {
+            console.error('Error:', response.status);
+        }
+        } catch (error) {
+        console.error('Error:', error);
+        }
+    };
 
 
   return (
@@ -85,8 +109,8 @@ const QnA = (props) => {
       <div className='Recent_Qn'>
             <div className='heading_recent'><h3>Unanswered Questions</h3></div>
             <div className='recent_qn_list'>
-                {recentQns.map((recentqn, index) => (
-                    <Recent_qn qn={recentqn.qn} index={index}/>
+                {recentQns.map((recentqn) => (
+                    <Recent_qn qn={recentqn.content} key={recentqn._id}/>
                 ))}
                 
             </div>
@@ -96,10 +120,9 @@ const QnA = (props) => {
             <div>
                 <NewQn onAddQn={addQnHandler} />
             </div>
-            {qns.map((qnssolved) => (
-                    
-                    <Qns id={qnssolved.id} image={qnssolved.image} solver = {qnssolved.solver} designation={qnssolved.designation} qn={qnssolved.qn}
-                    answer={qnssolved.answer}/>
+            {qnaDetails.map((details) => (          
+                    <Qns id={details._id} solver = {details.answers.map((ans) => (ans.answerer))} qn={details.content}
+                    answer={details.answers.map((ans) => (ans.content))} topics={details.topics} title={details.title} likes={details.likes}/>
             ))}
       </div>
     </div>

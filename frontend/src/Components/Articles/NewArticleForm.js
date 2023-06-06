@@ -5,7 +5,6 @@ const NewArticleForm = (props) => {
     
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredArticle, setEnteredArticle] = useState('');
-
     const [imageFile, setImageFile] = useState(null);
 
 
@@ -46,6 +45,7 @@ const NewArticleForm = (props) => {
           if (response.ok) {
             const data = await response.json();
             console.log(data);
+
           } else {
             const errorText = await response.text();
             console.error('Error:', errorText);

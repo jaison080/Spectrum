@@ -73,6 +73,7 @@ const Home = () => {
   ]
 
     const token = localStorage.getItem("token");
+    console.log(token);
 
   const [articles, setArticles] = useState([]);
 
@@ -115,15 +116,14 @@ const Home = () => {
       <div className='middle_bar'>
         <h3>ARTICLES</h3>
         <NewArticle onAddArticle={addArticleHandler} className='new_article_button' />
-        {console.log(token)}
         {articles.map((article) => (
           <Articles
-            key={article.id}
+            id={article._id}
             title={article.title}
             image={article.image}
-            article={article.article}
+            article={article.content}
             author={article.author}
-            date={article.date}
+            date={article.createdAt}
           />
         ))}
         {/* {articles.map((article) => (
