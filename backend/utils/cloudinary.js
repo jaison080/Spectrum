@@ -26,4 +26,11 @@ const storageHouse = new CloudinaryStorage({
   }
 })
 
-module.exports = {storage:storage,storageHouse:storageHouse};
+const storageProfilePic = new CloudinaryStorage({
+  cloudinary:cloudinary,
+  params:{
+    folder:'profile-pictures',
+    allowed_formats:['jpg','png'],
+  }
+});
+module.exports = {storage:storage,storageHouse:storageHouse, storageProfilePic:storageProfilePic};

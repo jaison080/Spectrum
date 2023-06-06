@@ -9,7 +9,7 @@ const {likeBlog} = require('../controllers/blogs/likeBlog')
 const {addComment} = require('../controllers/blogs/addComment')
 const {viewComments} = require('../controllers/blogs/viewComments');
 const {verifyToken} = require('../middlewares/userAuth')
-const storage = require('../utils/cloudinary');
+const { storage }  = require('../utils/cloudinary');
 const multer = require('multer');
 
 const upload = multer({ storage: storage });
