@@ -17,6 +17,8 @@ const Login = () => {
   const passwordChangeHandler = (event) => {
     setItem((prevItem) => ({ ...prevItem, password: event.target.value }))
   }
+
+  const [error, setError] = useState('');
   
 
   const logInSubmitHandler = async(event) => {
@@ -50,7 +52,9 @@ const Login = () => {
           console.log('Error fetching blogs:', blogsResponse.statusText);
         }
       } else {
-        console.log('Error registering user:', response.statusText);
+        const errorsResponse = await response.json();
+        console.log('Error registering user:', errorsResponse.message);
+        setError(errorsResponse.message);      
       }
   
     } catch (error) {
@@ -68,6 +72,7 @@ const Login = () => {
             <div><input type='password' placeholder='password' className='login_data' onChange={passwordChangeHandler} value={item.password}></input></div>
             <div><button className='login_submit'>Submit</button> </div>
         </form>
+        {error && <div className="error">{error}</div>}
         <p>New User? <a href='Signup'>Signup</a></p>
         <p className='forgot_ps'><a href='password'>Forgot Password</a></p>
     </div>

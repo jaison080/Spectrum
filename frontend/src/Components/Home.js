@@ -119,6 +119,7 @@ const Home = () => {
         <NewArticle onAddArticle={addArticleHandler} className='new_article_button' />
         {articles.map((article) => (
           <Articles
+            key={article._id}
             id={article._id}
             title={article.title}
             image={article.image}

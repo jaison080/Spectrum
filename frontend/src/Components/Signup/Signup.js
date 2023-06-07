@@ -42,6 +42,7 @@ const Signup = () => {
     setItem((prevItem) => ({ ...prevItem, ProfilePicture: event.target.value }))
   }
 
+  const [error, setError] = useState('');
   
 
   const signupSubmitHandler = async(event) => {
@@ -76,7 +77,9 @@ const Signup = () => {
           console.log('Error fetching blogs:', blogsResponse.statusText);
         }
       } else {
-        console.log('Error registering user:', response.statusText);
+        const errorData = await response.json();
+        console.log('Error registering user:', errorData.message);
+        setError(errorData.message);
       }
   
     } catch (error) {
@@ -100,6 +103,7 @@ const Signup = () => {
         <div className='u_Img'><input type='img' placeholder='Profile_pic' className='input_data' onChange={profilePicChangeHandler} value={item.ProfilePicture}/></div>
         <div><button className='u_submit'>Submit</button> </div>
       </form>
+      {error && <div className="error">{error}</div>}
       <p>Already A User?  <Link to={`/`}>Login</Link></p>
     </div>
   )

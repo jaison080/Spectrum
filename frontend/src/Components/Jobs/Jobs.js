@@ -68,14 +68,18 @@ const Jobs = (props) => {
             title={job.title} company={job.company} mode={job.mode} location = {job.location}
             amount = {job.amount} timing={job.timing} skills={job.skills} date ={job.date}  />
           ))}
+          {console.log(seeDetailsHandler)}
 
       </div>
         <div className='job_details'>
-            {detailsMore && <JobDetails 
-            id = {DUMMY_JOBS[0].if}
-            title={DUMMY_JOBS[0].title} company={DUMMY_JOBS[0].company} mode={DUMMY_JOBS[0].mode} location = {DUMMY_JOBS[0].location}
-            amount = {DUMMY_JOBS[0].amount} timing={DUMMY_JOBS[0].timing} skills={DUMMY_JOBS[0].skills} date ={DUMMY_JOBS[0].date} qualification={DUMMY_JOBS[0].qualification} 
-            description = {DUMMY_JOBS[0].description} responsibilities = {DUMMY_JOBS[0].responsibilities} />}
+        {detailsMore && enteredJobs.map((job)=>(
+             <JobDetails 
+            id = {job.id}
+            key = {job.id}
+            title={job.title} company={job.company} mode={job.mode} location = {job.location}
+            amount = {job.amount} timing={job.timing} skills={job.skills} date ={job.date} qualification={job.qualification} 
+            description = {job.description} responsibilities = {job.responsibilities} />
+            ))}
         </div>
     </div>
   )
