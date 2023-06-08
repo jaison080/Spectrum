@@ -145,12 +145,12 @@ const handleHideComments = () => {
               </div>
               {/* {comments.map((comment, index) => ( <div key={index}>{comment}</div> ))} */}
               <form className='addComment' onSubmit={commentSubmitHandler}>
-                <input type='text' name='comment' placeholder='Add a comment'></input>
+                <input className='add_comment_input' type='text' name='comment' placeholder='Add a comment' style={{ textAlign: 'center' }}></input>
                 <button type='submit'>Comment</button>
               </form>
               <div className='report_qn_details'>
                 <form onSubmit={handleReport}>
-                    <input name='report-message' className='report_qn' placeholder='Report Message' value={reportMessage} onChange={(e) => setReportMessage(e.target.value)}></input>
+                    <input name='report-message' className='report_qn' placeholder='Report Message' value={reportMessage} onChange={(e) => setReportMessage(e.target.value)} style={{ textAlign: 'center' }}></input>
                     <button type='submit'>Report</button>
                 </form>
               </div>

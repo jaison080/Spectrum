@@ -24,10 +24,10 @@ const Recent_qn = (props) => {
     <div className='recent_qn_wrapper'>
       <div className='recent_qn_list'>
           <div key={props.id} className='qn_description'>
-            {props.title}<br></br>
-            Qn: {props.qn}<br></br>
-            {props.author}
-            <NewAnswer id={props.id} onSolveQuestion={saveSolvedQuestionDataHandler} />
+            <div className='recent_qn_title'>{props.title}</div>
+            <div className='recent_qn'>Qn: {props.qn}</div>
+            <div className='recent_qn_author'>{props.author}</div>
+            <div className='solve_qn'><NewAnswer id={props.id} onSolveQuestion={saveSolvedQuestionDataHandler} /></div>
           </div>
       </div>
     </div>

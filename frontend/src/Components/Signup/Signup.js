@@ -93,14 +93,14 @@ const Signup = () => {
     <div className='form_bg'>
       <form className='form_control' onSubmit={signupSubmitHandler}>
         <div><img src='./images/prof.png' alt='signup_logo' className='signup_logo'></img></div>
-        <div className='u_name'><input type='text' placeholder='Name' className='input_data' onChange={nameChangeHandler} value={item.name} required/></div>
-        <div className='u_mail'><input type='text' placeholder='E-mail' className='input_data' onChange={emailChangeHandler} value={item.Email} required/></div>
-        <div className='u_password'><input type='password' placeholder='Password' className='input_data' onChange={passwordChangeHandler} value={item.password} required/></div>
-        <div className='u_gender'><input type='text' placeholder='gender' className='input_data' onChange={genderChangeHandler} value={item.gender}/></div>
-        <div className='u_gender'><input type='text' placeholder='sexual orientation' className='input_data' onChange={sexChangeHandler} value={item.sexualPreference}/></div>
-        <div className='u_DOB'><input type='date' placeholder='Date Of Birth' className='dob' onChange={dobChangeHandler} value={item.dob} required/></div>
-        <div className='u_Bio'><input type='text' placeholder='Bio' className='input_data' onChange={bioChangeHandler} value={item.bio}/></div>
-        <div className='u_Img'><input type='img' placeholder='Profile_pic' className='input_data' onChange={profilePicChangeHandler} value={item.ProfilePicture}/></div>
+        <div className='u_name'><input type='text' placeholder='Name' className='input_data' onChange={nameChangeHandler} value={item.name} required style={{ textAlign: 'center' }}/></div>
+        <div className='u_mail'><input type='text' placeholder='E-mail' className='input_data' onChange={emailChangeHandler} value={item.Email} required style={{ textAlign: 'center' }}/></div>
+        <div className='u_password'><input type='password' placeholder='Password' className='input_data' onChange={passwordChangeHandler} value={item.password} required style={{ textAlign: 'center' }}/></div>
+        <div className='u_gender'><input type='text' placeholder='gender' className='input_data' onChange={genderChangeHandler} value={item.gender} style={{ textAlign: 'center' }}/></div>
+        <div className='u_gender'><input type='text' placeholder='sexual orientation' className='input_data' onChange={sexChangeHandler} value={item.sexualPreference} style={{ textAlign: 'center' }}/></div>
+        <div className='u_DOB'><input type='date' placeholder='Date Of Birth' className='dob' onChange={dobChangeHandler} value={item.dob} required style={{ textAlign: 'center' }}/></div>
+        <div className='u_Bio'><input type='text' placeholder='Bio' className='input_data' onChange={bioChangeHandler} value={item.bio} style={{ textAlign: 'center' }}/></div>
+        <div className='u_Img'><input type='img' placeholder='Profile_pic' className='input_data' onChange={profilePicChangeHandler} value={item.ProfilePicture} style={{ textAlign: 'center' }}/></div>
         <div><button className='u_submit'>Submit</button> </div>
       </form>
       {error && <div className="error">{error}</div>}

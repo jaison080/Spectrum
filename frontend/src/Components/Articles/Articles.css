@@ -61,7 +61,7 @@
     text-align: center;
     }
     
-    .modal {
+    .blog_details {
         display: block;
         position: fixed;
         z-index: 1;
@@ -72,12 +72,12 @@
         background-color: rgba(0, 0, 0, 0.4);
     }
     
-    .modal_content {
+    .blog_details_content {
         display: flex;
         flex-direction: column;
         /* justify-content: center; */
         align-items: center;
-        background-color: #fefefe;
+        background-color: #edf6e3;
         margin: 7% auto;
         padding: 20px;
         border: 1px solid #888;
@@ -86,7 +86,7 @@
         overflow-y: auto;
     }
     
-    .close {
+    .blog_detailsclose {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -94,30 +94,96 @@
     cursor: pointer;
     }
     
-    .close:hover,
-    .close:focus {
+    .blog_detailsclose:hover,
+    .blog_detailsclose:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
     }
-    .modal_img{
+    .blog_details_img{
         max-width: 100%;
         max-height: 100%;
         width: 40%;
         object-fit: contain;
         /* aspect-ratio: <original-aspect-ratio>; */
         margin: auto;
+        display: block;
     }
 
-    .modal_blog{
+    .blog_details_content input {
+        border-radius: 10px;
+        padding: 3px;
+        border: 1px solid #000;
+        margin: 5px;
+    }
+
+    .blog_details_blog{
         padding-left: 10px;
     }
-    .modal_title{
+    .blog_details_title{
         font-weight: 800;
     }
 
-    .likes,.likebutton, .comments, .addComment{
+    .blog_detailsauthor{
+        font-weight: 700;
+        padding: 10px;
+    }
+    .comment_details{
+        display: block;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .comment_detail{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        background-color: #edf6e3;
+        margin: 7% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        max-height: 80%;
+        overflow-y: auto;
+    }
+
+    .comment_wrapper{
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .commenter, .comment_time{
         display: inline-block;
+    }
+    .commenter{
+        font-weight: 700;
+    }
+    .comment_time{
+        font-size: small;
+        margin-left: 10px;
+    }
+
+    .blog_details_title,
+    .likes,
+    .likebutton,
+    .comments,
+    .addComment,
+    .reportBlog,
+    .blog_detailsauthor {
+    text-align: center;
+    padding-left: 10px;
+    }
+    .comments, .addComment, .reportBlog{
+        display: inline-block;
+        padding-left: 20px;
     }
     
     @media screen and (max-width: 768px) {

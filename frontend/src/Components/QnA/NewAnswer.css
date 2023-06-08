@@ -1,0 +1,8 @@
+.new_answer {
+    display: flex;
+    justify-content: center;
+  }
+
+.new_answer_btn{
+    align-items: center;
+}

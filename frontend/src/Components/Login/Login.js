@@ -68,8 +68,8 @@ const Login = () => {
     <div className='login_form'>
         <form onSubmit={logInSubmitHandler} >
             <div><img src='./images/prof.png' alt='login_logo' className='login_logo'></img></div>
-            <div><input type='text' placeholder='email' className='login_data' onChange={emailChangeHandler} value={item.email}></input></div>
-            <div><input type='password' placeholder='password' className='login_data' onChange={passwordChangeHandler} value={item.password}></input></div>
+            <div><input type='text' placeholder='email' className='login_data' onChange={emailChangeHandler} value={item.email} style={{ textAlign: 'center' }}></input></div>
+            <div><input type='password' placeholder='password' className='login_data' onChange={passwordChangeHandler} value={item.password} style={{ textAlign: 'center' }}></input></div>
             <div><button className='login_submit'>Submit</button> </div>
         </form>
         {error && <div className="error">{error}</div>}

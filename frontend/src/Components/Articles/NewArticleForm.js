@@ -60,20 +60,23 @@ const NewArticleForm = (props) => {
       <form onSubmit={articleSubmitHandler} className='new_article_form'>
         <div className='newFormControls'>
             <div>
-                <input type='text' onChange={titleChangeHandler} value={enteredTitle} placeholder='Title' className='newFormControl'></input>
+                <input type='text' onChange={titleChangeHandler} value={enteredTitle} placeholder='Title' className='newFormControl' style={{ textAlign: 'center' }}></input>
             </div>
             <div>
-                <textarea type='text' onChange={articleChangeHandler} value={enteredArticle} placeholder='Article' className='newFormArticle'></textarea>
+                <textarea type='text' onChange={articleChangeHandler} value={enteredArticle} placeholder='Article' className='newFormArticle' style={{ textAlign: 'center' }}></textarea>
             </div>
-            <div>
-            <input
-              type='file'
-              onChange={imageChangeHandler}
-              placeholder='image'
-              className='newFormControl'
-              accept='image/*'
-            />
-          </div>
+            <div className='fileInputContainer'>
+  <label htmlFor='fileInput' className='fileInputLabel'>
+    Choose File
+  </label>
+  <input
+    type='file'
+    id='fileInput'
+    onChange={imageChangeHandler}
+    accept='image/*'
+    className='fileInput'
+  />
+</div>
             
             <div className='article_submission'>
             <button type='button' onClick={props.onCancel}>Cancel</button> <button type='submit'>Submit</button>
