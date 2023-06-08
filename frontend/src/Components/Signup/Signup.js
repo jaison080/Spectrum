@@ -92,10 +92,10 @@ const Signup = () => {
 
   return (
     <div  className='background_user'>
-      <div>
-        <MyComponent />
-      
       <div className='form_bg'>
+        <div className='login_box'>
+          <MyComponent />
+        </div>
         <form className='form_control' onSubmit={signupSubmitHandler}>
           <div><img src='./images/prof.png' alt='signup_logo' className='signup_logo'></img></div>
           <div className='u_name'><input type='text' placeholder='Name' className='input_data' onChange={nameChangeHandler} value={item.name} required style={{ textAlign: 'center' }}/></div>
@@ -112,7 +112,7 @@ const Signup = () => {
         <p>Already A User?  <Link to={`/`}>Login</Link></p>
       </div>
       </div>
-    </div>
+    // </div>
   )
 }
 

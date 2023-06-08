@@ -1,43 +1,39 @@
 .background_user {
-    background: linear-gradient(30deg, var(--purple), var(--blue));
+    --blue: #1a0fb5;
+    --purple: #005138;
+    background: linear-gradient(60deg, var(--purple), var(--blue));
     background-attachment: fixed;
     height: 100vh;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
-  .form_bg {
+.form_bg{
     background-color: #84BE94;
-    width: 500px;
-    margin: 0 auto;
-    border-radius: 10px;
+    width: 30%;
+    margin: 8% auto;
+    border-radius: 5px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .signup_logo {
+}
+
+.signup_logo{
     margin-top: 2%;
-    height: 50px;
-    width: auto;
-    max-width: 100%;
-    margin-bottom: 2%;
-  }
-  
-  .input_data {
-    width: 100%;
+    height: 5%;
+    width: 12%;
+}
+
+.input_data{
+    width: 60%;
     padding-bottom: 5%;
     margin-bottom: 3%;
     border-radius: 10px;
     border: none;
     background-color: #DAE6CF;
-  }
-  
-  .dob {
-    width: 90%;
+}
+
+
+.dob{
+    width: 60%;
     padding-bottom: 5%;
     margin-bottom: 3%;
     border-radius: 10px;
@@ -45,7 +41,7 @@
     background-color: #DAE6CF;
     padding-left: 17%;
     padding-right: 17%;
-  }
+}
 
 @media screen and (max-width:768px) {
     

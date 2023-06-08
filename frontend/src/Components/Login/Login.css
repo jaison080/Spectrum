@@ -1,21 +1,23 @@
 .background_users {
-    background: linear-gradient(30deg, var(--purple), var(--blue));
+    --blue: #1a0fb5;
+    --purple: #005138;
+    background: linear-gradient(60deg, var(--purple), var(--blue));
     background-attachment: fixed;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
 .login_form{
     background-color: #84BE94;
     width: 30%;
-    margin: 6%  auto;
+    margin: 8% auto;
     border-radius: 5px;
     padding: 20px;
 }
 
 .login_logo{
-    /* margin-top: 2%; */
+    margin-top: 2%;
     height: 8%;
     width: 20%;
     margin-bottom: 2%;

@@ -67,10 +67,11 @@ const Login = () => {
 
   return (
     <div  className='background_users'>
+
+      <div className='login_form'>  
       <div className='login_box'>
         <MyComponent />
       </div>
-      <div className='login_form'>  
         <form onSubmit={logInSubmitHandler}>
           <div><img src='./images/prof.png' alt='login_logo' className='login_logo'></img></div>
           <div><input type='text' placeholder='email' className='login_data' onChange={emailChangeHandler} value={item.email} style={{ textAlign: 'center' }}></input></div>
