@@ -15,7 +15,7 @@ const registerComp = async (req,res) =>{
         req.body.password = encryptedPassword;
         let comp = await Company.create(req.body);
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{expiresIn: "2h"})
-        user._doc.token=token;
+        comp._doc.token=token;
         res.status(200).json(user);
     }
     catch(err)
