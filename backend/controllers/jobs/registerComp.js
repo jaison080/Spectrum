@@ -12,6 +12,11 @@ const registerComp = async (req,res) =>{
         if(oldUser)
             return res.status(409).json({message:"user already exists"})
         const encryptedPassword = await bcrypt.hash(req.body.password,10);
+        req.body.password = encryptedPassword;
+        let comp = await Company.create(req.body);
+        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{expiresIn: "2h"})
+        user._doc.token=token;
+        res.status(200).json(user);
     }
     catch(err)
     {
