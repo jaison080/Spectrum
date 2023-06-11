@@ -9,6 +9,7 @@ import Jobs from "./Components/Jobs/Jobs";
 import ArticleDetails from './Components/Articles/ArticleDetails';
 import Housing from './Components/Housing/pages/Home';
 import Details from './Components/Housing/pages/Details';
+import Profile from './Components/Profile/Profile';
 
 const router = createBrowserRouter([
   {path: '/', element: <Login />},
@@ -22,8 +23,9 @@ const router = createBrowserRouter([
     {path:'/blogs/:blogId', element: <ArticleDetails />},
     {path:'/qna', element: <QnA />},
     {path:'/jobs', element: <Jobs />},
+    {path:'/profile', element: <Profile/>},
     {path:'/housing',element: <Housing />},
-    {path:'/details/:propertyId',element: <Details/> }
+    {path:'/details/:propertyId',element: <Details/> },
     ]
   }
   

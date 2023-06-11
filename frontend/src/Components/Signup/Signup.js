@@ -39,9 +39,9 @@ const Signup = () => {
   const bioChangeHandler = (event) => {
     setItem((prevItem) => ({ ...prevItem, bio: event.target.value }))
   }
-  const profilePicChangeHandler = (event) => {
-    setItem((prevItem) => ({ ...prevItem, ProfilePicture: event.target.value }))
-  }
+  // const profilePicChangeHandler = (event) => {
+  //   setItem((prevItem) => ({ ...prevItem, ProfilePicture: event.target.value }))
+  // }
 
   const [error, setError] = useState('');
   
@@ -105,7 +105,7 @@ const Signup = () => {
           <div className='u_gender'><input type='text' placeholder='sexual orientation' className='input_data' onChange={sexChangeHandler} value={item.sexualPreference} style={{ textAlign: 'center' }}/></div>
           <div className='u_DOB'><input type='date' placeholder='Date Of Birth' className='dob' onChange={dobChangeHandler} value={item.dob} required style={{ textAlign: 'center' }}/></div>
           <div className='u_Bio'><input type='text' placeholder='Bio' className='input_data' onChange={bioChangeHandler} value={item.bio} style={{ textAlign: 'center' }}/></div>
-          <div className='u_Img'><input type='img' placeholder='Profile_pic' className='input_data' onChange={profilePicChangeHandler} value={item.ProfilePicture} style={{ textAlign: 'center' }}/></div>
+          {/* <div className='u_Img'><input type='img' placeholder='Profile_pic' className='input_data' onChange={profilePicChangeHandler} value={item.ProfilePicture} style={{ textAlign: 'center' }}/></div> */}
           <div><button className='u_submit'>Submit</button> </div>
         </form>
         {error && <div className="error">{error}</div>}

@@ -48,7 +48,7 @@ const handleHideComments = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/blogs/comment/${props.id}`, {
+      const response = await fetch(`http://localhost:5000/api/qna/getAllAnsweredQuestions`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -126,21 +126,29 @@ const handleHideComments = () => {
                       </button>
                     )}
                     {showComments && ( <>
-                      <button className='viewcommentsbutton' onClick={handleHideComments}>
-                      Hide Comments
-                    </button> 
-                      {loadComments.map((commentGroup) => (
-                        <div key={commentGroup._id}>
-                          {commentGroup.comments.map((comment) => (
-                            <div key={comment._id}>
-                              <div>Content: {comment.content}</div>
-                              <div>Created At: {comment.createdAt}</div>
-                              <div>Commenter: {comment.commenter}</div>
+                      <div className='comment_details'>
+                        <div className='comment_detail'>
+                          <button className='viewcommentsbutton' onClick={handleHideComments}>
+                            Hide Comments
+                          </button> 
+                          {loadComments.map((question) => (
+                            <div key={question._id}>
+                              {question.answers.map((answer) => (
+                                <div key={answer._id}>
+                                  {answer.comments.map((comment) => (
+                                    <div key={comment._id} className='comment_wrapper'>
+                                      <div className='commenter'> {comment.commenter}</div>
+                                      <div className='comment_time'>{new Date(comment.createdAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}</div>
+                                      <div className='comment_content'>Content: {comment.content}</div>
+                                    </div>
+                                  ))}
+                                </div>
+                              ))}
                             </div>
                           ))}
                         </div>
-                      ))}
-                      </>
+                      </div>  
+                    </>
                     )}
               </div>
               {/* {comments.map((comment, index) => ( <div key={index}>{comment}</div> ))} */}
