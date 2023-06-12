@@ -39,9 +39,9 @@ const Navbar = () => {
                 <li><NavLink to="/therapy" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }>Therapy</NavLink></li>
-                <li><NavLink to="/contact" className={({isActive}) => 
+                <li><NavLink to="/profile" className={({isActive}) => 
                     isActive ? 'active':undefined
-                }>Contact</NavLink></li>
+                }>Profile</NavLink></li>
             
             </ul>
             </div>
@@ -71,9 +71,9 @@ const Navbar = () => {
                 <li><NavLink to="/therapy" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }>Therapy</NavLink></li>
-                <li><NavLink to="/contact" className={({isActive}) => 
+                <li><NavLink to="/profile" className={({isActive}) => 
                     isActive ? 'active':undefined
-                }>Contact</NavLink></li>
+                }>Profile</NavLink></li>
             
             </ul>}
         </div>

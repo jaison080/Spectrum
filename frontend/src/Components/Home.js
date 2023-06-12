@@ -108,6 +108,7 @@ const Home = () => {
           <h3>Trending Jobs</h3>
           {enteredJobs.map((job)=>(
             <JobItems
+            key={job.id}
             title={job.title} company={job.company} rating={job.rating} mode={job.mode} location = {job.location}
             amount = {job.amount} timing={job.timing} skills={job.skills} date ={job.date} />
           ))}
@@ -119,19 +120,17 @@ const Home = () => {
         <NewArticle onAddArticle={addArticleHandler} className='new_article_button' />
         {articles.map((article) => (
           <Articles
+            key={article._id}
             id={article._id}
             title={article.title}
             image={article.image}
             article={article.content}
             author={article.author.name}
             date={article.createdAt}
+            likes = {article.likes.map((like)=>({like}))}
+            comments = {article.comments.map((comment)=>({comment}))}
           />
         ))}
-        {/* {articles.map((article) => (
-          <li key={article.id}>
-            <Link to={`/blogs/${article.id}`}>{article.title}</Link>
-          </li>
-        ))} */}
       </div>
       
         

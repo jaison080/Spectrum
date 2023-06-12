@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Qns.css';
 
 const Qns = (props) => {
@@ -7,13 +7,28 @@ const Qns = (props) => {
   const [liked, setLiked] = useState(false);
   const [reported, setReported] = useState(false);
   const [reportMessage, setReportMessage] = useState('');
+  const [comments, setComments] = useState([]);
+  const [loadComments, setLoadComments] = useState([]);
+const [showComments, setShowComments] = useState(false);
+
+const handleAddComment = (comment) => {
+  setComments([...comments, comment]);
+};
+
+const handleShowComments = () => {
+  setShowComments(true);
+};
+
+const handleHideComments = () => {
+  setShowComments(false);
+}
 
   const token = localStorage.getItem('token');
   
   const handleLike = async() => {
     try {
-      const response = await fetch(`http://localhost:5000/api/qna/like/${props.id}`, {
-        method: 'PUT',
+      const response = await fetch(`http://localhost:5000/api/qna/likeQuestion/${props.id}`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
@@ -30,6 +45,55 @@ const Qns = (props) => {
       console.error('Error:', error);
     }
   };
+
+  const fetchComments = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/qna/getAllAnsweredQuestions`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`, 
+        }
+      });
+      const data = await response.json();  
+      setLoadComments(data); 
+    } catch (error) {
+      console.error(error);   
+    }
+  }
+  
+  useEffect(() => {
+    fetchComments();
+  }, []);
+  
+  const commentSubmitHandler = async(event)=> { 
+    event.preventDefault(); 
+    const comment = event.target.comment.value;
+    const content = comment;
+    try {
+      const response = await fetch(`http://localhost:5000/api/qna/answer/${props.answer_id}/comment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+  
+        },
+        body: JSON.stringify({ content, id:props.id }),
+      });
+  
+      if (response.ok) {
+        // Comment added successfully
+        setComments([...comments, comment]);
+        console.log('Comment added successfully');
+      } else {
+        // Handle error case
+        console.error('Error adding comment');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    
+  }
   
   const handleReport = (e) => {
     e.preventDefault();
@@ -55,9 +119,46 @@ const Qns = (props) => {
                   {liked ? 'Dislike' : 'Like'}
                 </button>
               </div>
+              <div className='comments'>
+                    {!showComments && (
+                      <button className='viewcommentsbutton' onClick={handleShowComments}>
+                        View Comments
+                      </button>
+                    )}
+                    {showComments && ( <>
+                      <div className='comment_details'>
+                        <div className='comment_detail'>
+                          <button className='viewcommentsbutton' onClick={handleHideComments}>
+                            Hide Comments
+                          </button> 
+                          {loadComments.map((question) => (
+                            <div key={question._id}>
+                              {question.answers.map((answer) => (
+                                <div key={answer._id}>
+                                  {answer.comments.map((comment) => (
+                                    <div key={comment._id} className='comment_wrapper'>
+                                      <div className='commenter'> {comment.commenter}</div>
+                                      <div className='comment_time'>{new Date(comment.createdAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}</div>
+                                      <div className='comment_content'>Content: {comment.content}</div>
+                                    </div>
+                                  ))}
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>  
+                    </>
+                    )}
+              </div>
+              {/* {comments.map((comment, index) => ( <div key={index}>{comment}</div> ))} */}
+              <form className='addComment' onSubmit={commentSubmitHandler}>
+                <input className='add_comment_input' type='text' name='comment' placeholder='Add a comment' style={{ textAlign: 'center' }}></input>
+                <button type='submit'>Comment</button>
+              </form>
               <div className='report_qn_details'>
                 <form onSubmit={handleReport}>
-                    <input name='report-message' className='report_qn' placeholder='Report Message' value={reportMessage} onChange={(e) => setReportMessage(e.target.value)}></input>
+                    <input name='report-message' className='report_qn' placeholder='Report Message' value={reportMessage} onChange={(e) => setReportMessage(e.target.value)} style={{ textAlign: 'center' }}></input>
                     <button type='submit'>Report</button>
                 </form>
               </div>

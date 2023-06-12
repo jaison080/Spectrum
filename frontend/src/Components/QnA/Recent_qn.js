@@ -5,31 +5,9 @@ import './Recent_qn.css';
 
 const Recent_qn = (props) => {
   const [answerRecent, setAnswerRecent] = useState('');
-  const [unansweredQuestions, setUnansweredQuestions] = useState([]);
 
-  useEffect(() => {
-    fetchQuestions();
-  }, []);
 
   const token = localStorage.getItem('token');
-  const fetchQuestions = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/qna/getAllUnansweredQuestions', {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setUnansweredQuestions(data);
-      } else {
-        console.error('Error:', response.status);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
 
   const addAnswerHandler = (event) => {
     setAnswerRecent(event.target.value);
@@ -45,14 +23,12 @@ const Recent_qn = (props) => {
   return (
     <div className='recent_qn_wrapper'>
       <div className='recent_qn_list'>
-        {unansweredQuestions.map((question) => (
-          <div key={question._id} className='qn_description'>
-            {question.title}<br></br>
-            Qn: {question.content}<br></br>
-            {question.author}
-            <NewAnswer id={question._id} onSolveQuestion={saveSolvedQuestionDataHandler} />
+          <div key={props.id} className='qn_description'>
+            <div className='recent_qn_title'>{props.title}</div>
+            <div className='recent_qn'>Qn: {props.qn}</div>
+            <div className='recent_qn_author'>{props.author}</div>
+            <div className='solve_qn'><NewAnswer id={props.id} onSolveQuestion={saveSolvedQuestionDataHandler} /></div>
           </div>
-        ))}
       </div>
     </div>
   );

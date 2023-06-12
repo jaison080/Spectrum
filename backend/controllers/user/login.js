@@ -24,7 +24,7 @@ const loginUser = async (req, res) => {
         user._doc.token = token;
         return res.status(200).json(user);
       }
-      res.status(400).send("Invalid Credentials");
+      res.status(400).json({message: 'Invalid Credentials'});
     } catch (err) {
       console.log(err);
     }

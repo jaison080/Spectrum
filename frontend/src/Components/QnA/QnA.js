@@ -71,6 +71,9 @@ const QnA = (props) => {
 
     const[recentQns, setRecentQns] = useState(Dummy_Recent_Qns);
     const [qnaDetails, setQnaDetails] = useState([]);
+    const [unansweredQuestions, setUnansweredQuestions] = useState([]);
+
+
 
     const addQnHandler = recentQns =>{
         setRecentQns((prevRecentQns) => {
@@ -82,11 +85,11 @@ const QnA = (props) => {
     const token = localStorage.getItem('token');
     useEffect(() => {
         fetchQnA();
-    }, []);
+    }, [qnaDetails]);
 
     const fetchQnA = async () => {
         try {
-        const response = await fetch('http://localhost:5000/api/qna//getAllAnsweredQuestions', {
+        const response = await fetch('http://localhost:5000/api/qna/getAllAnsweredQuestions', {
                 method: 'GET',
                 headers: {
                 Authorization: `Bearer ${token}`,
@@ -102,15 +105,35 @@ const QnA = (props) => {
         console.error('Error:', error);
         }
     };
-
+    useEffect(() => {
+        fetchQuestions();
+      }, [unansweredQuestions]);
+    const fetchQuestions = async () => {
+        try {
+          const response = await fetch('http://localhost:5000/api/qna/getAllUnansweredQuestions', {
+                method: 'GET',
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+          });
+          if (response.ok) {
+            const data = await response.json();
+            setUnansweredQuestions(data);
+          } else {
+            console.error('Error:', response.status);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
 
   return (
     <div>
       <div className='Recent_Qn'>
             <div className='heading_recent'><h3>Unanswered Questions</h3></div>
             <div className='recent_qn_list'>
-                {recentQns.map((recentqn) => (
-                    <Recent_qn qn={recentqn.content} key={recentqn._id}/>
+                {unansweredQuestions.map((recentqn) => (
+                    <Recent_qn key={recentqn._id} qn={recentqn.content} id={recentqn._id} title={recentqn.title} author={recentqn.author.name}/>
                 ))}
                 
             </div>
@@ -121,7 +144,7 @@ const QnA = (props) => {
                 <NewQn onAddQn={addQnHandler} />
             </div>
             {qnaDetails.map((details) => (          
-                    <Qns id={details._id} solver = {details.answers.map((ans) => (ans.answerer))} qn={details.content}
+                    <Qns key={details._id} id={details._id} answer_id={details.answers.map((answer)=> (answer._id))} solver = {details.answers.map((ans) => (ans.answerer))} qn={details.content}
                     answer={details.answers.map((ans) => (ans.content))} topics={details.topics} title={details.title} likes={details.likes}/>
             ))}
       </div>

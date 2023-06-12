@@ -62,6 +62,12 @@
 .ans_title{
     font-weight: 700;
 }
+.add_comment_input{
+    background-color: #d8ebd2;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
 .report_qn{
     background-color: #d8ebd2;
     border-radius: 6px;
@@ -76,6 +82,49 @@
 .likes,.report_qn_details{
     display: inline-block;
     margin-left: 20px;
+}
+
+.comment_details{
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.comment_detail{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #edf6e3;
+    margin: 7% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.comment_wrapper{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.commenter, .comment_time{
+    display: inline-block;
+}
+.commenter{
+    font-weight: 700;
+}
+.comment_time{
+    font-size: small;
+    margin-left: 10px;
 }
 
 

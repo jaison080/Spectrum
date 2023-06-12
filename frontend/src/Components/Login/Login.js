@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Login.css';
+import MyComponent from '../UI/MyComponent';
 
 
 const Login = () => {
@@ -17,6 +18,8 @@ const Login = () => {
   const passwordChangeHandler = (event) => {
     setItem((prevItem) => ({ ...prevItem, password: event.target.value }))
   }
+
+  const [error, setError] = useState('');
   
 
   const logInSubmitHandler = async(event) => {
@@ -50,7 +53,9 @@ const Login = () => {
           console.log('Error fetching blogs:', blogsResponse.statusText);
         }
       } else {
-        console.log('Error registering user:', response.statusText);
+        const errorsResponse = await response.json();
+        console.log('Error registering user:', errorsResponse.message);
+        setError(errorsResponse.message);      
       }
   
     } catch (error) {
@@ -61,17 +66,25 @@ const Login = () => {
 
 
   return (
-    <div className='login_form'>
-        <form onSubmit={logInSubmitHandler} >
-            <div><img src='./images/prof.png' alt='login_logo' className='login_logo'></img></div>
-            <div><input type='text' placeholder='email' className='login_data' onChange={emailChangeHandler} value={item.email}></input></div>
-            <div><input type='password' placeholder='password' className='login_data' onChange={passwordChangeHandler} value={item.password}></input></div>
-            <div><button className='login_submit'>Submit</button> </div>
+    <div  className='background_users'>
+
+      <div className='login_form'>  
+      <div className='login_box'>
+        <MyComponent />
+      </div>
+        <form onSubmit={logInSubmitHandler}>
+          <div><img src='./images/prof.png' alt='login_logo' className='login_logo'></img></div>
+          <div><input type='text' placeholder='email' className='login_data' onChange={emailChangeHandler} value={item.email} style={{ textAlign: 'center' }}></input></div>
+          <div><input type='password' placeholder='password' className='login_data' onChange={passwordChangeHandler} value={item.password} style={{ textAlign: 'center' }}></input></div>
+          <div><button className='login_submit'>Submit</button></div>
         </form>
+        {error && <div className="error">{error}</div>}
         <p>New User? <a href='Signup'>Signup</a></p>
         <p className='forgot_ps'><a href='password'>Forgot Password</a></p>
+      </div>
     </div>
-  )
+  );
+  
 }
 
 export default Login
