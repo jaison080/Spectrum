@@ -1,10 +1,86 @@
 import React, {useState, useEffect} from 'react';
 import './UserDetails.css'
+import UserDetailsEdit from './UserDetailsEdit';
 
-const UserDetails = () => {
+const UserDetails = (props) => {
     const [userDetails, setUserDetails] = useState({});
+    const [isEditing, setIsEditing] = useState(false);
+    const [oldPassword, setOldPassword] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [isPasswordChanging, setIsPasswordChanging] = useState(false);
 
     const token = localStorage.getItem('token');
+
+    const editEnableHandler = () =>{
+        setIsEditing(true);
+    }
+
+    const editDisableHandler = () =>{
+        setIsEditing(false);
+    }
+
+    const passwordChangeEnableHandler = () =>{
+        setIsPasswordChanging(true);
+    }
+
+    const passwordChangeDisableHandler = () =>{
+        setIsPasswordChanging(false);
+    }
+
+    const oldPasswordChangeHandler = (event) =>{
+        setOldPassword(event.target.value);
+    }
+
+    const passwordChangeHandler = (event) =>{
+        setPassword(event.target.value);
+    }
+
+    const passwordConfirmChangeHandler = (event) =>{
+        setPasswordConfirm(event.target.value);
+    }
+
+    const passwordSubmitHandler = async(event) =>{
+        event.preventDefault();
+        if(password !== passwordConfirm){
+            alert('Passwords do not match');
+            return;
+        }
+        const passwordData = {
+            oldPassword: oldPassword,
+            newPassword: password,
+        }
+        try{
+            const response = await fetch('http://localhost:5000/api/users/editpassword', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(passwordData),
+            });
+            if(response.ok){
+                alert('Password changed successfully');
+                setPassword('');
+                setPasswordConfirm('');
+                setIsPasswordChanging(false);
+                console.log('Password changed successfully');
+            }else{
+                console.error('Error:', response.status);
+            }
+        }
+        catch(error){
+            console.error('Error:', error);
+        }
+    }
+
+    const saveUserDataHandler = (enteredUserData) =>{
+        const userData = {
+            ...enteredUserData,
+        }
+
+        setIsEditing(false);
+    }
 
     const fetchUserDetails = async() => {
         try{
@@ -44,7 +120,8 @@ const UserDetails = () => {
       </div>
       <div className='details'>
         <h5>User Details</h5>
-        <button className='edit__button'>Edit Profile</button>
+        {!isEditing && <button className='edit__button' onClick={editEnableHandler}>Edit Profile</button>}
+        {isEditing && <UserDetailsEdit onSaveUserData = {saveUserDataHandler}  onCancel ={editDisableHandler}/>}
         <div className='details_wrapper'>
             Email<div className='user__Email'>{userDetails.email}</div>
         </div>  
@@ -64,7 +141,17 @@ const UserDetails = () => {
             Sexual Orientation<div className='user__SexualOrientation'>{userDetails.sexualOrientation ? userDetails.sexualOrientation : "nil"}</div>
         </div>
         <div className='details__wrapper'>
-            <button className='change__button'>Change Password</button>
+            <button className='change__button' onClick={passwordChangeEnableHandler}>Change Password</button>
+            {isPasswordChanging && <form className='form_control'>
+                <div className='newFormControls'>
+                <input type='password' className='newFormControl' placeholder='Enter old password' onChange={oldPasswordChangeHandler}/>
+                <input type='password' className='newFormControl' placeholder='Enter new password' onChange={passwordChangeHandler}/>
+                <input type='password' className='newFormControl' placeholder='Confirm new password' onChange={passwordConfirmChangeHandler}/>
+                <div>
+                    <button className='save__button' onClick={passwordSubmitHandler}>Save</button> <button className='cancelchange__button' onClick={passwordChangeDisableHandler}>Cancel</button>
+                </div>
+                </div>
+            </form>}
         </div>
       </div>
       
