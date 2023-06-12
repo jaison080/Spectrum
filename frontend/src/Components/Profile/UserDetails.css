@@ -1,0 +1,72 @@
+.user__details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.user_profile_pic{
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    margin-top: 1.5rem;
+}
+
+.user__Name{
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.user__Bio{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #038427;
+}
+
+.details{
+    background-color: #D0E7D9; 
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: 20px;
+}
+
+.details h5{
+    padding-top: 10px;
+    font-style: italic;
+}
+
+.edit__button{
+    border: none;
+    cursor: pointer;
+    font-size: small;
+    background-color:#D0E7D9 ;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+
+.change__button{
+    border: none;
+    cursor: pointer;
+    font-size: small;
+    background-color:#D0E7D9 ;
+    text-decoration: underline;
+    font-style: italic;
+    margin-left: 48%;
+    padding-bottom: 30px;
+}
+
+.details_wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #858080;
+}

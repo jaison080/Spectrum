@@ -37,7 +37,7 @@ const AnswerForm = (props) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        console.log('answer data received');
 
       } else {
         const errorText = await response.text();
@@ -55,9 +55,9 @@ const AnswerForm = (props) => {
   return (
     <div>
       <form onSubmit={answerSubmitHandler} className='new_answer_form'>
-        <textarea type='text' placeholder='Answer Here' className='answer_area' onChange={answerChangeHandler} value={enteredAnswer}></textarea>
+        <textarea type='text' placeholder='Answer Here' className='answer_area' onChange={answerChangeHandler} value={enteredAnswer} style={{ textAlign: 'center' }}></textarea>
         <div className='b2'>
-          <label className='checkbox_description'>Answer Anonymously<input type='checkbox' className='ans_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} /></label>           
+          <label className='checkbox_description'>Answer Anonymously<input type='checkbox' className='ans_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} style={{ textAlign: 'center' }}/></label>           
         </div>
         <div className='answer_buttons'><button type='button' onClick={props.onCancel}>Cancel</button> <button type='submit'>Submit</button></div>
         </form>

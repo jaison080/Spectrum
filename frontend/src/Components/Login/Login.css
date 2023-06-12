@@ -1,4 +1,13 @@
-
+.background_users {
+    --blue: #1a0fb5;
+    --purple: #005138;
+    background: linear-gradient(60deg, var(--purple), var(--blue));
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 .login_form{
     background-color: #84BE94;
     width: 30%;

@@ -66,6 +66,13 @@ const QnForm = (props) => {
         }
     }
 
+    const[isCancel, setIsCancel] = useState(false);
+
+    const cancelChangeHandler = () => {
+      setIsCancel(true);
+      props.onCancel(isCancel);
+    }
+
 
 
   return (
@@ -73,20 +80,23 @@ const QnForm = (props) => {
       <form className='qn_form_control' onSubmit={qnSubmitHandler}>
         <div className='qn_form'>
                     <div className='title_qn'>
-                      <input required type='text' className='qn_title' placeholder='title' onChange={titleChangeHandler}></input>
+                      <input required type='text' className='qn_titles' placeholder='title' onChange={titleChangeHandler} style={{ textAlign: 'center' }}></input>
                     </div>
                     <div className='qn_details'>
-                        <textarea required type="text" id="qn_input" onChange={qnChangeHandler} className='question_area'  placeholder='Clear Your Doubts' />                    
+                        <textarea required type="text" id="qn_input" onChange={qnChangeHandler} className='question_area'  placeholder='Clear Your Doubts' style={{ textAlign: 'center' }}/>                    
                     </div>
                     <div className='b2'>
                         <label className='checkbox_description'>Ask Anonymously<input type='checkbox' className='qn_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} /></label>
                         
                     </div>
                     <div className='topics_qn'>
-                      <input type='text' className='qn_topic' placeholder='topics' onChange={topicsChangeHandler}></input>
+                      <input type='text' className='qn_topics' placeholder='topics' onChange={topicsChangeHandler} style={{ textAlign: 'center' }}></input>
                     </div>
                     <div className='b2'>
                         <button type='qn_submit' className='qn_button'>Submit</button>
+                    </div>
+                    <div className='b2'>
+                        <button type='qn_submit' className='qn_button' onClick={cancelChangeHandler}>Cancel</button>
                     </div>
         </div>      
       </form>
