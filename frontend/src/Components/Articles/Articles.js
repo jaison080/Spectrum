@@ -35,6 +35,7 @@ const handleLike = async() => {
       body: JSON.stringify({ likes: liked ? likes - 1 : likes + 1,id:props.id }),
     });
     if (response.ok) {
+      console.log('Likes updated'+response.json());
       setLiked(!liked);
       setLikes(liked ? likes - 1 : likes + 1);
     } else {
@@ -81,6 +82,7 @@ const fetchComments = async () => {
       }
     });
     const data = await response.json();  
+    console.log('Fetch comments'+data);
     setLoadComments(data); 
   } catch (error) {
     console.error(error);   
@@ -108,6 +110,7 @@ const commentSubmitHandler = async(event)=> {
 
     if (response.ok) {
       // Comment added successfully
+      console.log('Added comment'+response.json());
       setComments([...comments, comment]);
     } else {
       // Handle error case

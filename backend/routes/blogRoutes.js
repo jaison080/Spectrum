@@ -16,11 +16,11 @@ const upload = multer({ storage: storage });
 
 // Base URL: /api/blogs
 router.get('/', getAllBlogs);
-router.get('/:id', verifyToken, getBlogById);
 router.get('/user', verifyToken, getBlogsByUser);
 router.post('/create', verifyToken, upload.single('image'), createBlog);
 router.put('/edit',verifyToken, editBlog);
 router.put('/like/:id',verifyToken,likeBlog);
 router.put('/addcomment/:id',verifyToken,addComment);
 router.get('/comment/:id',verifyToken,viewComments)
+router.get('/:id', verifyToken, getBlogById);
 module.exports = router

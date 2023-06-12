@@ -44,6 +44,7 @@ const NewArticleForm = (props) => {
       
           if (response.ok) {
             const data = await response.json();
+            console.log('Create blog'+data);
             console.log(data);
 
           } else {

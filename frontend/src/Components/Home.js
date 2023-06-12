@@ -86,6 +86,7 @@ const Home = () => {
       const response = await fetch('http://localhost:5000/api/blogs/');
       if (response.ok) {
         const data = await response.json();
+        console.log("getAllBlogs"+data);
         setArticles(data);
       } else {
         console.log('Error fetching articles:', response.statusText);
@@ -122,7 +123,7 @@ const Home = () => {
             title={article.title}
             image={article.image}
             article={article.content}
-            author={article.author}
+            author={article.author.name}
             date={article.createdAt}
           />
         ))}
