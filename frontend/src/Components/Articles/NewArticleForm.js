@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./NewArticleForm.css";
 
 const NewArticleForm = (props) => {
@@ -51,6 +51,10 @@ const NewArticleForm = (props) => {
       console.error("Error:", error);
     }
   };
+
+  useEffect(() => {
+    articleSubmitHandler();
+  }, []);
 
   return (
     <div>

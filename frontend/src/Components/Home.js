@@ -79,7 +79,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchArticles();
-  }, []);
+  }, [articles]);
 
   const fetchArticles = async () => {
     try {
@@ -117,6 +117,25 @@ const Home = () => {
       <div className='middle_bar'>
         <h3>ARTICLES</h3>
         <NewArticle onAddArticle={addArticleHandler} className='new_article_button' />
+        {/* {articles.map((article) => (
+          <Articles
+            key={article._id}
+            id={article._id}
+            title={article.title}
+            image={article.image}
+            article={article.content}
+            author={
+              article.author && article.author.name ? article.author.name : ""
+            }
+            date={article.createdAt}
+            likes={
+              article.likes && article.likes.length > 0
+                ? article.likes.map((like) => ({ like }))
+                : []
+            }
+            comments = {article.comments.map((comment)=>({comment}))}
+          />
+        ))} */}
         {articles.map((article) => (
           <Articles
             key={article._id}
@@ -124,10 +143,20 @@ const Home = () => {
             title={article.title}
             image={article.image}
             article={article.content}
-            author={article.author.name}
+            author={
+              article.author && article.author.name ? article.author.name : ""
+            }
             date={article.createdAt}
-            likes = {article.likes.map((like)=>({like}))}
-            comments = {article.comments.map((comment)=>({comment}))}
+            likes={
+              article.likes && article.likes.length > 0
+                ? article.likes.map((like) => ({ like }))
+                : []
+            }
+            comments={
+              article.comments && article.comments.length > 0
+                ? article.comments.map((comment) => ({ comment }))
+                : []
+            }
           />
         ))}
       </div>
