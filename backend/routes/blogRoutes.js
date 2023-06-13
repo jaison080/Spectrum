@@ -18,7 +18,7 @@ const upload = multer({ storage: storage });
 router.get('/', getAllBlogs);
 router.get('/user', verifyToken, getBlogsByUser);
 router.post('/create', verifyToken, upload.single('image'), createBlog);
-router.put('/edit',verifyToken, editBlog);
+router.put('/edit/:id',verifyToken, upload.single('image'), editBlog);
 router.put('/like/:id',verifyToken,likeBlog);
 router.put('/addcomment/:id',verifyToken,addComment);
 router.get('/comment/:id',verifyToken,viewComments)
