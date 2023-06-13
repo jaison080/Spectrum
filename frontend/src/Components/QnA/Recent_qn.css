@@ -18,8 +18,9 @@
     font-weight: 700;
 }
 
-.recent_qn,.recent_qn_author{
-    display: inline-block;
+
+.recent_qn_date{
+    margin-left: 60%;
 }
 
 .recent_qn_author{

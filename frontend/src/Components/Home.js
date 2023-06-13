@@ -79,7 +79,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchArticles();
-  }, [articles]);
+  },);
 
   const fetchArticles = async () => {
     try {
@@ -146,6 +146,7 @@ const Home = () => {
             author={
               article.author && article.author.name ? article.author.name : ""
             }
+            tags={article.tags}
             date={article.createdAt}
             likes={
               article.likes && article.likes.length > 0

@@ -5,6 +5,7 @@ const NewArticleForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredArticle, setEnteredArticle] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const [enteredTopics, setEnteredTopics] = useState("");
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -17,6 +18,10 @@ const NewArticleForm = (props) => {
     setImageFile(event.target.files[0]);
   };
 
+  const topicsChangeHandler = (event) => {
+    setEnteredTopics(event.target.value);
+  };
+
   const articleSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -24,10 +29,13 @@ const NewArticleForm = (props) => {
     formData.append("title", enteredTitle);
     formData.append("content", enteredArticle);
     formData.append("image", imageFile);
+    formData.append("tags", enteredTopics);
 
     props.onSaveArticleData(formData);
     setEnteredTitle("");
     setEnteredArticle("");
+    setImageFile(null);
+    setEnteredTopics("");
     const token = localStorage.getItem("token");
 
     try {
@@ -52,10 +60,6 @@ const NewArticleForm = (props) => {
     }
   };
 
-  useEffect(() => {
-    articleSubmitHandler();
-  }, []);
-
   return (
     <div>
       <form onSubmit={articleSubmitHandler} className="new_article_form">
@@ -79,6 +83,16 @@ const NewArticleForm = (props) => {
               className="newFormArticle"
               style={{ textAlign: "center" }}
             ></textarea>
+          </div>
+          <div>
+            <input
+              type="text"
+              onChange={topicsChangeHandler}
+              // value={enteredTopics}
+              placeholder="Topics"
+              className="newFormControl"
+              style={{ textAlign: "center" }}
+            ></input>
           </div>
           <div className="fileInputContainer">
             <label htmlFor="fileInput" className="fileInputLabel">

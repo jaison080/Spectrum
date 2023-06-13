@@ -132,8 +132,13 @@ const Articles = (props) => {
       <div className="a_description">
         <div className="a_title">{props.title}</div>
         <div className="author">{props.author} </div>
+        <div className="blog_topic_content">{props.tags}</div>
         <div className="blog">
           <p>{truncatedText}</p>
+          {/* {props.tags && props.tags.length>0? <div className="blog_topic">
+            <div className="blog_topic_title">Topic: </div> */}
+            
+          {/* </div>:[]} */}
           {!showFullText && (
             <button className="showmorebutton" onClick={handleShowMoreClick}>
               Show more

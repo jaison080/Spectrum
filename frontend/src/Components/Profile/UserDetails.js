@@ -138,7 +138,7 @@ const UserDetails = (props) => {
             Gender<div className='user__Gender'>{userDetails.gender}</div>
         </div>
         <div className='details_wrapper'>
-            Sexual Orientation<div className='user__SexualOrientation'>{userDetails.sexualOrientation ? userDetails.sexualOrientation : "nil"}</div>
+            Sexual Orientation<div className='user__SexualOrientation'>{userDetails.sexualPreference ? userDetails.sexualPreference : "nil"}</div>
         </div>
         <div className='details__wrapper'>
             <button className='change__button' onClick={passwordChangeEnableHandler}>Change Password</button>

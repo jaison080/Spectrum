@@ -43,6 +43,9 @@
     /* .blog,.showmorebutton{
         display: inline;
     } */
+    .blog_topic{
+        margin-left: 30%;
+    }
     .showmorebutton{
         margin-left: 48%;
     }

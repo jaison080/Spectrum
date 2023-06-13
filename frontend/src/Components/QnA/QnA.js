@@ -133,7 +133,7 @@ const QnA = (props) => {
             <div className='heading_recent'><h3>Unanswered Questions</h3></div>
             <div className='recent_qn_list'>
                 {unansweredQuestions.map((recentqn) => (
-                    <Recent_qn key={recentqn._id} qn={recentqn.content} id={recentqn._id} title={recentqn.title} author={recentqn.author.name}/>
+                    <Recent_qn key={recentqn._id} qn={recentqn.content} id={recentqn._id} title={recentqn.title} date={recentqn.createdAt} author={recentqn.author.name}/>
                 ))}
                 
             </div>
@@ -143,10 +143,12 @@ const QnA = (props) => {
             <div>
                 <NewQn onAddQn={addQnHandler} />
             </div>
+            <div className='question_answer'>
             {qnaDetails.map((details) => (          
                     <Qns key={details._id} id={details._id} answer_id={details.answers.map((answer)=> (answer._id))} solver = {details.answers.map((ans) => (ans.answerer))} qn={details.content}
-                    answer={details.answers.map((ans) => (ans.content))} topics={details.topics} title={details.title} likes={details.likes}/>
+                    answer={details.answers.map((ans) => (ans.content))} topics={details.topics} title={details.title} likes={details.likes.length}/>
             ))}
+            </div>
       </div>
     </div>
   )

@@ -26,6 +26,13 @@ const Recent_qn = (props) => {
           <div key={props.id} className='qn_description'>
             <div className='recent_qn_title'>{props.title}</div>
             <div className='recent_qn'>Qn: {props.qn}</div>
+            <div className='recent_qn_date'>
+              {new Date(props.date).toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+              })}
+            </div>
             <div className='recent_qn_author'>{props.author}</div>
             <div className='solve_qn'><NewAnswer id={props.id} onSolveQuestion={saveSolvedQuestionDataHandler} /></div>
           </div>

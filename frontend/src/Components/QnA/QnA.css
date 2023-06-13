@@ -22,7 +22,9 @@
     padding: 28px;
 }
 
-@media screen and (max-width: 768px) {
+
+
+/* @media screen and (max-width: 768px) {
     .Recent_Qn{
         display: none;
     }
@@ -34,4 +36,31 @@
         margin-left: 0;
         padding: 28px;
     }
-}
+} */
+@media screen and (max-width: 768px) {
+    .Recent_Qn {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    position: static;
+    }
+    
+    .Questions {
+    width: 100%;
+    margin: 0;
+    margin-top: 10px;
+    padding: 10px;
+    position: static;
+    background-color: #D0E7D9;
+    }
+    
+    .recent_qn_list {
+    margin-left: 0;
+    }
+    
+    .heading_recent {
+    text-align: left;
+    margin-left: 5px;
+    }
+    }
