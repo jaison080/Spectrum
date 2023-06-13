@@ -145,7 +145,7 @@ const QnA = (props) => {
             </div>
             <div className='question_answer'>
             {qnaDetails.map((details) => (          
-                    <Qns key={details._id} id={details._id} answer_id={details.answers.map((answer)=> (answer._id))} solver = {details.answers.map((ans) => (ans.answerer))} qn={details.content}
+                    <Qns key={details._id} id={details._id} answer_id={details.answers.map((answer)=> (answer._id))} solver = {details.answers.map((ans) => (ans.answerer.name))} qn={details.content}
                     answer={details.answers.map((ans) => (ans.content))} topics={details.topics} title={details.title} likes={details.likes.length}/>
             ))}
             </div>
