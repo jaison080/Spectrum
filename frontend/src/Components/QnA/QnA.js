@@ -85,7 +85,7 @@ const QnA = (props) => {
     const token = localStorage.getItem('token');
     useEffect(() => {
         fetchQnA();
-    }, [qnaDetails]);
+    }, []);
 
     const fetchQnA = async () => {
         try {
@@ -107,7 +107,7 @@ const QnA = (props) => {
     };
     useEffect(() => {
         fetchQuestions();
-      }, [unansweredQuestions]);
+      }, []);
     const fetchQuestions = async () => {
         try {
           const response = await fetch('http://localhost:5000/api/qna/getAllUnansweredQuestions', {
