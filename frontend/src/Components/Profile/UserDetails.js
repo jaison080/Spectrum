@@ -134,12 +134,12 @@ const UserDetails = (props) => {
                 })}
             </div>
         </div>
-        <div className='details_wrapper'>
+        {userDetails.gender && <div className='details_wrapper'>
             Gender<div className='user__Gender'>{userDetails.gender}</div>
-        </div>
-        <div className='details_wrapper'>
+        </div>}
+        {userDetails.sexualPreference && <div className='details_wrapper'>
             Sexual Orientation<div className='user__SexualOrientation'>{userDetails.sexualPreference ? userDetails.sexualPreference : "nil"}</div>
-        </div>
+        </div>}
         <div className='details__wrapper'>
             <button className='change__button' onClick={passwordChangeEnableHandler}>Change Password</button>
             {isPasswordChanging && <form className='form_control'>
