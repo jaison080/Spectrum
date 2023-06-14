@@ -122,11 +122,20 @@ const Profile = () => {
                     </button>
                   )}
                   {isEditing && (
-                      <div className="edit_modal_contents">
-                        <div className="edit_modal_content">
-                          <EditArticle />
+                    <div className="edit_modal_contents">
+                      <div className="edit_modal_content">
+                        <div className="edit_form"><EditArticle
+                          key={article._id}
+                          id={article._id}
+                          title={article.title}
+                          image={article.image}
+                          article={article.content}
+                          tags={article.tags}
+                          onCancel={editStopHandler}
+                        />
                         </div>
                       </div>
+                    </div>
                   )}
                 </div>
               </div>

@@ -1,84 +1,96 @@
 * {
     box-sizing: border-box;
-}
-    
-body {
+  }
+  
+  body {
     margin: 0;
     background-color: white;
     text-align: center;
     font-family: 'Mukta', sans-serif;
-}
-
-.navbar{
+  }
+  
+  .navbar {
     display: flex;
     padding: 2% 6%;
     justify-content: space-between;
     align-items: center;
-    
-}
-
-.navbar_list{
+  }
+  
+  .navbar_list {
     flex: 1;
     text-align: right;
-    
-}
-.navbar_list ul{
+  }
+  
+  .navbar_list ul {
     list-style: none;
     display: inline-block;
     position: relative;
-}
-li{
+    text-decoration: none;
+  }
+  
+  li {
     display: inline;
     margin-left: 20px;
     padding: 2px;
-}
-li a{
     text-decoration: none;
-}
-li a:hover,
-li a:active{
+    color: black !important; /* Change the color to black with !important */
+  }
+  
+  li a {
+    text-decoration: none;
+    color: inherit !important; /* Inherit the color from the parent li with !important */
+  }
+  
+  li a:hover,
+  li a:active {
     color: rgb(214, 11, 11);
     text-decoration: underline;
-}
-
-.hamburger-menu{
+  }
+  
+  .hamburger-menu {
     display: none;
-}
-
-@media screen and (max-width: 768px) {
-    .navbar{
-        display: none;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .navbar {
+      display: none;
     }
-    .navbar_list{
-        display: none;
+    
+    .navbar_list {
+      display: none;
     }
-    li{
-        display: block;
+  
+    li {
+      display: block;
     }
-    .mobile_navbar{
-        
+  
+    .mobile_navbar {
+      
     }
-    .hamburger-menu{
-        display: block;
-        text-align: right;
+  
+    .hamburger-menu {
+      display: block;
+      text-align: right;
     }
-    .navbar_list_mobile{
-        margin-left: 65%;
-        width: 30%;
-        display: block;
-        position: static;
-        padding: auto;
-        text-align: right;
+  
+    .navbar_list_mobile {
+      margin-left: 65%;
+      width: 30%;
+      display: block;
+      position: static;
+      padding: auto;
+      text-align: right;
     }
-    li a{
-        display: block;
-        padding-right: 10px;
-        
+  
+    li a {
+      display: block;
+      padding-right: 10px;
     }
+  
     li a:hover,
-    li a:active{
-        color: rgb(214, 11, 11);
-        text-decoration: underline;
+    li a:active {
+      color: rgb(214, 11, 11);
+      text-decoration: underline;
     }
-}
-
+  }
+  

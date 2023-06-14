@@ -130,7 +130,28 @@ const Articles = (props) => {
   return (
     <div className="article">
       <div className="a_description">
-        <div className="a_title">{props.title}</div>
+      <div className="a_title">{props.title}</div>
+      <div className="author_identity">
+        <div className="qn_pic">
+              {props.auth_pic && (
+                <img
+                  src={props.auth_pic}
+                  alt="profile_pic"
+                  className="qn_profile_pic"
+                />
+              )}
+              {!props.auth_pic && (
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                  alt="profile_pic"
+                  className="qn_profile_pic"
+                />
+              )}
+            </div>
+            <div className="author">{props.author} </div>
+            </div>
+
+            
 
         <div className="blog_topic_content">{props.tags}</div>
         <div className="blog">
@@ -239,7 +260,7 @@ const Articles = (props) => {
               </div>
             </div>
           )}
-          <div className="author">{props.author} </div>
+
           <div className="a_date">
             {new Date(props.date).toLocaleDateString(undefined, {
               month: "long",

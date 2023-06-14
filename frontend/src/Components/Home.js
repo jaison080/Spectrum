@@ -142,6 +142,7 @@ const Home = () => {
               author={
                 article.author && article.author.name ? article.author.name : ""
               }
+              auth_pic = {article.author.profilePicture}
               tags={article.tags}
               date={article.createdAt}
               likes={article.likes.length}
