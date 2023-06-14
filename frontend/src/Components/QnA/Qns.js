@@ -131,7 +131,7 @@ const Qns = (props) => {
         <div className="qn_wrapper" id={props.id}>
           {/* <div><img src={props.image} alt='profile' className='answer_img' /></div> */}
           <div className="solver_identity">
-            <div className="solver">{props.solver}</div>
+            <div className="solver">{props.solver_name}</div>
             {/* <div className='solver_designation'>{props.designation}</div> */}
           </div>
           <div className="qn_title">{props.title} </div>

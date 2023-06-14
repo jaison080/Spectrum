@@ -114,9 +114,20 @@ const Profile = () => {
                 </div>
                 <div className="user_article_edit">
                   {!isEditing && (
-                    <button onClick={editStartHandler} className="user_article_edit_btn">Edit</button>
+                    <button
+                      onClick={editStartHandler}
+                      className="user_article_edit_btn"
+                    >
+                      Edit
+                    </button>
                   )}
-                  {isEditing && <EditArticle />}
+                  {isEditing && (
+                      <div className="edit_modal_contents">
+                        <div className="edit_modal_content">
+                          <EditArticle />
+                        </div>
+                      </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -127,8 +138,12 @@ const Profile = () => {
           <div className="user_questions_list">
             {userQuestions.map((question) => (
               <div className="user_question" id={question._id}>
-                <div className="user_question_title"><h6>{question.title}</h6></div>
-                <div className="user_question_topic">Topics: <u>{question.topics}</u></div>
+                <div className="user_question_title">
+                  <h6>{question.title}</h6>
+                </div>
+                <div className="user_question_topic">
+                  Topics: <u>{question.topics}</u>
+                </div>
                 <div className="user_question_content">{question.content}</div>
                 <div className="user_question_date">
                   {new Date(question.createdAt).toLocaleDateString("en-US", {
@@ -144,33 +159,44 @@ const Profile = () => {
         <div className="user_answers">
           <h4>Answers</h4>
           <div className="user_answers_list">
-            {userAnswers && userAnswers.map((answer) => (
-              <div className="user_answer" id={answer._id}>
-                <div className="user_answer_question">
-                  <div className="user_answer_question_title">
-                    {answer.question && answer.question.title ? answer.question.title : ''}
+            {userAnswers &&
+              userAnswers.map((answer) => (
+                <div className="user_answer" id={answer._id}>
+                  <div className="user_answer_question">
+                    <div className="user_answer_question_title">
+                      {answer.question && answer.question.title
+                        ? answer.question.title
+                        : ""}
+                    </div>
+                    <div className="user_answer_question_topic">
+                      Topics:
+                      <u>
+                        {answer.question && answer.question.topics
+                          ? answer.question.topics
+                          : ""}
+                      </u>
+                    </div>
+                    <div className="user_answer_question_content">
+                      {answer.question && answer.question.content
+                        ? answer.question.content
+                        : ""}
+                    </div>
                   </div>
-                  <div className="user_answer_question_topic">
-                    Topics:<u>{answer.question && answer.question.topics ? answer.question.topics : ''}</u> 
-                  </div>
-                  <div className="user_answer_question_content">
-                    {answer.question && answer.question.content ? answer.question.content : ''}
+                  <div className="user_answer_question_answer">
+                    <div className="user_answer_question_answer_content">
+                      <h6>Answer</h6>
+                      {answer.content}
+                    </div>
+                    <div className="user_answer_question_answer_date">
+                      {new Date(answer.createdAt).toLocaleDateString("en-US", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </div>
                   </div>
                 </div>
-                <div className="user_answer_question_answer">
-                  <div className="user_answer_question_answer_content">
-                    <h6>Answer</h6>{answer.content}
-                  </div>
-                  <div className="user_answer_question_answer_date">
-                    {new Date(answer.createdAt).toLocaleDateString("en-US", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>

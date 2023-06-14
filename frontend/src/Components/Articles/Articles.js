@@ -52,9 +52,10 @@ const Articles = (props) => {
     }
   };
 
-  const maxWordsToShow = 40; // or whatever maximum number of words you want to show initially
-  const words = props.article ? props.article.split(" ") : [];
-  const truncatedText = words.slice(0, maxWordsToShow).join(" ");
+  const maxCharsToShow = 200; // or whatever maximum number of characters you want to show initially
+  const text = props.article || "";
+  const truncatedText = text.slice(0, maxCharsToShow);
+  
 
   const handleShowMoreClick = () => {
     setShowFullText(true);
@@ -71,7 +72,6 @@ const Articles = (props) => {
     setReported(true);
   };
   const token = localStorage.getItem("token");
-
 
   const fetchComments = async () => {
     try {
@@ -95,7 +95,7 @@ const Articles = (props) => {
 
   useEffect(() => {
     fetchComments();
-  }, []);
+  }, [comments]);
 
   const commentSubmitHandler = async (event) => {
     event.preventDefault();
@@ -131,26 +131,19 @@ const Articles = (props) => {
     <div className="article">
       <div className="a_description">
         <div className="a_title">{props.title}</div>
-        <div className="author">{props.author} </div>
+
         <div className="blog_topic_content">{props.tags}</div>
         <div className="blog">
-          <p>{truncatedText}</p>
           {/* {props.tags && props.tags.length>0? <div className="blog_topic">
             <div className="blog_topic_title">Topic: </div> */}
-            
+
           {/* </div>:[]} */}
-          {!showFullText && (
-            <button className="showmorebutton" onClick={handleShowMoreClick}>
-              Show more
-            </button>
-          )}
-          <div className="a_date">
-            {new Date(props.date).toLocaleDateString(undefined, {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
+          <div>
+            {!showFullText && (
+              <p onClick={handleShowMoreClick}>{truncatedText}</p>
+            )}
           </div>
+
           {showFullText && (
             <div className="blog_details">
               <div className="blog_details_content">
@@ -161,18 +154,22 @@ const Articles = (props) => {
                   >
                     ×
                   </span>
+                  <div className="blog_details_title">{props.title}</div>
                   <img
                     src={props.image}
                     alt="hi"
                     className="blog_details_img"
                   ></img>
-                  <div className="blog_details_title">{props.title}</div>
                   <p className="blog_details_blog">{props.article}</p>
                   <div className="blog_detailsauthor">{props.author} </div>
-                  <div className="likes">Likes: {likes}</div>
+                  <div className="likes">Likes: {props.likes}</div>
                   <button className="likebutton" onClick={handleLike}>
-                    {liked ? "Dislike" : "Like"}
-                  </button>
+                      {liked ? (
+                        <i className="fas fa-thumbs-down"></i>
+                      ) : (
+                        <i className="fas fa-thumbs-up"></i>
+                      )}
+                    </button>
                   <div className="comments">
                     {!showComments && (
                       <button
@@ -186,12 +183,27 @@ const Articles = (props) => {
                       <>
                         <div className="comment_details">
                           <div className="comment_detail">
-                            <button
-                              className="viewcommentsbutton"
+                            <div>
+                              <form
+                                className="addComment"
+                                onSubmit={commentSubmitHandler}
+                              >
+                                <input
+                                className="comment_input"
+                                  type="text"
+                                  name="comment"
+                                  placeholder="Add a comment"
+                                  style={{ textAlign: "center" }}
+                                ></input>
+                                <button type="submit">Comment</button>
+                              </form>
+                            </div>
+                            <span
+                              className="comment_detailsclose"
                               onClick={handleHideComments}
                             >
-                              Hide Comments
-                            </button>
+                              ×
+                            </span>
                             {loadComments.map((commentGroup) => (
                               <div key={commentGroup._id}>
                                 {commentGroup.comments.map((comment) => (
@@ -204,15 +216,15 @@ const Articles = (props) => {
                                       {comment.commenter}
                                     </div>
                                     <div className="comment_time">
-                                      {new Date(
+                                      <small>{new Date(
                                         comment.createdAt
                                       ).toLocaleDateString(undefined, {
                                         month: "long",
                                         day: "numeric",
-                                      })}
+                                      })}</small>
                                     </div>
                                     <div className="comment_content">
-                                      Content: {comment.content}
+                                       {comment.content}
                                     </div>
                                   </div>
                                 ))}
@@ -223,39 +235,18 @@ const Articles = (props) => {
                       </>
                     )}
                   </div>
-                  {/* {comments.map((comment, index) => ( <div key={index}>{comment}</div> ))} */}
-                  <form className="addComment" onSubmit={commentSubmitHandler}>
-                    <input
-                      type="text"
-                      name="comment"
-                      placeholder="Add a comment"
-                      style={{ textAlign: "center" }}
-                    ></input>
-                    <button type="submit">Comment</button>
-                  </form>
-
-                  <form className="reportBlog" onSubmit={handleReport}>
-                    <div>
-                      <input
-                        name="report-message"
-                        placeholder="Report Message"
-                        value={reportMessage}
-                        onChange={(e) => setReportMessage(e.target.value)}
-                        style={{ textAlign: "center" }}
-                      ></input>
-                      <button type="submit">Report</button>
-                    </div>
-                  </form>
-                  {reported && (
-                    <div className="reported">
-                      This article has been reported with the following message:{" "}
-                      {reportMessage}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
           )}
+          <div className="author">{props.author} </div>
+          <div className="a_date">
+            {new Date(props.date).toLocaleDateString(undefined, {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </div>
         </div>
       </div>
     </div>

@@ -2,8 +2,16 @@
     width: 23%;
     background-color: #D0E7D9;
     position: absolute;
-    margin-left: 6px;
-    text-align: left;
+    top: 14.8%;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.Recent_Qn::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
 }
 
 .heading_recent{
@@ -12,14 +20,23 @@
 
 .recent_qn_list{
     margin-left: 5px;
+    margin-right: 3px;
 }
 
 .Questions{
     width: 73.6%;
-    background-color: #F1FFE5;
+    background-color: #c6e3d2;
     position: absolute;
     margin-left: 25.5%;
     padding: 28px;
+    border-radius: 20px;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.Questions::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
 }
 
 

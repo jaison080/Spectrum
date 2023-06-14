@@ -1,14 +1,13 @@
 
 .recent_qn_wrapper{
     border: 2px solid #9fd092;
-    background-color: #DAE6CF;
-    border-radius: 4px;
+    background-color: #98b2b96b;
+    border-radius: 15px;
     padding-left: 5px;
     margin-right: 2px;
     margin-bottom: 5px;
 
 }
-
 .recent_qn_title, .recent_qn_author, .solve_qn{
     text-align: center;
     margin-top: 8px;

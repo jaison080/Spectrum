@@ -215,6 +215,39 @@ body {
     font-size: 14px;
     color: #555;
   }
+
+  .edit_modal_contents{
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+  }
+
+  .edit_modal_content{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #f1fffffc;
+    margin: 7% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 20px;
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    /* Hide vertical scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .edit_modal_content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
   
   @media screen and (max-width: 768px) {
     .profile__left {

@@ -1,38 +1,72 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0;
+    overflow: hidden;
 }
 
-.left_bar{
+.left_bar {
     background-color: #F1FFE5;
+    border-radius: 20px;
     width: 19%;
-    margin-left: 0;
-    position: absolute;
+    position: fixed;
+    top: 14.8%;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
-h3{
+
+.left_bar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+
+h3 {
     font-family: sans-serif;
     padding-top: 12px;
     color: #568B65;
 }
 
-.middle_bar{
+.middle_bar {
     background-color: #D0E7D9;
+    border-radius: 20px;
     width: 60%;
     position: absolute;
-    margin-left: 19.5%;
+    left: 19.5%;
+    right: 20%;
+    overflow-y: auto;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    height: calc(100vh - 14.8%); /* Adjusted height */
+
+    /* Hide vertical scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
+.middle_bar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
 
-.right_bar{
+.right_bar {
     background-color: #F1FFE5;
+    border-radius: 20px;
     width: 20%;
-    margin-left: 80%;
-    position: absolute;
+    position: fixed;
+    top: 14.8%;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
+.right_bar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
 @media screen and (max-width: 768px) {
     .left_bar{
         display: none;
