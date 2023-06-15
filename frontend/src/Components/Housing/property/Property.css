@@ -11,7 +11,12 @@
     background-color: #000;
     color: #fff;
   }
-  
+  .featured-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .categories-container {
     padding-top: 80px;
     margin: 0;
