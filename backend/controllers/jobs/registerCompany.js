@@ -1,7 +1,7 @@
-    const Company = require('../../models/userComp');
+    const Company = require('../../models/userCompany');
     const bcrypt = require('bcrypt');
     const jwt = require('jsonwebtoken');
-    const registerComp = async (req,res) =>{
+    const registerCompany = async (req,res) =>{
         try{
             const email = req.body.email;
             if(!email)
@@ -25,4 +25,4 @@
         }
     }
 
-    module.exports = registerComp
+    module.exports = registerCompany

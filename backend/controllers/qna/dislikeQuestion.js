@@ -1,6 +1,6 @@
 const { Question } = require("../../models/qna");
 const dislikeQuestion = async (req, res) => {
-  const { questionId } = req.params;
+  const questionId = req.params.questionId;
   const user = req.user.user_id;
 
   try {
