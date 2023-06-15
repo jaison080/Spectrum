@@ -9,7 +9,7 @@ const viewComments = async (req,res) =>
             {
                 comments:1
             }
-        );
+        ).populate('comments.commenter');
         res.status(200).send(result);
     }
     catch(err){
