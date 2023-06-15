@@ -1,8 +1,8 @@
-const Company = require('../../models/userComp');
+const Company = require('../../models/userCompany');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const loginComp = async (req,res) =>{
+const loginCompany = async (req,res) =>{
     try{
         const {email,password} = req.body;
         if(!(email && password))
@@ -24,4 +24,4 @@ const loginComp = async (req,res) =>{
     }
 }
 
-module.exports=loginComp;
+module.exports=loginCompany;
