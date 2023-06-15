@@ -1,27 +1,26 @@
-{/* <div key={ans._id}>
-                                          {ans.comments.map((comment) => (
-                                            <div
-                                              key={comment._id}
-                                              className="comment_wrapper"
-                                            >
-                                              <div className="commenter">
-                                                {" "}
-                                                {comment.commenter}
-                                              </div>
-                                              <div className="comment_time">
-                                                {new Date(
-                                                  comment.createdAt
-                                                ).toLocaleDateString(
-                                                  undefined,
-                                                  {
-                                                    month: "long",
-                                                    day: "numeric",
-                                                  }
-                                                )}
-                                              </div>
-                                              <div className="comment_content">
-                                                Content: {comment.content}
-                                              </div>
-                                            </div>
-                                          ))}
-                                        </div> */}
+// {/* <div className="title_container">
+//   <div className="author_identity">
+//     <div className="qn_pic">
+//       <!-- Profile picture code -->
+//     </div>
+//     <div className="author">{props.author}</div>
+//   </div>
+//   <div className="a_title">{props.title}</div>
+// </div>
+
+// .title_container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+// }
+
+// .author_identity {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .a_title {
+//   text-align: center;
+//   flex-grow: 1;
+// } */}

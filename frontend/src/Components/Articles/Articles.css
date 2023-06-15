@@ -10,6 +10,7 @@ body {
   margin: auto;
   padding-left: 5px;
   padding-top: 20px;
+  padding-bottom: 10px;
   background-color: #eaf5e4;
   text-align: center;
   border-radius: 12px;
@@ -22,6 +23,8 @@ body {
   margin: auto;
   border-radius: 20px;
 }
+
+
 
 .author_identity{
     display: flex;

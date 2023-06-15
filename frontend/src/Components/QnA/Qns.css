@@ -19,6 +19,7 @@
 .solver_identity {
     display: flex;
     align-items: center;
+    padding-bottom: 10px;
   }
   
   .qn_pic {
@@ -41,9 +42,9 @@
   }
 
 .qn_title{
-    padding-top: 15px;
+    padding-top: 10px;
     font-weight: 700;
-    margin-left: 38%;
+    font-size: larger;
 }
 
 .viewanswerbutton{
@@ -54,7 +55,7 @@
     margin: auto;
     padding: 0 0 6px 10px;
     font-weight: 600;
-    text-align: left;
+    text-align: center;
 }
 
 .ans_details{
@@ -73,7 +74,7 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    background-color: #b5d5b4;
+    background-color: #f1fffffc;
     margin: 7% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -154,9 +155,10 @@
 .comment_detail{
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
     /* justify-content: center; */
     align-items: center;
-    background-color: #edf6e3;
+    background-color: #f1fffffc;
     margin: 7% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -171,6 +173,22 @@
     padding: 10px;
     margin-bottom: 10px;
 }
+
+.hide_comment{
+    color: #aaaaaa;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment_details_close{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 .commenter, .comment_time{
     display: inline-block;

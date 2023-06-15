@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Articles.css";
 import JobDate from "../Jobs/JobDate";
+import TimeAgo from 'react-timeago'
+import frenchStrings from 'react-timeago/lib/language-strings/fr'
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+
+
+
+// in your react component
+
 
 const Articles = (props) => {
   const [showFullText, setShowFullText] = useState(false);
@@ -11,6 +19,7 @@ const Articles = (props) => {
   const [reportMessage, setReportMessage] = useState("");
   const [loadComments, setLoadComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
+  const formatter = buildFormatter(frenchStrings)
 
   const handleAddComment = (comment) => {
     setComments([...comments, comment]);
@@ -55,7 +64,6 @@ const Articles = (props) => {
   const maxCharsToShow = 200; // or whatever maximum number of characters you want to show initially
   const text = props.article || "";
   const truncatedText = text.slice(0, maxCharsToShow);
-  
 
   const handleShowMoreClick = () => {
     setShowFullText(true);
@@ -74,6 +82,7 @@ const Articles = (props) => {
   const token = localStorage.getItem("token");
 
   const fetchComments = async () => {
+    console.log(props._id); 
     try {
       const response = await fetch(
         `http://localhost:5000/api/blogs/comment/${props.id}`,
@@ -130,30 +139,36 @@ const Articles = (props) => {
   return (
     <div className="article">
       <div className="a_description">
-      <div className="a_title">{props.title}</div>
-      <div className="author_identity">
-        <div className="qn_pic">
-              {props.auth_pic && (
-                <img
-                  src={props.auth_pic}
-                  alt="profile_pic"
-                  className="qn_profile_pic"
-                />
-              )}
-              {!props.auth_pic && (
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                  alt="profile_pic"
-                  className="qn_profile_pic"
-                />
-              )}
-            </div>
-            <div className="author">{props.author} </div>
-            </div>
+        <div className="a_title">{props.title}</div>
+        <div className="author_identity">
+          <div className="qn_pic">
+            {props.auth_pic && (
+              <img
+                src={props.auth_pic}
+                alt="profile_pic"
+                className="qn_profile_pic"
+              />
+            )}
+            {!props.auth_pic && (
+              <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                alt="profile_pic"
+                className="qn_profile_pic"
+              />
+            )}
+          </div>
+          <div className="author">{props.author} </div>
+        </div>
 
-            
-
-        <div className="blog_topic_content">{props.tags}</div>
+        <div className="blog_topic_content">
+          {props.tags && props.tags.length > 0
+            ? props.tags.map((tag, index) => (
+                <span key={index} className="blog_topic_tag">
+                  {tag}
+                </span>
+              ))
+            : ""}
+        </div>
         <div className="blog">
           {/* {props.tags && props.tags.length>0? <div className="blog_topic">
             <div className="blog_topic_title">Topic: </div> */}
@@ -185,12 +200,12 @@ const Articles = (props) => {
                   <div className="blog_detailsauthor">{props.author} </div>
                   <div className="likes">Likes: {props.likes}</div>
                   <button className="likebutton" onClick={handleLike}>
-                      {liked ? (
-                        <i className="fas fa-thumbs-down"></i>
-                      ) : (
-                        <i className="fas fa-thumbs-up"></i>
-                      )}
-                    </button>
+                    {liked ? (
+                      <i className="fas fa-thumbs-down"></i>
+                    ) : (
+                      <i className="fas fa-thumbs-up"></i>
+                    )}
+                  </button>
                   <div className="comments">
                     {!showComments && (
                       <button
@@ -210,7 +225,7 @@ const Articles = (props) => {
                                 onSubmit={commentSubmitHandler}
                               >
                                 <input
-                                className="comment_input"
+                                  className="comment_input"
                                   type="text"
                                   name="comment"
                                   placeholder="Add a comment"
@@ -237,15 +252,17 @@ const Articles = (props) => {
                                       {comment.commenter}
                                     </div>
                                     <div className="comment_time">
-                                      <small>{new Date(
-                                        comment.createdAt
-                                      ).toLocaleDateString(undefined, {
-                                        month: "long",
-                                        day: "numeric",
-                                      })}</small>
+                                      <small>
+                                        {new Date(
+                                          comment.createdAt
+                                        ).toLocaleDateString(undefined, {
+                                          month: "long",
+                                          day: "numeric",
+                                        })}
+                                      </small>
                                     </div>
                                     <div className="comment_content">
-                                       {comment.content}
+                                      {comment.content}
                                     </div>
                                   </div>
                                 ))}
@@ -267,6 +284,7 @@ const Articles = (props) => {
               day: "numeric",
               year: "numeric",
             })}
+            
           </div>
         </div>
       </div>

@@ -110,6 +110,7 @@ const Qns = (props) => {
       <div>
         <div className="qn_wrapper" id={props.id}>
           {/* <div><img src={props.image} alt='profile' className='answer_img' /></div> */}
+          <div className="qn_title">{props.title} </div>
           <div className="solver_identity">
             <div className="qn_pic">
               {props.auth_pic && (
@@ -128,11 +129,12 @@ const Qns = (props) => {
               )}
             </div>
             <div className="asker">{props.author}</div>
-            <div className="qn_title">{props.title} </div>
           </div>
 
           <div className="qn_answering">{props.qn}? </div>
-          <div className="topics"><u>{props.topics}</u> </div>
+          <div className="topics">
+            <u>{props.topics}</u>{" "}
+          </div>
           <div className="qn_likes">
             Likes:{props.likes}
             {/* <div className="likes"> */}
@@ -161,26 +163,27 @@ const Qns = (props) => {
                     </span>
                   </div>
                   <div>
-                  <div className="qn_answering">{props.qn}? </div>
+                    <div className="qn_answering">{props.qn}? </div>
                     {props.answer.map((ans) => (
                       <div className="answer" key={ans._id}>
-                        <div className="solver_identity"><div className="qn_pic">
-                          {ans.answerer.profilePicture && (
-                            <img
-                              src={ans.answerer.profilePicture}
-                              alt="profile_pic"
-                              className="qn_profile_pic"
-                            />
-                          )}
-                          {!ans.answerer.profilePicture && (
-                            <img
-                              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                              alt="profile_pic"
-                              className="qn_profile_pic"
-                            />
-                          )}
-                        </div>
-                        <div className="asker">{ans.answerer.name}</div>
+                        <div className="solver_identity">
+                          <div className="qn_pic">
+                            {ans.answerer.profilePicture && (
+                              <img
+                                src={ans.answerer.profilePicture}
+                                alt="profile_pic"
+                                className="qn_profile_pic"
+                              />
+                            )}
+                            {!ans.answerer.profilePicture && (
+                              <img
+                                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                alt="profile_pic"
+                                className="qn_profile_pic"
+                              />
+                            )}
+                          </div>
+                          <div className="asker">{ans.answerer.name}</div>
                         </div>
                         <div>{ans.content}</div>
 
@@ -216,12 +219,14 @@ const Qns = (props) => {
                                       <button type="submit">Comment</button>
                                     </form>
                                   </div>
-                                  <button
-                                    className="viewcommentsbutton"
-                                    onClick={handleHideComments}
-                                  >
-                                    Hide Comments
-                                  </button>
+                                  <div className="hide_comment">
+                                    <span
+                                      className="comment_details_close"
+                                      onClick={handleHideComments}
+                                    >
+                                      ×
+                                    </span>
+                                  </div>
                                   {ans.comments.map((comment) => (
                                     <div
                                       key={comment._id}
