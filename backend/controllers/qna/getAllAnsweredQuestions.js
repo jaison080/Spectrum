@@ -4,12 +4,13 @@ const getAllAnsweredQuestions = async (req, res) => {
     const questions = await Question.find({
       answers: { $exists: true, $ne: [] },
     }).populate({
-        path: "answers",
-        populate: {
-          path: "answerer",
-        },
-      })
-      .populate("author");
+      path: "answers",
+      populate: {
+        path: "answerer",
+        path: "comments.commenter"
+      },
+    })
+    .populate("author");
     res.status(200).send(questions);
   } catch (err) {
     console.log(err);
