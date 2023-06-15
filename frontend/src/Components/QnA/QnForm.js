@@ -85,10 +85,10 @@ const QnForm = (props) => {
                     <div className='qn_details'>
                         <textarea required type="text" id="qn_input" onChange={qnChangeHandler} className='question_area'  placeholder='Clear Your Doubts' style={{ textAlign: 'center' }}/>                    
                     </div>
-                    <div className='b2'>
+                    {/* <div className='b2'>
                         <label className='checkbox_description'>Ask Anonymously<input type='checkbox' className='qn_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} /></label>
                         
-                    </div>
+                    </div> */}
                     <div className='topics_qn'>
                       <input type='text' className='qn_topics' placeholder='topics' onChange={topicsChangeHandler} style={{ textAlign: 'center' }}></input>
                     </div>

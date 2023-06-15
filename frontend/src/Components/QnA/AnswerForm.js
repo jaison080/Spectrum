@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './AnswerForm.css';
 
 
@@ -49,6 +49,11 @@ const AnswerForm = (props) => {
     }
 
   }
+
+  useEffect(() => {
+  }, [enteredAnswer]);
+
+
   
 
 
@@ -56,9 +61,9 @@ const AnswerForm = (props) => {
     <div>
       <form onSubmit={answerSubmitHandler} className='new_answer_form'>
         <textarea type='text' placeholder='Answer Here' className='answer_area' onChange={answerChangeHandler} value={enteredAnswer} style={{ textAlign: 'center' }}></textarea>
-        <div className='b2'>
+        {/* <div className='b2'>
           <label className='checkbox_description'>Answer Anonymously<input type='checkbox' className='ans_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} style={{ textAlign: 'center' }}/></label>           
-        </div>
+        </div> */}
         <div className='answer_buttons'><button type='button' onClick={props.onCancel}>Cancel</button> <button type='submit'>Submit</button></div>
         </form>
     </div>
