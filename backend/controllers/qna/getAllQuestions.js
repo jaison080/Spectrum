@@ -7,6 +7,7 @@ const getAllQuestions = async (req, res) => {
         path: "answers",
         populate: {
           path: "answerer",
+          path: "comments.commenter"
         },
       })
       .populate("author");
