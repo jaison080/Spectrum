@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Articles.css";
 import JobDate from "../Jobs/JobDate";
-import TimeAgo from 'react-timeago'
-import frenchStrings from 'react-timeago/lib/language-strings/fr'
-import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
-
-
+import TimeAgo from "react-timeago";
+import frenchStrings from "react-timeago/lib/language-strings/fr";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
 // in your react component
-
 
 const Articles = (props) => {
   const [showFullText, setShowFullText] = useState(false);
@@ -19,7 +16,7 @@ const Articles = (props) => {
   const [reportMessage, setReportMessage] = useState("");
   const [loadComments, setLoadComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
-  const formatter = buildFormatter(frenchStrings)
+  const formatter = buildFormatter(frenchStrings);
 
   const handleAddComment = (comment) => {
     setComments([...comments, comment]);
@@ -82,7 +79,7 @@ const Articles = (props) => {
   const token = localStorage.getItem("token");
 
   const fetchComments = async () => {
-    console.log(props._id); 
+    console.log(props._id);
     try {
       const response = await fetch(
         `http://localhost:5000/api/blogs/comment/${props.id}`,
@@ -198,8 +195,8 @@ const Articles = (props) => {
                   ></img>
                   <p className="blog_details_blog">{props.article}</p>
                   <div className="blog_detailsauthor">{props.author} </div>
-                  <div className="likes">Likes: {props.likes}</div>
-                  <button className="likebutton" onClick={handleLike}>
+                  {/* <div className="likes">Likes: {props.likes}</div> */}
+                  {props.likes}<button className="likebutton" onClick={handleLike}>
                     {liked ? (
                       <i className="fas fa-thumbs-down"></i>
                     ) : (
@@ -241,15 +238,32 @@ const Articles = (props) => {
                               ×
                             </span>
                             {loadComments.map((commentGroup) => (
-                              <div key={commentGroup._id}>
+                              <div key={commentGroup._id} className="comment_blogs">
                                 {commentGroup.comments.map((comment) => (
                                   <div
                                     key={comment._id}
                                     className="comment_wrapper"
                                   >
+                                    <div className="commenter_img">
+                                      {comment.commenter.profilePicture && (
+                                        <img
+                                          src={comment.commenter.profilePicture}
+                                          alt="profile_pic"
+                                          className="qn_profile_pic"
+                                        />
+                                      )}
+                                      {!comment.commenter.profilePicture && (
+                                        <img
+                                          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                          alt="profile_pic"
+                                          className="qn_profile_pic"
+                                        />
+                                      )}
+                                    </div>
+
                                     <div className="commenter">
                                       {" "}
-                                      {comment.commenter}
+                                      {comment.commenter.name}
                                     </div>
                                     <div className="comment_time">
                                       <small>
@@ -284,7 +298,6 @@ const Articles = (props) => {
               day: "numeric",
               year: "numeric",
             })}
-            
           </div>
         </div>
       </div>
