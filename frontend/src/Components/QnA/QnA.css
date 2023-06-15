@@ -1,8 +1,10 @@
 .Recent_Qn{
     width: 23%;
+    border-radius: 20px;
     background-color: #D0E7D9;
     position: absolute;
     top: 14.8%;
+    height: max-content;
     left: 0;
     bottom: 0;
     overflow-y: auto;
@@ -25,12 +27,16 @@
 
 .Questions{
     width: 73.6%;
-    background-color: #c6e3d2;
     position: absolute;
     margin-left: 25.5%;
     padding: 28px;
     border-radius: 20px;
+    background-color: #D0E7D9;
     overflow-y: auto;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    height: calc(100vh - 14.8%); /* Adjusted height */
+
+    /* Hide vertical scrollbar */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
 }
@@ -38,7 +44,6 @@
 .Questions::-webkit-scrollbar {
     display: none; /* Chrome, Safari, and Opera */
 }
-
 
 
 /* @media screen and (max-width: 768px) {

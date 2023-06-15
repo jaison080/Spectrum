@@ -6,6 +6,10 @@
     height: 5%;
 }
 
+.qn_form input{
+    background-color: #DAE6CF;
+}
+
 .b3,.b2{
     display: inline;
     border-radius: 10px;
