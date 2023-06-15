@@ -1,7 +1,9 @@
+
 .property-details-container {
-    height: 100%;
+    height: 100vh;
     background-color: #000;
     color: #fff;
+    overflow: auto;
   }
   
   .property-details-info {
@@ -280,3 +282,6 @@
     }
   }
   
+  .details{
+    overflow: scroll;
+  }
