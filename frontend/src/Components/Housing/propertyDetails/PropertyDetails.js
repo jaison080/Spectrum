@@ -14,12 +14,14 @@ import "./PropertyDetails.css";
 import Footer from "../components/Footer";
 //import MyMap from "../components/MyMap";
 import data from "../data";
+import { useParams } from "react-router-dom";
 
-function PropertyDetails(props) {
-  const property = data.properties.find((x) => x.id === props.match.params.id);
+function PropertyDetails() {
+  const {id} = useParams()
+  const property = data.properties.find((x) => x.id === id);
   const position = [property.marker.lat, property.marker.lng];
 
-  if (!props.match.params.id) return null;
+  if (!id) return null;
 
   const settings = {
     dots: true,
