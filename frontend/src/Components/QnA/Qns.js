@@ -113,7 +113,7 @@ const Qns = (props) => {
         {/* <div><img src={props.image} alt='profile' className='answer_img' /></div> */}
         <div className="qn_title">{props.title} </div>
 
-        <div className="qn_answering" onClick={handleShowAnswer}>
+        <div className="qn_answering" onClick={handleShowAnswer} style={{ cursor: 'pointer' }}>
           {props.qn}?{" "}
         </div>
         <div className="topics">

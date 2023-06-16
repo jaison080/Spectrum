@@ -144,9 +144,9 @@ const UserDetails = (props) => {
             <button className='change__button' onClick={passwordChangeEnableHandler}>Change Password</button>
             {isPasswordChanging && <form className='form_control'>
                 <div className='newFormControls'>
-                <input type='password' className='newFormControl' placeholder='Enter old password' onChange={oldPasswordChangeHandler}/>
-                <input type='password' className='newFormControl' placeholder='Enter new password' onChange={passwordChangeHandler}/>
-                <input type='password' className='newFormControl' placeholder='Confirm new password' onChange={passwordConfirmChangeHandler}/>
+                <input type='password' className='newFormControl' placeholder='Enter old password' onChange={oldPasswordChangeHandler} style={{ textAlign: "center" }}/>
+                <input type='password' className='newFormControl' placeholder='Enter new password' onChange={passwordChangeHandler} style={{ textAlign: "center" }}/>
+                <input type='password' className='newFormControl' placeholder='Confirm new password' onChange={passwordConfirmChangeHandler} style={{ textAlign: "center" }}/>
                 <div>
                     <button className='save__button' onClick={passwordSubmitHandler}>Save</button> <button className='cancelchange__button' onClick={passwordChangeDisableHandler}>Cancel</button>
                 </div>
