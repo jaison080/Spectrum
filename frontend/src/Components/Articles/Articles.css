@@ -8,6 +8,7 @@ body {
 
 .article {
   margin: auto;
+  margin-bottom: 10px;
   padding-left: 5px;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -18,10 +19,13 @@ body {
 }
 
 .a_description {
-  background-color: #a7c8b0;
+  background: #b5debf;
+  box-shadow:  20px 20px 60px #8eaa96,
+               -20px -20px 60px #c0e6ca;
   width: 95%;
   margin: auto;
   border-radius: 20px;
+  
 }
 
 

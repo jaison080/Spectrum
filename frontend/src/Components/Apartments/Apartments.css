@@ -4,8 +4,11 @@
     margin-left: 10px;
     margin-right: 10px;
     padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
     /* padding-top: 20px; */
-    background-color: #EAF5E4;
+    background: #b5debf;
+    box-shadow: 20px 20px 60px #8eaa96, -20px -20px 60px #c0e6ca;
     text-align: left;
     border-radius: 12px;
     text-align: center;
@@ -26,4 +29,9 @@
 
 .ap_date{
     font-family: 'Charmonman', cursive;
+}
+
+.apartment_details{
+    background-color: #a7cfb3cf;
+    border-radius:  10px;
 }

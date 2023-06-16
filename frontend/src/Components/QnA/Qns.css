@@ -3,14 +3,16 @@
     padding-left: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #9fc0ad94;
+    background-color: #eaf5e4;
     text-align: center;
     border-radius: 12px;
     width: 98%;
     margin-bottom: 10px;
 }
 .qn_wrapper{
-    background-color: #a3c5b3de;
+    background: #a7c8b0;
+    box-shadow:  20px 20px 60px #8eaa96,
+                 -20px -20px 60px #c0e6ca;
     width: 95%;
     margin: auto;
     border-radius: 20px;

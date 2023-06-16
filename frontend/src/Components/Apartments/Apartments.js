@@ -14,7 +14,7 @@ const Apartments = (props) => {
             <div className='rent'>{props.rent} </div>
             <div className='facility'>{props.facility} </div>
         </div>
-        <div className='details'>{props.details} </div>
+        <div className='apartment_details'>{props.details} </div>
         <div className='ap_date'><JobDate date={props.date} /> </div>
       </div>
   )

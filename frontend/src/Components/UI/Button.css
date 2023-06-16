@@ -1,14 +1,14 @@
 button{
-    background-color: #b5ddbd;
+    background-color: #30a84871;
     border: none;
     text-decoration: none;
     font-weight:600;
     text-align: right;
     height: 24px;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: auto;
 }
 
 button:hover{
-    background-color: rgb(209, 236, 214);
+    background-color: rgb(47, 138, 64);
 }

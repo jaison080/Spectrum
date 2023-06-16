@@ -1,9 +1,14 @@
 .details{
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin-left: 2.5%;
     margin-top: 20px;
     padding-top: 0px;
     padding-left: 5px;
-    background-color: #EAF5E4;
-    text-align: left;
+    background: #b5debf;
+    box-shadow: 20px 20px 60px #8eaa96, -20px -20px 60px #c0e6ca;
+    text-align: center;
     border-radius: 12px;
 }
 

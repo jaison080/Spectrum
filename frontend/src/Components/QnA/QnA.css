@@ -1,7 +1,8 @@
 .Recent_Qn{
     width: 23%;
     border-radius: 20px;
-    background-color: #D0E7D9;
+    background-color: #c0e5ce;
+    padding-bottom: 10px;
     position: absolute;
     top: 14.8%;
     height: max-content;
