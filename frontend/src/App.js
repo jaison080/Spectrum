@@ -7,8 +7,10 @@ import Signup from "./Components/Signup/Signup";
 import Login from "./Components/Login/Login";
 import Jobs from "./Components/Jobs/Jobs";
 import ArticleDetails from './Components/Articles/ArticleDetails';
-import Housing from './Components/Housing/pages/Home';
-import Details from './Components/Housing/pages/Details';
+//import Housing from './Components/Housing/pages/Home';
+//import Details from './Components/Housing/pages/Details';
+import Housing from './Components/Housing/property/Property';
+import Details from './Components/Housing/propertyDetails/PropertyDetails';
 import Profile from './Components/Profile/Profile';
 
 const router = createBrowserRouter([
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
     {path:'/jobs', element: <Jobs />},
     {path:'/profile', element: <Profile/>},
     {path:'/housing',element: <Housing />},
-    {path:'/details/:propertyId',element: <Details/> },
+    {path:'/housing/:id',element: <Details/> },
     ]
   }
   

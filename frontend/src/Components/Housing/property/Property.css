@@ -1,0 +1,96 @@
+#root {
+    height: 100%;
+  }
+  input:focus,
+  textarea:focus,
+  select:focus,
+  button:focus {
+    outline: none;
+  }
+  .properties-container {
+    background-color: #000;
+    color: #fff;
+  }
+  .featured-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .categories-container {
+    padding-top: 80px;
+    margin: 0;
+    margin-bottom: 50px;
+  }
+  
+  .tab-title-container {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+  }
+  
+  .property-hero-title {
+    position: absolute;
+    right: 0;
+    padding-right: 20px;
+  }
+  
+  @media (max-width: 400px) {
+    .property-hero-title {
+      position: relative;
+      padding-left: 20px;
+    }
+  }
+  
+  .tab-title {
+    margin-left: 10px;
+  }
+  .tab-title:focus {
+    outline: none;
+  }
+  
+  .active {
+    background: #000;
+    border-color: #f5a623;
+    color: #fff;
+  }
+  
+  .active:focus {
+    outline: none;
+  }
+  
+  .tab-title button {
+    color: #fff;
+    background-color: inherit;
+    padding: 8px 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .tab-title button:active {
+    transform: scale(1.1);
+  }
+  
+  .tab-title button:focus {
+    outline: none;
+  }
+  
+  .tab-title button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+  
+  @media (min-width: 1000px) {
+    .tab-title {
+      margin-left: 20px;
+    }
+    .categories-container {
+      margin-bottom: 100px;
+    }
+  }
+  
