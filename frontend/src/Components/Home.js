@@ -78,6 +78,7 @@ const Home = () => {
   console.log(token);
 
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchArticles();
@@ -94,6 +95,8 @@ const Home = () => {
       }
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -125,39 +128,51 @@ const Home = () => {
 
       <div className="middle_bar">
         <h3>ARTICLES</h3>
+
         <NewArticle
           onAddArticle={addArticleHandler}
           className="new_article_button"
         />
 
-{articles
-  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-  .map((article) => (
-    <Articles
-      key={article._id}
-      id={article._id}
-      title={article.title}
-      image={article.image}
-      article={article.content}
-      author={
-        article.author && article.author.name ? article.author.name : ""
-      }
-      auth_pic={
-        article.author && article.author.profilePicture
-          ? article.author.profilePicture
-          : ""
-      }
-      tags={article.tags && article.tags.length > 0 ? article.tags : []}
-      date={article.createdAt}
-      likes={article.likes ? article.likes.length : 0}
-      comments={
-        article.comments && article.comments.length > 0
-          ? article.comments.map((comment) => ({ comment }))
-          : []
-      }
-    />
-  ))}
-
+        {loading ? ( // Display loading animation while loading
+          <div className="loading-animation">
+            <div className="circle"></div>
+          </div>
+        ) : (
+          <>
+            {articles
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((article) => (
+                <Articles
+                  key={article._id}
+                  id={article._id}
+                  title={article.title}
+                  image={article.image}
+                  article={article.content}
+                  author={
+                    article.author && article.author.name
+                      ? article.author.name
+                      : ""
+                  }
+                  auth_pic={
+                    article.author && article.author.profilePicture
+                      ? article.author.profilePicture
+                      : ""
+                  }
+                  tags={
+                    article.tags && article.tags.length > 0 ? article.tags : []
+                  }
+                  date={article.createdAt}
+                  likes={article.likes ? article.likes.length : 0}
+                  comments={
+                    article.comments && article.comments.length > 0
+                      ? article.comments.map((comment) => ({ comment }))
+                      : []
+                  }
+                />
+              ))}
+          </>
+        )}
       </div>
 
       <div className="right_bar">

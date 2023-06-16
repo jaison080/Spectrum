@@ -48,15 +48,34 @@
 .solver_identity {
     display: flex;
     align-items: center;
-    padding-bottom: 10px;
   }
   
   .qn_pic {
-    display: flex;
-    align-items: center;
+    margin-right: 10px;
   }
   
   .qn_profile_pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .asker {
+    font-weight: bold;
+  }
+  
+  .likes {
+    margin-left: auto;
+    margin-right: 30px;
+  }
+
+  .answer_count{
+    margin-left: 0;
+    margin-right: 30px;
+  }
+  
+  
+  /* .qn_profile_pic {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -68,7 +87,7 @@
     margin-left: 2px;
     font-weight: 700;
 
-  }
+  } */
 
 .qn_title{
     padding-top: 10px;
@@ -81,8 +100,8 @@
 }
 
 .qn_answering{
-    margin: auto;
-    padding: 0 0 6px 10px;
+    margin-top: -5px;
+    /* padding: 0 0 6px 10px; */
     font-weight: 600;
     text-align: center;
 }
@@ -131,7 +150,6 @@
     padding: 10px 10px 10px 10px;
     border: 1px solid #b4a0a0;
     border-radius: 5px;
-    margin-bottom: 10px;
 
 }
 
@@ -144,25 +162,6 @@
 .ans_title{
     font-weight: 700;
 }
-
-
-
-.qn_likes,.comments{
-    padding-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.qn_likes {
-    display: flex;
-    align-items: center;
-  }
-  
-  .likes,
-  .likebutton,
-  .viewcommentsbutton {
-    margin-left: 10px;
-  }
 
 .add_comment_input{
     background-color: #d8ebd2;

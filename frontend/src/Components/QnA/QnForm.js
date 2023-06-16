@@ -76,14 +76,13 @@ const QnForm = (props) => {
 
 
   return (
-    <div>
+    <div className='new_qn_add_form'>
       <form className='qn_form_control' onSubmit={qnSubmitHandler}>
-        <div className='qn_form'>
                     <div className='title_qn'>
-                      <input required type='text' className='qn_titles' placeholder='title' onChange={titleChangeHandler} style={{ textAlign: 'center' }}></input>
+                      <input required type='text' className='qn_titles' placeholder='Question_header' onChange={titleChangeHandler} style={{ textAlign: 'center' }}></input>
                     </div>
                     <div className='qn_details'>
-                        <textarea required type="text" id="qn_input" onChange={qnChangeHandler} className='question_area'  placeholder='Clear Your Doubts' style={{ textAlign: 'center' }}/>                    
+                        <textarea required type="text" id="qn_input" onChange={qnChangeHandler} className='question_area'  placeholder='Question in Detail' style={{ textAlign: 'center' }}/>                    
                     </div>
                     {/* <div className='b2'>
                         <label className='checkbox_description'>Ask Anonymously<input type='checkbox' className='qn_checkbox' checked={isChecked} onChange={checkBoxChangeHandler} /></label>
@@ -97,8 +96,7 @@ const QnForm = (props) => {
                     </div>
                     <div className='b2'>
                         <button type='qn_submit' className='qn_button' onClick={cancelChangeHandler}>Cancel</button>
-                    </div>
-        </div>      
+                    </div>   
       </form>
     </div>
   )

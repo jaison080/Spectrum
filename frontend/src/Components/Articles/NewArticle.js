@@ -27,8 +27,13 @@ const NewArticle = (props) => {
 
   return (
     <div className='new_article'>
+      
         {!isEditing && <button onClick={startEditingHandler} className='new_article_btn'>+</button>}
-        {isEditing && <NewArticleForm onSaveArticleData = {saveArticleDataHandler}  onCancel ={stopEditingHandler}/>}
+        {isEditing && (
+          <div className="new_article_form_modal"><div className="new_article_form_content">
+        <NewArticleForm onSaveArticleData = {saveArticleDataHandler}  onCancel ={stopEditingHandler}/>
+        </div></div>   
+        )}
     </div>
   )
 }

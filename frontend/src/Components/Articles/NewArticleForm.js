@@ -64,7 +64,7 @@ const NewArticleForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="article_form_modal">
       <form onSubmit={articleSubmitHandler} className="new_article_form">
         <div className="newFormControls">
           <div>
