@@ -11,7 +11,8 @@ const HouseSchema = new mongoose.Schema({
     contact:{type: String},  
     owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     address: {type: String},
-    lastModified: {type: Date}  
+    lastModified: {type: Date},
+    coords:[{type : String}]  
 })
 
 module.exports = mongoose.model('House',HouseSchema);
