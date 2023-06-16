@@ -5,7 +5,7 @@ const NewArticleForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredArticle, setEnteredArticle] = useState("");
   const [imageFile, setImageFile] = useState(null);
-  const [enteredTopics, setEnteredTopics] = useState("");
+  const [enteredTopics, setEnteredTopics] = useState([]);
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -19,8 +19,10 @@ const NewArticleForm = (props) => {
   };
 
   const topicsChangeHandler = (event) => {
-    setEnteredTopics(event.target.value);
+    const topics = event.target.value.split(",");
+    setEnteredTopics(topics);
   };
+  
 
   const articleSubmitHandler = async (event) => {
     event.preventDefault();
@@ -29,7 +31,8 @@ const NewArticleForm = (props) => {
     formData.append("title", enteredTitle);
     formData.append("content", enteredArticle);
     formData.append("image", imageFile);
-    formData.append("tags", enteredTopics);
+    formData.append("tags", JSON.stringify(enteredTopics));
+
 
     props.onSaveArticleData(formData);
     setEnteredTitle("");
@@ -74,7 +77,7 @@ const NewArticleForm = (props) => {
               style={{ textAlign: "center" }}
             ></input>
           </div>
-          <div>
+          <div className="">
             <textarea
               type="text"
               onChange={articleChangeHandler}
@@ -84,16 +87,16 @@ const NewArticleForm = (props) => {
               style={{ textAlign: "center" }}
             ></textarea>
           </div>
-          <div>
+          {/* <div>
             <input
               type="text"
               onChange={topicsChangeHandler}
               // value={enteredTopics}
-              placeholder="Topics"
+              placeholder="Topics(seperate with commas)"
               className="newFormControl"
               style={{ textAlign: "center" }}
             ></input>
-          </div>
+          </div> */}
           <div className="fileInputContainer">
             <label htmlFor="fileInput" className="fileInputLabel">
               Choose File

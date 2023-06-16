@@ -4,6 +4,15 @@
 
 body {
   margin: 0;
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds maximum height */
+  overflow-y: auto;
+  /* Hide vertical scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 .profile__left {
   background-color: #b3bcc8;
@@ -40,8 +49,15 @@ body {
     margin-bottom: 10px;
     max-height: 25vh; /* Set maximum height to 25% of the viewport height */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds maximum height */
+    overflow-y: auto;
+    /* Hide vertical scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
   }
-
+  
+  .user_articles::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
   .user_article_edit_btn{
     background-color: #71ab86;
     color: rgb(0, 0, 0);
@@ -51,26 +67,23 @@ body {
   .user_articles_list {
     display: flex;
     justify-content: flex-start; /* Align flex items horizontally to the start */
-    align-items: center;
     padding-bottom: 10px; /* Add some padding to the bottom */
     overflow-x: auto; /* Enable horizontal scrolling */
     flex-wrap: nowrap; /* Prevent wrapping items to the next line */
-    scrollbar-width: none; /* Hide the scrollbar on Firefox */
-    -ms-overflow-style: none; /* Hide the scrollbar on Internet Explorer and Edge */
-  }
-
-  .user_article:first-child {
-    margin-left: 10px; /* Add margin to the first answer box */
+    overflow-y: auto;
+    /* Hide vertical scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
   }
   
   .user_articles_list::-webkit-scrollbar {
-    width: 0; /* Hide the scrollbar on Chrome, Safari, and Opera */
+    display: none; /* Chrome, Safari, and Opera */
   }
   
   .user_article {
     flex: 0 0 auto; /* Prevent flex items from growing */
     width: 280px; /* Adjust the width of the individual article box */
-    background-color: #9daa9f;
+    background-color: #9ac0a5;
     border-radius: 10px;
     padding: 10px;
     margin-right: 10px; /* Add some margin between the boxes */
@@ -138,7 +151,7 @@ body {
   .user_questions_list{
     display: flex;
     justify-content: center; /* Align flex items horizontally to the start */
-    align-items: center;
+    /* align-items: center; */
     padding-bottom: 10px; /* Add some padding to the bottom */
     overflow-x: auto; /* Enable horizontal scrolling */
     flex-wrap: nowrap; /* Prevent wrapping items to the next line */
@@ -154,7 +167,7 @@ body {
   .user_question{
     flex: 0 0 auto; /* Prevent flex items from growing */
     width: 280px; /* Adjust the width of the individual article box */
-    background-color: #9daa9f;
+    background-color: #9ac0a5;
     border-radius: 10px;
     padding: 10px;
     margin-right: 10px; /* Add some margin between the boxes */
@@ -182,7 +195,7 @@ body {
   .user_answers_list {
     display: flex;
     justify-content: flex-start; /* Align flex items horizontally to the start */
-    align-items: center;
+    /* align-items: center; */
     padding-bottom: 10px; /* Add some padding to the bottom */
     overflow-x: auto; /* Enable horizontal scrolling */
     flex-wrap: nowrap; /* Prevent wrapping items to the next line */
@@ -214,7 +227,7 @@ body {
   .user_answer {
     flex: 0 0 auto; /* Prevent flex items from growing */
     width: 400px; /* Adjust the width of the individual article box */
-    background-color: #9daa9f;
+    background-color: #9ac0a5;
     border-radius: 10px;
     padding: 10px;
     margin-right: 10px; /* Add some margin between the boxes */

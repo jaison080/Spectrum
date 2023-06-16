@@ -33,7 +33,15 @@
     border-radius: 10px;
     border: none;
     background-color: #DAE6CF;
-}
+    overflow-y: auto;
+    /* Hide vertical scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .newFormArticle::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
 
 .fileInputContainer {
     position: relative;

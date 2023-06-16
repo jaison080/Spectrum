@@ -41,10 +41,13 @@
     color: inherit !important; /* Inherit the color from the parent li with !important */
   }
   
-  li a:hover,
+  li a:hover{
+    color: rgb(214, 11, 11);
+    text-decoration: none;
+  }
   li a:active {
     color: rgb(214, 11, 11);
-    text-decoration: underline;
+    text-decoration: none;
   }
   
   .hamburger-menu {

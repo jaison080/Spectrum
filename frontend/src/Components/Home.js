@@ -130,29 +130,34 @@ const Home = () => {
           className="new_article_button"
         />
 
-        {articles
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .map((article) => (
-            <Articles
-              key={article._id}
-              id={article._id}
-              title={article.title}
-              image={article.image}
-              article={article.content}
-              author={
-                article.author && article.author.name ? article.author.name : ""
-              }
-              auth_pic = {article.author.profilePicture}
-              tags={article.tags}
-              date={article.createdAt}
-              likes={article.likes.length}
-              comments={
-                article.comments && article.comments.length > 0
-                  ? article.comments.map((comment) => ({ comment }))
-                  : []
-              }
-            />
-          ))}
+{articles
+  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+  .map((article) => (
+    <Articles
+      key={article._id}
+      id={article._id}
+      title={article.title}
+      image={article.image}
+      article={article.content}
+      author={
+        article.author && article.author.name ? article.author.name : ""
+      }
+      auth_pic={
+        article.author && article.author.profilePicture
+          ? article.author.profilePicture
+          : ""
+      }
+      tags={article.tags && article.tags.length > 0 ? article.tags : []}
+      date={article.createdAt}
+      likes={article.likes ? article.likes.length : 0}
+      comments={
+        article.comments && article.comments.length > 0
+          ? article.comments.map((comment) => ({ comment }))
+          : []
+      }
+    />
+  ))}
+
       </div>
 
       <div className="right_bar">
