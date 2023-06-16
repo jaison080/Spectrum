@@ -45,6 +45,11 @@
     display: none; /* Chrome, Safari, and Opera */
 }
 
+.clear_your_doubts{
+    text-align: end;
+    padding-bottom: 5px;
+}
+
 
 /* @media screen and (max-width: 768px) {
     .Recent_Qn{

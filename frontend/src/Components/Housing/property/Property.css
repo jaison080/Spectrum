@@ -53,9 +53,11 @@
   }
   
   .active {
-    background: #000;
-    border-color: #f5a623;
-    color: #fff;
+    /* background: #abce51; */
+    color: rgb(125, 204, 46);
+    border-radius: 10px;
+    text-decoration: underline;
+    /* border-color: #f5a623; */
   }
   
   .active:focus {

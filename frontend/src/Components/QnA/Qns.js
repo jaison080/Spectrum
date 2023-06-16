@@ -42,6 +42,7 @@ const Qns = (props) => {
       ...enteredSolutionData,
     };
     console.log(solutionData);
+    props.fetchQnA();
   };
 
   const token = localStorage.getItem("token");
@@ -95,6 +96,7 @@ const Qns = (props) => {
       if (response.ok) {
         // Comment added successfully
         setComments([...comments, comment]);
+        props.fetchQnA();
         console.log("Comment added successfully");
       } else {
         // Handle error case
@@ -132,7 +134,7 @@ const Qns = (props) => {
             <div className="asker">{props.author}</div>
           </div>
 
-          <div className="qn_answering">{props.qn}? </div>
+          <div className="qn_answering" onClick={handleShowAnswer}>{props.qn}? </div>
           <div className="topics">
             <u>{props.topics}</u>{" "}
           </div>
@@ -149,9 +151,6 @@ const Qns = (props) => {
             </button>
           </div>
           <div className="answer_show">
-            <button className="viewanswerbutton" onClick={handleShowAnswer}>
-              View
-            </button>
             {showAnswer && (
               <div className="ans_details">
                 <div className="ans_details_content">

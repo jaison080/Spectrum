@@ -1,9 +1,10 @@
 
 .recent_qn_wrapper{
-    border: 2px solid #9fd092;
-    background-color: #98b2b96b;
+    background-color: #88cfa56b;
     border-radius: 15px;
+    padding-top: 5px;
     padding-left: 5px;
+    padding-bottom: 5px;
     margin-right: 2px;
     margin-bottom: 5px;
 

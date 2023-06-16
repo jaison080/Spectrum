@@ -26,7 +26,7 @@ const NewQn = (props) => {
 
   return (
     <div className='new_qn'>
-      {!isAsking && <button onClick={startAskingHandler} className='new_question_btn'>Clear Your Doubts Here</button>}
+      {!isAsking && <button onClick={startAskingHandler} className='new_question_btn'>Add Question</button>}
       {isAsking && <QnForm onSaveQnData ={saveQnDataHandler} onCancel = {stopAskingHandler}/>}   
     </div>
   )

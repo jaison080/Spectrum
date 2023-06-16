@@ -119,7 +119,7 @@ const UserDetails = (props) => {
         {userDetails.bio}
       </div>
       <div className='details'>
-        <h5>User Details</h5>
+        <h3>User Details</h3>
         {!isEditing && <button className='edit__button' onClick={editEnableHandler}>Edit Profile</button>}
         {isEditing && <UserDetailsEdit onSaveUserData = {saveUserDataHandler}  onCancel ={editDisableHandler}/>}
         <div className='details_wrapper'>

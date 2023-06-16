@@ -28,26 +28,26 @@
     text-decoration: none;
   }
   
-  li {
+  .navbar_list li {
     display: inline;
     margin-left: 20px;
     padding: 2px;
-    text-decoration: none;
-    color: black !important; /* Change the color to black with !important */
+    /* text-decoration: none; */
+    color: rgb(0, 0, 0) !important; /* Change the color to black with !important */
   }
   
-  li a {
+  .navbar_list li a {
     text-decoration: none;
-    color: inherit !important; /* Inherit the color from the parent li with !important */
+    /* color: inherit !important; */
   }
   
-  li a:hover{
+  .navbar_list li a:hover{
     color: rgb(214, 11, 11);
-    text-decoration: none;
+    text-decoration: underline;
   }
-  li a:active {
+  .navbar_list li a:active {
     color: rgb(214, 11, 11);
-    text-decoration: none;
+    text-decoration: underline;
   }
   
   .hamburger-menu {

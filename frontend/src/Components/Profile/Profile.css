@@ -6,14 +6,16 @@ body {
   margin: 0;
   overflow-y: auto; /* Enable vertical scrolling if content exceeds maximum height */
   overflow-y: auto;
-  /* Hide vertical scrollbar */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  display: none; /* Hide scrollbars on Chrome, Safari, and Opera */
 }
+
+/* Rest of your CSS code... */
+
 .profile__left {
   background-color: #b3bcc8;
   width: 19%;
@@ -34,10 +36,11 @@ body::-webkit-scrollbar {
 
 .profile__right h3 {
   font-family: sans-serif;
-  padding-top: 12px;
+  padding-top: 1px;
   color: #568b65;
   font-weight: 600;
 }
+
 
 .user_articles {
     background-color: #AFD3BA;
@@ -47,7 +50,7 @@ body::-webkit-scrollbar {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    max-height: 25vh; /* Set maximum height to 25% of the viewport height */
+    /* max-height: 25vh;  */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds maximum height */
     overflow-y: auto;
     /* Hide vertical scrollbar */
@@ -66,7 +69,7 @@ body::-webkit-scrollbar {
   
   .user_articles_list {
     display: flex;
-    justify-content: flex-start; /* Align flex items horizontally to the start */
+    justify-content: space-between; /* Align flex items horizontally to the start */
     padding-bottom: 10px; /* Add some padding to the bottom */
     overflow-x: auto; /* Enable horizontal scrolling */
     flex-wrap: nowrap; /* Prevent wrapping items to the next line */
@@ -143,14 +146,13 @@ body::-webkit-scrollbar {
     border-radius: 20px;
     padding: 10px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    max-height: 25vh; /* Set maximum height to 25% of the viewport height */
+    margin-bottom: 10px; /* Set maximum height to 25% of the viewport height */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds maximum height */
   }
 
   .user_questions_list{
     display: flex;
-    justify-content: center; /* Align flex items horizontally to the start */
+    justify-content: space-between; /* Align flex items horizontally to the start */
     /* align-items: center; */
     padding-bottom: 10px; /* Add some padding to the bottom */
     overflow-x: auto; /* Enable horizontal scrolling */
@@ -163,13 +165,19 @@ body::-webkit-scrollbar {
     margin-left: 10px; /* Add margin to the first answer box */
   }
   
+  .user_questions_list::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  
 
   .user_question{
     flex: 0 0 auto; /* Prevent flex items from growing */
     width: 280px; /* Adjust the width of the individual article box */
     background-color: #9ac0a5;
     border-radius: 10px;
-    padding: 10px;
+    overflow: hidden;
+    /* padding: 10px; */
     margin-right: 10px; /* Add some margin between the boxes */
   }
 
@@ -180,6 +188,32 @@ body::-webkit-scrollbar {
   .user_question::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
+  .delete-confirmation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(34, 33, 33, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .delete-confirmation-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .delete-confirmation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+
   .user_answers {
     background-color: #AFD3BA;
     border-radius: 20px;
@@ -188,13 +222,14 @@ body::-webkit-scrollbar {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    max-height: 25vh; /* Set maximum height to 25% of the viewport height */
+    /* max-height: 25vh; */
+     /* Set maximum height to 25% of the viewport height */
     overflow-y: auto; /* Enable vertical scrolling if content exceeds maximum height */
   }
   
   .user_answers_list {
     display: flex;
-    justify-content: flex-start; /* Align flex items horizontally to the start */
+    justify-content: space-between; /* Align flex items horizontally to the start */
     /* align-items: center; */
     padding-bottom: 10px; /* Add some padding to the bottom */
     overflow-x: auto; /* Enable horizontal scrolling */
@@ -212,7 +247,7 @@ body::-webkit-scrollbar {
   }
   
   .user_answers::-webkit-scrollbar {
-    width: 0.5em;
+    width: 0;
   }
   
   .user_answer::-webkit-scrollbar-track {
@@ -234,33 +269,34 @@ body::-webkit-scrollbar {
   }
   
   .user_answer_question {
-    font-weight: bold;
     margin-bottom: 5px;
   }
   
   .user_answer_question_title {
-    font-size: 14px;
-    color: #555;
+    font-weight: bold;
+    font-size: 17px;
   }
   
   .user_answer_question_topic {
+    font-weight: bold;
     font-size: 14px;
-    color: #555;
+    /* color: #555; */
   }
   
   .user_answer_question_content {
     font-size: 14px;
-    color: #555;
+    /* color: #555; */
   }
   
   .user_answer_question_answer {
     font-size: 14px;
-    color: #555;
+    /* color: #555; */
   }
   
   .user_answer_question_answer_content {
-    font-size: 14px;
-    color: #555;
+    font-weight: 600;
+    font-size: 16px;
+    /* color: #555; */
   }
   
   .user_answer_question_answer_date {
