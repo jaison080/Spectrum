@@ -73,7 +73,7 @@ function Property() {
               {house.map((house) => (
                 <Card
                   key={house._id}
-                  image={house.image}
+                  image={house.image[0]}
                   tag={house.type}
                   title={house.title}
                   price={house.price}

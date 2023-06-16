@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const HouseSchema = new mongoose.Schema({
-    image: {type : String},
+    image: [{type : String}],
     rent: {type : Number},
     type: {type : String},
     rooms: {type: Number},
