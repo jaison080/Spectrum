@@ -5,10 +5,10 @@ const getAllQuestionsByUser = async (req, res) => {
     const questions = await Question.find({ author: req.user.user_id })
     .populate({
       path: "answers",
-      populate: {
-        path: "answerer",
-        path: "comments.commenter"
-      },
+      populate: [
+        {path: "answerer"},
+        {path: "comments.commenter"}
+      ],
     })
     .populate("author");
     res.status(200).send(questions);

@@ -4,10 +4,10 @@ const getAllUnansweredQuestions = async (req, res) => {
     const questions = await Question.find({ answers: { $size: 0 } })
     .populate({
       path: "answers",
-      populate: {
-        path: "answerer",
-        path: "comments.commenter"
-      },
+      populate: [
+        {path: "answerer"},
+        {path: "comments.commenter"}
+      ],
     })
     .populate("author");
     res.status(200).send(questions);

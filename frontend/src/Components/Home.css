@@ -8,11 +8,11 @@ body {
 }
 
 .left_bar {
-    background-color: #F1FFE5;
+    background-color: #95c8a170;
     border-radius: 20px;
     width: 19%;
     position: fixed;
-    top: 14.8%;
+    top: 15.4%;
     left: 0;
     bottom: 0;
     overflow-y: auto;
@@ -32,7 +32,9 @@ h3 {
 }
 
 .middle_bar {
-    background-color: #D0E7D9;
+    background: #D0E7D9;
+    box-shadow:  5px 5px 7px #bbd0c3,
+                 -5px -5px 7px #e5feef;
     border-radius: 20px;
     width: 60%;
     position: absolute;
@@ -40,7 +42,7 @@ h3 {
     right: 20%;
     overflow-y: auto;
     overflow-x: hidden; /* Hide horizontal scrollbar */
-    height: calc(100vh - 14.8%); /* Adjusted height */
+    height: calc(100vh - 15.4%); /* Adjusted height */
 
     /* Hide vertical scrollbar */
     scrollbar-width: none; /* Firefox */
@@ -52,11 +54,11 @@ h3 {
 }
 
 .right_bar {
-    background-color: #F1FFE5;
+    background-color: #95c8a170;
     border-radius: 20px;
     width: 20%;
     position: fixed;
-    top: 14.8%;
+    top: 15.4%;
     right: 0;
     bottom: 0;
     overflow-y: auto;

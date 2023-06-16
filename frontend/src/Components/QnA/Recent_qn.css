@@ -1,28 +1,29 @@
-
-.recent_qn_wrapper{
-    border: 2px solid #9fd092;
-    background-color: #98b2b96b;
-    border-radius: 15px;
-    padding-left: 5px;
-    margin-right: 2px;
-    margin-bottom: 5px;
-
+.recent_qn_wrapper {
+  background: #8adbac63;
+  box-shadow: 8px 8px 13px #86ba9c, -8px -8px 13px #a0deba;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  margin-right: 2px;
+  margin-bottom: 20px;
 }
-.recent_qn_title, .recent_qn_author, .solve_qn{
-    text-align: center;
-    margin-top: 8px;
-}
-
-.recent_qn_title{
-    font-weight: 700;
+.recent_qn_title,
+.recent_qn_author,
+.solve_qn {
+  text-align: center;
+  margin-top: 8px;
 }
 
-
-.recent_qn_date{
-    margin-left: 60%;
+.recent_qn_title {
+  font-weight: 700;
 }
 
-.recent_qn_author{
-    margin-left: 10px;
-    font-weight: 700;
+.recent_qn_date {
+  margin-left: 60%;
+}
+
+.recent_qn_author {
+  margin-left: 10px;
+  font-weight: 700;
 }

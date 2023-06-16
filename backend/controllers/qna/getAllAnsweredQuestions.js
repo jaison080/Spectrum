@@ -5,10 +5,10 @@ const getAllAnsweredQuestions = async (req, res) => {
       answers: { $exists: true, $ne: [] },
     }).populate({
       path: "answers",
-      populate: {
-        path: "answerer",
-        path: "comments.commenter"
-      },
+      populate: [
+        {path: "answerer"},
+        {path: "comments.commenter"}
+      ],
     })
     .populate("author");
     res.status(200).send(questions);

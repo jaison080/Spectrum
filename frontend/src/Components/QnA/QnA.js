@@ -140,7 +140,7 @@ const QnA = (props) => {
             
       </div>
       <div className='Questions'>
-            <div>
+            <div className='clear_your_doubts'>
                 <NewQn onAddQn={addQnHandler} />
             </div>
             <div className='question_answer'>

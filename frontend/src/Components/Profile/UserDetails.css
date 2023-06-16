@@ -17,22 +17,32 @@
 .user__Name{
     font-size: 1rem;
     font-weight: 700;
+    font-size: 20px;
     color: #000000;
 }
 
 .user__Bio{
     font-size: 0.8rem;
+    font-size: 16px;
     font-weight: 600;
     color: #038427;
 }
 
-.details{
+.user_details{
     background-color: #D0E7D9; 
     text-align: center;
     margin-top: 2rem;
     border-radius: 20px;
-}
-
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds maximum height */
+    overflow-y: auto;
+    /* Hide vertical scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+.details::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
 .details h5{
     padding-top: 10px;
     font-style: italic;
