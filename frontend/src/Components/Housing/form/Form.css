@@ -1,0 +1,106 @@
+.form-house-container {
+    width: 95%;
+    height: 250%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transform: scale(1); /* Adjust the scale value as needed */
+  }
+  
+  .form-section {
+    display: grid;
+    gap: 5px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .image-preview {
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .image-preview {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .image-preview-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .image-preview-delete-item img {
+    width: 150px;
+    height: 80px;
+    object-fit: contain; 
+  }
+  
+  .image-preview-delete-item span {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    margin-right: 15px;
+  }
+  
+  .image-preview-delete-item button {
+    padding: 5px 10px;
+    background-color: #e53935;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .choose-image-house-button {
+    width: 50%;
+    margin:15px;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-house-button {
+    width: 20%; 
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+  }
+  
