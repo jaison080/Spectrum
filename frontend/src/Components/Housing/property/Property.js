@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "./Property.css";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import data from "../data";
+import axios from 'axios'
 
 function Property() {
   const [active, setActive] = useState("house");
+  const [house,setHouse] = useState([])
+
+  const fetchHomes = async () =>
+  {
+      const homes = await axios.get('http://localhost:5000/api/house/');
+      console.log(homes.data);
+      setHouse(homes.data)
+      console.log("done"+house);
+  }
+
+  useEffect(() => {
+    fetchHomes()
+  },[])
+  
 
   const houses = data.properties.filter((x) => x.type === "house");
   const apartments = data.properties.filter((x) => x.type === "apartment");
@@ -55,18 +70,18 @@ function Property() {
           <TabPanel>
             <h4>Houses</h4>
             <div className="featured-gallery">
-              {houses.map((house) => (
+              {house.map((house) => (
                 <Card
-                  key={house.id}
+                  key={house._id}
                   image={house.image}
-                  tag={house.tag}
+                  tag={house.type}
                   title={house.title}
                   price={house.price}
                   address={house.address}
-                  beds={house.beds}
-                  baths={house.baths}
-                  size={house.size}
-                  link={`/housing/${house.id}`}
+                  beds={house.rooms}
+                  baths={house.bathrooms}
+                  size={house.squareFeet}
+                  link={`/housing/${house._id}`}
                 />
               ))}
             </div>
@@ -111,7 +126,6 @@ function Property() {
           </TabPanel>
         </Tabs>
       </div>
-      <Footer />
     </div>
   );
 }

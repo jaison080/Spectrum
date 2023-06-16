@@ -3,7 +3,8 @@
     height: 100vh;
     background-color: #000;
     color: #fff;
-    overflow: auto;
+    overflow: scroll;
+    padding-bottom: 10%;
   }
   
   .property-details-info {

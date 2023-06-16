@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,12 +15,32 @@ import Footer from "../components/Footer";
 //import MyMap from "../components/MyMap";
 import data from "../data";
 import { useParams } from "react-router-dom";
+import axios from 'axios'
 
 function PropertyDetails() {
+  const token = localStorage.getItem('token')
   const {id} = useParams()
   const property = data.properties.find((x) => x.id === id);
-  const position = [property.marker.lat, property.marker.lng];
+  //const position = [property.marker.lat, property.marker.lng];
+  const [houseDetails,setHouseDetails]= useState([null]);
+  const [ownerDetails,setOwnerDetails]=useState();
 
+  const fetchById = async () =>{
+    const houseData = await axios.get(`http://localhost:5000/api/house/${id}`,{
+      headers:{
+        'Content-Type':'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    })
+    console.log(houseData.data);
+    setHouseDetails(houseData.data)
+    setOwnerDetails(houseData.data.owner)
+  }
+
+  useEffect(()=>
+  {
+    fetchById()
+  },[])
   if (!id) return null;
 
   const settings = {
@@ -41,29 +61,34 @@ function PropertyDetails() {
       <div className="property-details-container-group">
         <div className="property-details-info">
           <div className="SliderContainer">
-            <Slider {...settings}>
-              {property.images.map((image) => (
-                <div key={image.url}>
-                  <img src={image.url} alt="" className="property-img" />
+            {/* <Slider {...settings}>
+              {houseDetails.map((image) => (
+                <div key={image.image}>
+                  <img src={image.image} alt="" className="property-img" />
                 </div>
               ))}
+            </Slider> */}
+            <Slider {...settings}>
+              <div key={houseDetails.image}>
+                <img src={houseDetails.image} alt="" className="property-img"></img>
+              </div>
             </Slider>
           </div>
 
           <h4 className="property-details-title"> Property Details</h4>
           <div className="property-details-section">
             <div className="property-details-section-top">
-              <p className="property-details-info-title">{property.title}</p>
-              <p className="property-details-tag">{property.tag}</p>
+              <p className="property-details-info-title">{houseDetails.type}</p>
+              <p className="property-details-tag">{houseDetails.misc}</p>
             </div>
             <div className="property-details-section-bottom">
               <p className="property-details-address">
-                {property.marker.address}
+                {houseDetails.address}
               </p>
               <div className="property-details-price">
                 <p className="property-details-price-top">price:</p>
                 <p className="property-details-price-bottom">
-                  {property.price}
+                  {houseDetails.rent}
                 </p>
               </div>
             </div>
@@ -73,7 +98,7 @@ function PropertyDetails() {
             <div className="property-detials-tags-main">
               <p className="property-details-tag-title">Bedrooms</p>
               <div className="property-details-tags-section">
-                <p>{property.bedrooms}</p>
+                <p>{houseDetails.rooms}</p>
                 <FontAwesomeIcon icon={faBed} />
               </div>
             </div>
@@ -81,7 +106,7 @@ function PropertyDetails() {
             <div className="property-detials-tags-main">
               <p className="property-details-tag-title">Baths</p>
               <div className="property-details-tags-section">
-                <p>{property.baths}</p>
+                <p>{houseDetails.bathrooms}</p>
                 <FontAwesomeIcon icon={faBath} />
               </div>
             </div>
@@ -89,7 +114,7 @@ function PropertyDetails() {
             <div className="property-detials-tags-main">
               <p className="property-details-tag-title">size</p>
               <div className="property-details-tags-section">
-                <p>{property.size}sq/ft</p>
+                <p>{houseDetails.squareFeet}sq/ft</p>
                 <FontAwesomeIcon icon={faRulerVertical} />
               </div>
             </div>
@@ -100,7 +125,7 @@ function PropertyDetails() {
               <p className="property-details-title">Description</p>
             </div>
             <div>
-              <p className="property-details-text">{property.details}</p>
+              <p className="property-details-text">{houseDetails.misc}</p>
             </div>
           </div>
         </div>
@@ -123,7 +148,7 @@ function PropertyDetails() {
             </div>
 
             <p className="property-details-contact-title">Agent</p>
-            <h4> Richmond Sottie</h4>
+            <h4> {ownerDetails?ownerDetails.name:""}</h4>
             <div className="property-details-call">
               <button>
                 <FontAwesomeIcon icon={faPhone} /> 054 123 1234
@@ -139,7 +164,6 @@ function PropertyDetails() {
         </div> 
       </div> 
 
-      <Footer />
     </div>
   );
 }
