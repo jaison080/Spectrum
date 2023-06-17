@@ -13,7 +13,7 @@ const { verifyCompany } = require('../middlewares/companyAuth')
 router.post('/register',registerCompany);
 router.post('/login',loginCompany);
 router.post('/add',verifyCompany,addJobs)
-router.get('/',verifyCompany,getJobs)
-router.get('/:id',verifyCompany,getJobsById)
+router.get('/',verifyToken,getJobs)
+router.get('/:id',verifyToken,getJobsById)
 
 module.exports = router
