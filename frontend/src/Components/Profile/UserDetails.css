@@ -29,7 +29,11 @@
 }
 
 .user_details{
-    background-color: #D0E7D9; 
+    background: #b5debf;
+    box-shadow: 20px 20px 60px #8eaa96, -20px -20px 60px #c0e6ca;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
     text-align: center;
     margin-top: 2rem;
     border-radius: 20px;
@@ -52,8 +56,6 @@
     border: none;
     cursor: pointer;
     font-size: small;
-    background-color:#D0E7D9 ;
-    text-decoration: underline;
     font-style: italic;
 }
 
@@ -62,11 +64,9 @@
     border: none;
     cursor: pointer;
     font-size: small;
-    background-color:#D0E7D9 ;
-    text-decoration: underline;
     font-style: italic;
     margin-left: 48%;
-    padding-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .details_wrapper{

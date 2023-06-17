@@ -1,3 +1,42 @@
+.new_article{
+    width: 100%;
+}
+
+.new_article_form_modal{
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.new_article_form_content{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #f1fffffc;
+    margin: 7% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 20px;
+    width: 50%;
+    max-height: 80%;
+    overflow-y: auto;
+    /* Hide vertical scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .new_article_form_content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+
+
+
 .new_article_btn{
     position: fixed;
     margin-left: 26%;

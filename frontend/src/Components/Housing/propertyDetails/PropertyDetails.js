@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./PropertyDetails.css";
 import Footer from "../components/Footer";
-//import MyMap from "../components/MyMap";
+import MyMap from "../components/MyMaps";
 import data from "../data";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -139,13 +139,12 @@ function PropertyDetails() {
             </div>
           </div>
           <div className="property-details-group">
-            {/* <div className="property-details-map">
+            <div className="property-details-map">
             <MyMap
-              center={position}
-              position={position}
-              text={property.marker.address}
+              center={houseDetails.coords}
+              position={houseDetails.coords}
             />
-            </div> */}
+            </div>
             <div className="property-details-contact">
               <div className="property-details-image-container">
                 <img

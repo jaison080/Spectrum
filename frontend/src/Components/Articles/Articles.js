@@ -137,25 +137,6 @@ const Articles = (props) => {
     <div className="article">
       <div className="a_description">
         <div className="a_title">{props.title}</div>
-        <div className="author_identity">
-          <div className="qn_pic">
-            {props.auth_pic && (
-              <img
-                src={props.auth_pic}
-                alt="profile_pic"
-                className="qn_profile_pic"
-              />
-            )}
-            {!props.auth_pic && (
-              <img
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                alt="profile_pic"
-                className="qn_profile_pic"
-              />
-            )}
-          </div>
-          <div className="author">{props.author} </div>
-        </div>
 
         <div className="blog_topic_content">
           {props.tags && props.tags.length > 0
@@ -173,7 +154,9 @@ const Articles = (props) => {
           {/* </div>:[]} */}
           <div>
             {!showFullText && (
-              <p onClick={handleShowMoreClick}>{truncatedText}</p>
+              <p onClick={handleShowMoreClick} style={{ cursor: "pointer" }}>
+                {truncatedText}
+              </p>
             )}
           </div>
 
@@ -196,7 +179,8 @@ const Articles = (props) => {
                   <p className="blog_details_blog">{props.article}</p>
                   <div className="blog_detailsauthor">{props.author} </div>
                   {/* <div className="likes">Likes: {props.likes}</div> */}
-                  {props.likes}<button className="likebutton" onClick={handleLike}>
+                  {props.likes}
+                  <button className="likebutton" onClick={handleLike}>
                     {liked ? (
                       <i className="fas fa-thumbs-down"></i>
                     ) : (
@@ -238,7 +222,10 @@ const Articles = (props) => {
                               ×
                             </span>
                             {loadComments.map((commentGroup) => (
-                              <div key={commentGroup._id} className="comment_blogs">
+                              <div
+                                key={commentGroup._id}
+                                className="comment_blogs"
+                              >
                                 {commentGroup.comments.map((comment) => (
                                   <div
                                     key={comment._id}
@@ -292,12 +279,31 @@ const Articles = (props) => {
             </div>
           )}
 
-          <div className="a_date">
-            {new Date(props.date).toLocaleDateString(undefined, {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
+          <div className="author_identity">
+            <div className="qn_pic">
+              {props.auth_pic && (
+                <img
+                  src={props.auth_pic}
+                  alt="profile_pic"
+                  className="qn_profile_pic"
+                />
+              )}
+              {!props.auth_pic && (
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                  alt="profile_pic"
+                  className="qn_profile_pic"
+                />
+              )}
+            </div>
+            <div className="author">{props.author}</div>
+            <div className="a_date">
+              {new Date(props.date).toLocaleDateString(undefined, {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </div>
           </div>
         </div>
       </div>

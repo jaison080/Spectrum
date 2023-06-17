@@ -4,7 +4,7 @@
     background-color: #c0e5ce;
     padding-bottom: 10px;
     position: absolute;
-    top: 14.8%;
+    top: 15.4%;
     height: max-content;
     left: 0;
     bottom: 0;
@@ -35,7 +35,7 @@
     background-color: #D0E7D9;
     overflow-y: auto;
     overflow-x: hidden; /* Hide horizontal scrollbar */
-    height: calc(100vh - 14.8%); /* Adjusted height */
+    height: calc(100vh - 15.4%); /* Adjusted height */
 
     /* Hide vertical scrollbar */
     scrollbar-width: none; /* Firefox */
@@ -47,9 +47,35 @@
 }
 
 .clear_your_doubts{
-    text-align: end;
+    margin-left: 88%;
     padding-bottom: 5px;
 }
+
+.loading-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Adjust the height as needed */
+  }
+  
+  .circle {
+    width: 20px; /* Adjust the size of the circle */
+    height: 20px; /* Adjust the size of the circle */
+    border: 2px solid #ccc; /* Adjust the border color */
+    border-top-color: #888; /* Adjust the color of the spinning part */
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
 
 
 /* @media screen and (max-width: 768px) {
