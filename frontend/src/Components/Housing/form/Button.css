@@ -1,0 +1,28 @@
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background-color: #4caf50;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .floating-button:hover {
+    background-color: #45b04f;
+  }
+  
+  .plus-icon {
+    color: #ffffff;
+    font-size: 45px;
+    background-color: #4caf50;
+
+  }
+  
