@@ -41,7 +41,7 @@ const Login = () => {
   
         const blogsResponse = await fetch('http://localhost:5000/api/blogs', {
           headers: {
-            'Authorization': `Bearer ${data.token}`,
+            'Authorization': `Bearer ${data.token} user`,
           },
         });
   

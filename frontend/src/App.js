@@ -12,7 +12,7 @@ import ArticleDetails from './Components/Articles/ArticleDetails';
 import Housing from './Components/Housing/property/Property';
 import Details from './Components/Housing/propertyDetails/PropertyDetails';
 import Profile from './Components/Profile/Profile';
-
+import HouseForm from './Components/Housing/form/Form'
 const router = createBrowserRouter([
   {path: '/', element: <Login />},
   {path:'/signup', element: <Signup />},
@@ -28,6 +28,7 @@ const router = createBrowserRouter([
     {path:'/profile', element: <Profile/>},
     {path:'/housing',element: <Housing />},
     {path:'/housing/:id',element: <Details/> },
+    {path:'/housing/add',element:<HouseForm/>}
     ]
   }
   
