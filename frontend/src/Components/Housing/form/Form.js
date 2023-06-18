@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
+import SelectMaps from '../components/SelectMaps';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -244,6 +245,11 @@ const handleApartmentTypeChange = (e) => {
         <div className="form-section">
           <label htmlFor="landmark">Landmark:</label>
           <input type="text" className="form-input" id="landmark" value={landmark} onChange={handleLandmarkChange} />
+        </div>
+
+        <div className="form-section">
+          <label htmlFor='Location'>Choose Location:</label>
+          <SelectMaps/>
         </div>
 
         <div className="form-section">
