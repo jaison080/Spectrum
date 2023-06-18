@@ -1,17 +1,20 @@
+const Company = require('../models/userCompany')
 const jwt = require("jsonwebtoken");
+
 
 const config = process.env;
 
 const verifyCompany = (req, res, next) => {
+    C
   let token;
   if (
     req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer") &&
-    req.body.role === "company"
+    req.headers.authorization.startsWith("Bearer") 
   ) {
     token = req.headers.authorization.split("")[1];
+    const role = req.headers.authorization.split("")[2]
   }
-  if (!token) {
+  if (!token & role!=='company') {
     return res.status(403).send("A token is required for authentication");
   }
   try {

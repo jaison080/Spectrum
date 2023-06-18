@@ -5,7 +5,6 @@ const registerUser = async (req, res) => {
     try{
         console.log(req.body);
         const email = req.body.email;
-        const role = 'user'
         if(!email) {
             return res.status(400).json({message: 'Email is required'});
         }
@@ -17,7 +16,7 @@ const registerUser = async (req, res) => {
         const encryptedPassword = await bcrypt.hash(req.body.password, 10);
 
         req.body.password = encryptedPassword;
-        let user = await User.create(req.body,role);
+        let user = await User.create(req.body);
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {
             expiresIn: "2h",
         });

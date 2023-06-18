@@ -4,7 +4,6 @@
     const registerCompany = async (req,res) =>{
         try{
             const email = req.body.email;
-            const role = 'company'
             if(!email)
             {
                 return res.status(400).json({message:'Email is required'})
@@ -14,7 +13,7 @@
                 return res.status(409).json({message:"user already exists"})
             const encryptedPassword = await bcrypt.hash(req.body.password,10);
             req.body.password = encryptedPassword;
-            let comp = await Company.create(req.body,role);
+            let comp = await Company.create(req.body);
             const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{expiresIn: "2h"})
             comp._doc.token=token;
             res.status(200).json(comp);

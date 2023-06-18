@@ -8,7 +8,8 @@ const CompanySchema = new mongoose.Schema({
     location:{type :String},
     website:{type: String},
     companyDesc: {type : String},
-    logo:{type: String}
+    logo:{type: String},
+    role: {type: String, default:"company"}
 })
 
 module.exports = mongoose.model('Company',CompanySchema);

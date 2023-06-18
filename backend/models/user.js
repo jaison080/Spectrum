@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
     profilePicture: { type: String, default: '' },
     bio: { type: String, default: '' },
     dob: { type: Date, default: Date.now },
+    role: {type: String, default:"user"}
 });
 
 module.exports = mongoose.model('User', UserSchema);
