@@ -1,19 +1,39 @@
-import { useState,useRef } from "react";
+import { useState,useRef, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import L from "leaflet";
 import "./SelectMaps.css"
 
 
-function SelectMaps() {
-    const [position,setPosition] = useState([11.412055, 76.708382]);
+function SelectMaps(props) {
+    const [position,setPosition] = useState(null);
+
+    useEffect(()=>
+    {
+        if(props.propPosition)
+        {
+            setPosition(props.propPosition)
+            //console.log(props.propPosition);
+        }
+        else
+        {
+            setPosition(null);
+        }
+    },[props.propPosition])
+
+    // useEffect(()=>
+    // {
+    //     props.onPositionChange(position)
+    // },[position])
+
     const mapRef = useRef(null);
 
     function AddClick(){
         useMapEvents({
           click(e){
-            console.log(e.latlng.lat);
             setPosition([e.latlng.lat,e.latlng.lng])
+            props.onPositionChange([e.latlng.lat,e.latlng.lng])
+            //console.log(position);
           }
         })
         return null;
@@ -29,9 +49,10 @@ function SelectMaps() {
 
   return (
     <div className="map-section">
+        {props.propPosition && (
       <MapContainer
-        center={{ lat: position[0], lng: position[1] }}
-        zoom={5}
+        center={props.propPosition}
+        zoom={8}
         scrollWheelZoom={true}
         style={{ height: "50vh" }}
         ref={mapRef}
@@ -50,6 +71,7 @@ function SelectMaps() {
           </Marker>
         )}
       </MapContainer>
+        )}
     </div>
   );
 }

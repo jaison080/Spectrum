@@ -20,6 +20,7 @@ const Form = () => {
   const [landmark, setLandmark] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [contactNumberError, setContactNumberError] = useState('');
+  const [pCoords,setpCoords] = useState([11.412055, 76.708382]);
   //const [image, setImage] = useState(null);
   const [images, setImages] = useState([]);
 
@@ -112,6 +113,12 @@ const handleApartmentTypeChange = (e) => {
     }
   };
 
+  const handlePositionChange = (value) =>
+  {
+    setpCoords(value);
+    console.log(pCoords);
+  }
+
   // const handleImageChange = (e) => {
   //   const file = e.target.files[0];
   //   setImage(file);
@@ -143,6 +150,7 @@ const handleApartmentTypeChange = (e) => {
     formData.append('address', address);
     formData.append('landmark', landmark);
     formData.append('contactNumber', contactNumber);
+    formData.append('mapcoordinate',pCoords)
     //formData.append('image', image);
 
     images.forEach((image, index) => {
@@ -168,6 +176,8 @@ const handleApartmentTypeChange = (e) => {
       console.error('Error submitting form:', error);
     }
   };
+
+  
 
   return (
     <div className="form-house-container">
@@ -249,7 +259,7 @@ const handleApartmentTypeChange = (e) => {
 
         <div className="form-section">
           <label htmlFor='Location'>Choose Location:</label>
-          <SelectMaps/>
+          <SelectMaps propPosition={pCoords} onPositionChange={handlePositionChange}/>
         </div>
 
         <div className="form-section">
