@@ -1,5 +1,5 @@
 import React from "react";
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MyMaps.css";
@@ -14,7 +14,7 @@ L.Icon.Default.mergeOptions({
 
 function MyMaps({ center, position}) {
   return (
-    <Map center={center} zoom={14} className="leaflet-container">
+    <MapContainer center={center} zoom={14} className="leaflet-container">
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -24,7 +24,7 @@ function MyMaps({ center, position}) {
           <p>Here</p>
         </Popup>
       </Marker>
-    </Map>
+    </MapContainer>
   );
 }
 
