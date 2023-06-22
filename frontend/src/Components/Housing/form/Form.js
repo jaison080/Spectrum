@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Form.css';
 import SelectMaps from '../components/SelectMaps';
+import {debounce} from 'lodash'
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -98,9 +99,31 @@ const handleApartmentTypeChange = (e) => {
     setAddress(e.target.value);
   };
 
+  const makeAPICall = debounce(()=>
+  {
+    if(landmark)
+    {
+      console.log(landmark);
+      axios.get(`/autocomplete?api_key=${process.env.REACT_APP_API_KEY}&text=${landmark}`)
+      .then((res) =>
+      setpCoords([
+        res.data.features[0].geometry.coordinates[1],
+        res.data.features[0].geometry.coordinates[0]
+      ])
+    )
+    .catch(() => alert("Location not found. Try entering the nearest landmark"));
+    }
+  },2000)
+
   const handleLandmarkChange = (e) => {
     setLandmark(e.target.value);
+    //makeAPICall();
   };
+
+  useEffect(()=>
+  {
+    makeAPICall();
+  },[landmark])
 
   const handleContactNumberChange = (e) => {
     const inputValue = e.target.value;
