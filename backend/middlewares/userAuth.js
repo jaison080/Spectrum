@@ -3,13 +3,13 @@ const jwt = require("jsonwebtoken");
 const config = process.env;
 
 const verifyToken = (req, res, next) => {
-  let token;
+  let token,role;
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
-    const role = req.headers.authorization.split(" ")[2];
+    role = req.headers.authorization.split(" ")[2];
   }
 
   if (!token && role!=='user') {
