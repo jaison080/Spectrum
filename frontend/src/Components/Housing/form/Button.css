@@ -1,4 +1,4 @@
-.floating-button {
+/* .floating-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -24,5 +24,51 @@
     font-size: 45px;
     background-color: #4caf50;
 
+  }
+   */
+
+   .floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background-color: #4caf50;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%; /* Make it circle-shaped */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, width 0.3s ease, border-radius 0.3s ease; /* Add transition effects */
+    overflow: hidden; /* Hide overflowing text */
+  }
+  
+  .floating-button:hover {
+    background-color: #45b04f;
+    width: 140px; /* Expand width on hover */
+    border-radius: 15px; /* Transition to pill shape */
+  }
+  
+  .floating-button:hover .plus-icon {
+    opacity: 0; /* Hide the plus icon on hover */
+  }
+  
+  .floating-button:hover::after {
+    content: "Create"; /* Add text on hover */
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #ffffff;
+    white-space: nowrap;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease;
+  }
+  
+  .floating-button:hover::after {
+    opacity: 1; /* Reveal the text on hover */
   }
   

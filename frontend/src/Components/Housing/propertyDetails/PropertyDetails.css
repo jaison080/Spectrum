@@ -1,8 +1,8 @@
 
 .property-details-container {
     height: 100vh;
-    background-color: #000;
-    color: #fff;
+    background-color: rgb(181, 222, 191);
+    color: #000000;
     overflow: scroll;
     padding-bottom: 10%;
   }
@@ -77,7 +77,7 @@
   }
   
   .property-details-tag {
-    color: #f5a623;
+    color: #2d17ef;
   }
   
   .property-details-section-bottom {
@@ -102,7 +102,7 @@
   .property-details-price-bottom {
     font-size: 16px;
     padding-left: 5px;
-    color: #f5a623;
+    color: #f52335;
   }
   
   .property-details-hr {
@@ -175,7 +175,7 @@
     flex-direction: column;
     text-align: center;
     padding-top: 20px;
-    border: 1px solid rgba(245, 166, 35, 0.5);
+    border: 1px solid rgba(176, 121, 32, 0.5);
     border-radius: 20px;
     margin-bottom: 50px;
   }
@@ -184,7 +184,7 @@
     margin: 0 auto;
     width: 155px;
     height: 155px;
-    border: 1px solid rgba(245, 166, 35, 0.5);
+    border: 1px solid rgba(35, 245, 84, 0.5);
     border-radius: 100%;
     padding: 10px;
   }
@@ -203,7 +203,7 @@
   .property-details-call button {
     padding: 8px 20px;
     border: none;
-    background-color: rgba(245, 166, 35, 1);
+    background-color: rgb(21, 165, 213);
     border-radius: 10px;
     color: #fff;
     transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -219,7 +219,7 @@
     align-items: center;
     margin-top: 10px;
     height: 100px;
-    background-color: rgba(245, 166, 35, 0.8);
+    background-color: rgb(21, 165, 213);
     border-bottom-left-radius: 19px;
     border-bottom-right-radius: 19px;
   }

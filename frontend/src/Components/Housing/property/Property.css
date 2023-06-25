@@ -8,8 +8,10 @@
     outline: none;
   }
   .properties-container {
-    background-color: #000;
-    color: #fff;
+     background-color: rgb(181, 222, 191); 
+     margin:2px;
+     border-radius: 15px;
+    color: #000000;
   }
   .featured-gallery {
     display: flex;
@@ -18,14 +20,14 @@
     justify-content: center;
   }
   .categories-container {
-    padding-top: 80px;
-    margin: 0;
-    margin-bottom: 50px;
+    padding-top: 60px;  
+    margin-bottom:30px;
   }
   
   .tab-title-container {
     max-width: 100%;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
@@ -34,7 +36,7 @@
   
   .property-hero-title {
     position: absolute;
-    right: 0;
+    left: 15px;
     padding-right: 20px;
   }
   
@@ -47,27 +49,29 @@
   
   .tab-title {
     margin-left: 10px;
+    list-style: none;
   }
+  
   .tab-title:focus {
     outline: none;
   }
   
-  .active {
+  .houseactive {
     /* background: #abce51; */
-    color: rgb(125, 204, 46);
+    color: #551a8b;
     border-radius: 10px;
     text-decoration: underline;
     /* border-color: #f5a623; */
   }
   
-  .active:focus {
+  .houseactive:focus {
     outline: none;
   }
   
   .tab-title button {
-    color: #fff;
-    background-color: inherit;
-    padding: 8px 20px;
+    color: #f4f3f4;
+    font-size: medium;
+    padding: 5px 20px;
     border-width: 1px;
     border-style: solid;
     border-radius: 20px;
@@ -75,7 +79,7 @@
   }
   
   .tab-title button:active {
-    transform: scale(1.1);
+    transform: scale(1.5);
   }
   
   .tab-title button:focus {
@@ -96,3 +100,55 @@
     }
   }
   
+
+  .house-search-box {
+    border: 1px solid #ccc;
+    display: inline-block;
+    position: relative;
+    border-radius: 4px;
+  }
+  
+  .house-search-box input[type="text"] {
+    font-size: inherit;
+    width: 250px;
+    height: 38px;
+    padding: 4px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .house-search-box input[type="text"]:focus {
+    outline: none;
+    width: 450px;
+  }
+  
+  .property-hero-title {
+    text-align: center;
+  }
+  .property-hero-title h2{
+    color:#030203;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-weight: bold;  
+    font-variant: small-caps
+  }
+  .property-hero-title span {
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 9s linear infinite;
+  }
+  
+  @keyframes rainbow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
