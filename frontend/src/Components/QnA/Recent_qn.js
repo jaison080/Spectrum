@@ -12,12 +12,23 @@ const Recent_qn = (props) => {
     setAnswerRecent(event.target.value);
   };
 
-  const saveSolvedQuestionDataHandler = (enteredSolutionData) => {
+  const saveSolvedQuestionDataHandler = (enteredSolutionData) => { 
     const solutionData = {
       ...enteredSolutionData,
     };
+    // props.onAddQuestion();
     console.log(solutionData);
   };
+
+//   const saveQnDataHandler = (enteredQnData) => {
+//     const qnData = {
+//         ...enteredQnData,
+//         id: Math.random().toString(),
+//     }
+//     props.onAddQn(qnData);
+//     setIsAsking(false);
+// }
+
 
   return (
     <div className="recent_qn_wrapper">
@@ -32,14 +43,14 @@ const Recent_qn = (props) => {
                 <img
                   src={props.auth_pic}
                   alt="profile_pic"
-                  className="qn_profile_pic"
+                  className="quest_profile_pic"
                 />
               )}
               {!props.auth_pic && (
                 <img
                   src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
                   alt="profile_pic"
-                  className="qn_profile_pic"
+                  className="quest_profile_pic"
                 />
               )}
             </div>

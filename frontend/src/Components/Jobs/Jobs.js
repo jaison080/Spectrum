@@ -1,88 +1,136 @@
-import React, { useState } from 'react';
-import './Jobs.css';
-import JobItems from './JobItems';
-import JobDetails from './JobDetails';
-const DUMMY_JOBS = [
-  {
-    id: 'e1',
-    title: 'Registrar Assistant',
-    company: 'New York University',
-    mode:'hybrid',
-    location:'New York',
-    amount: 94.12,
-    timing:'full-time',
-    skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
-    date: new Date(2020, 7, 14),
-    qualification: 'BE/Btech',
-    description:'We are looking for an HR Recruiter to manage our full cycle recruitment, from identifying potential hires to interviewing and evaluating candidates.HR Recruiter responsibilities include sourcing candidates online, updating job ads and conducting background checks. If you have experience with various job interview formats, including phone screenings and group interviews, and can help us recruit faster and more effectively.Ultimately, you will play an important part in building a strong employer brand for our company to ensure we attract, hire and retain the most qualified employees.',
-    responsibilities: "Design and update job descriptions. \n Source potential candidates from various job portals.\nCraft recruiting emails to attract passive candidates. \n Screen incoming resumes and application forms, \n Advertise job openings on company’s careers page, social media, job boards and internally. \n Provide shortlists of qualified candidates to hiring managers. \n Collaborate with managers to identify future hiring needs.\n Act as a consultant to new hires and help them onboard"
-  },
-  {
-    id: 'e2',
-    title: 'Registrar Assistant',
-    company: 'New York University',
-    mode:'hybrid',
-    location:'New York',
-    amount: 94.12,
-    timing:'full-time',
-    skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
-    date: new Date(2020, 7, 14),
-    qualification: 'BE/Btech',
-    description:'We are looking for an HR Recruiter to manage our full cycle recruitment, from identifying potential hires to interviewing and evaluating candidates.HR Recruiter responsibilities include sourcing candidates online, updating job ads and conducting background checks. If you have experience with various job interview formats, including phone screenings and group interviews, and can help us recruit faster and more effectively.Ultimately, you will play an important part in building a strong employer brand for our company to ensure we attract, hire and retain the most qualified employees.',
-    responsibilities: "Design and update job descriptions. \n Source potential candidates from various job portals.\nCraft recruiting emails to attract passive candidates. \n Screen incoming resumes and application forms, \n Advertise job openings on company’s careers page, social media, job boards and internally. \n Provide shortlists of qualified candidates to hiring managers. \n Collaborate with managers to identify future hiring needs.\n Act as a consultant to new hires and help them onboard"
-  },
-  {
-    id: 'e3',
-    title: 'Registrar Assistant',
-    company: 'New York University',
-    mode:'hybrid',
-    location:'New York',
-    amount: 94.12,
-    timing:'full-time',
-    skills:'Advanced level skills with computers and business/productivity software (MS Office, Google Suite), word processing and .......',
-    date: new Date(2020, 7, 14),
-    qualification: 'BE/Btech',
-    description:'We are looking for an HR Recruiter to manage our full cycle recruitment, from identifying potential hires to interviewing and evaluating candidates.HR Recruiter responsibilities include sourcing candidates online, updating job ads and conducting background checks. If you have experience with various job interview formats, including phone screenings and group interviews, and can help us recruit faster and more effectively.Ultimately, you will play an important part in building a strong employer brand for our company to ensure we attract, hire and retain the most qualified employees.',
-    responsibilities: "Design and update job descriptions. \n Source potential candidates from various job portals.\nCraft recruiting emails to attract passive candidates. \n Screen incoming resumes and application forms, \n Advertise job openings on company’s careers page, social media, job boards and internally. \n Provide shortlists of qualified candidates to hiring managers. \n Collaborate with managers to identify future hiring needs.\n Act as a consultant to new hires and help them onboard"
-  },
-  ]
+import React, { useState, useEffect } from "react";
+import "./Jobs.css";
+import JobItems from "./JobItems";
+import JobDetails from "./JobDetails";
 
 const Jobs = (props) => {
+  const [enteredJobs, setEnteredJobs] = useState([]);
+  const [selectedJobId, setSelectedJobId] = useState(null);
+  const [titleFilter, setTitleFilter] = useState("");
+  const [locationFilter, setLocationFilter] = useState("");
 
-  const[enteredJobs, setEnteredJobs] = useState(DUMMY_JOBS);
-  const [detailsMore,setDetailsMore] = useState(false);
-
-  const seeDetailsHandler = () => {
-    setDetailsMore(true)
+  const seeDetailsHandler = (jobId) => {
+    setSelectedJobId(jobId);
   };
 
- 
+  const handleTitleFilterChange = (event) => {
+    setTitleFilter(event.target.value);
+  };
+
+  const handleLocationFilterChange = (event) => {
+    setLocationFilter(event.target.value);
+  };
+
+  const token = localStorage.getItem("token");
+
+  const jobFetchHandler = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/jobs", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+      const jobs = responseData.map((job) => {
+        return {
+          id: job._id,
+          title: job.title,
+          jobDesc: job.jobDesc,
+          location: job.location,
+          jobType: job.jobType,
+          prerequisite: job.prerequisite,
+          responsibility: job.responsibility,
+          misc: job.misc,
+          dateOfPosting: job.dateOfPosting,
+          url: job.url,
+          postedBy: job.postedBy, 
+        };
+      });
+      setEnteredJobs(jobs);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    jobFetchHandler();
+  }, []);
+
+  const filteredJobs = enteredJobs.filter((job) => {
+    const jobTitle = job.title.toLowerCase();
+    const jobLocation = job.location.toLowerCase();
+    const titleFilterValue = titleFilter.toLowerCase();
+    const locationFilterValue = locationFilter.toLowerCase();
+
+    const titleMatch = jobTitle.includes(titleFilterValue);
+    const locationMatch = jobLocation.includes(locationFilterValue);
+
+    return titleMatch && locationMatch;
+  });
 
   return (
     <div>
-        <div className='job_list_left_container'>
-          <h3>Trending Jobs</h3>
-          {enteredJobs.map((job)=>(
-            <JobItems onSeeMore = {seeDetailsHandler}
-            key = {job.id}
-            title={job.title} company={job.company} mode={job.mode} location = {job.location}
-            amount = {job.amount} timing={job.timing} skills={job.skills} date ={job.date}  />
-          ))}
-          {console.log(seeDetailsHandler)}
-
+      <div className="job_filter_container">
+        <input
+          type="text"
+          placeholder="Filter by title"
+          value={titleFilter}
+          onChange={handleTitleFilterChange}
+        />
+        <input
+          type="text"
+          placeholder="Filter by location"
+          value={locationFilter}
+          onChange={handleLocationFilterChange}
+        />
       </div>
-        <div className='job_details'>
-        {detailsMore && enteredJobs.map((job)=>(
-             <JobDetails 
-            id = {job.id}
-            key = {job.id}
-            title={job.title} company={job.company} mode={job.mode} location = {job.location}
-            amount = {job.amount} timing={job.timing} skills={job.skills} date ={job.date} qualification={job.qualification} 
-            description = {job.description} responsibilities = {job.responsibilities} />
+      <div className="job_list_left_container">
+        <h3>Trending Jobs</h3>
+        {filteredJobs.map((job) => (
+          <JobItems
+            onSeeMore={seeDetailsHandler}
+            key={job.id}
+            id={job.id}
+            title={job.title}
+            jobDesc={job.jobDesc}
+            location={job.location}
+            jobType={job.jobType}
+            prerequisite={job.prerequisite}
+            responsibility={job.responsibility}
+            misc={job.misc}
+            dateOfPosting={job.dateOfPosting}
+            jobUrl={job.url}
+            company = {job.postedBy.name}
+          />
+        ))}
+      </div>
+      {selectedJobId && (
+        <div className="job_details">
+          {filteredJobs
+            .filter((job) => job.id === selectedJobId)
+            .map((job) => (
+              <JobDetails
+                key={job.id}
+                title={job.title}
+                jobDesc={job.jobDesc}
+                location={job.location}
+                jobType={job.jobType}
+                prerequisite={job.prerequisite}
+                responsibility={job.responsibility}
+                misc={job.misc}
+                dateOfPosting={job.dateOfPosting}
+                jobUrl={job.url}
+                company = {job.postedBy.name}
+              />
             ))}
         </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default Jobs;

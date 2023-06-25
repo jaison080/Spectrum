@@ -1,9 +1,14 @@
+.answer_form_recent_qn{
+    width: 100%;
+}
+
 .answer_area{
     background-color: #DAE6CF;
     text-decoration: none;
     border-radius: 5px;
+    font-size: larger;
     width: 90%;
-    height: 100px;
+    height: 200px;
 }
 textarea{
     resize: none;

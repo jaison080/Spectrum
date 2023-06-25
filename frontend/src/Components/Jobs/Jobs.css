@@ -1,13 +1,32 @@
 .job_list_left_container{
-    background-color: #F1FFE5;
+    background-color: #b9ddcd;
     width: 33%;
     margin-left: 0;
     position: absolute;
     padding: 10px;
+    padding-bottom: 20px;
+    border-radius: 20px;
 }
 .job_details{
-    background-color: #F1FFE5;
+    background-color: #aedfca;
     margin-left: 35%;
+    width: 62%;
     position: absolute;
     padding: 10px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+}
+
+.job_filter_container{
+    margin-left: 30%;
+    margin-bottom: 20px;
+}
+
+.job_filter_container input{
+    margin-left: 10px;
+    padding: auto;
+    background-color: #F1FFE5;
+    border-radius: 30px;
+    height: 30px;
+    width: 200px;
 }
