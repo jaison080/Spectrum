@@ -27,7 +27,12 @@ const NewAnswer = (props) => {
   return (
     <div className='new_answer'>
         {!isSolving && <button onClick={startAnsweringHandler} className='new_answer_btn'>Add Answer</button>}
-        {isSolving && <AnswerForm id={props.id} onSaveAnswerData ={saveAnswerDataHandler} onCancel={stopAnsweringHandler} />}
+        {isSolving && (
+            <div className="new_article_form_modal"><div className="new_article_form_content">
+         <AnswerForm id={props.id} onSaveAnswerData ={saveAnswerDataHandler} onCancel={stopAnsweringHandler} />
+         </div>
+         </div>
+        )}
     </div>
   )
 }

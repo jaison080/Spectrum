@@ -1,0 +1,12 @@
+.job_details_wrapper{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    background: #c0e5c9bd;
+    box-shadow:  8px 8px 16px #76ac84,
+                 -8px -8px 16px #9ce4ae;  
+    margin: auto;
+    border-radius: 20px;
+    padding-bottom: 20px;
+}
