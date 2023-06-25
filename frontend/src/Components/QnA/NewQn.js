@@ -12,7 +12,7 @@ const NewQn = (props) => {
             ...enteredQnData,
             id: Math.random().toString(),
         }
-        props.onAddQn(qnData);
+        props.onAddQn();
         setIsAsking(false);
     }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import './Button.css';
+import { Link } from 'react-router-dom';
 
 const Button = () => {
   const handleClick = () => {
@@ -9,9 +10,11 @@ const Button = () => {
   };
 
   return (
-    <button className="floating-button" onClick={handleClick}>
+    <Link to="/housing/add" className="floating-link" onClick={handleClick}>
+     <button className="floating-button" onClick={handleClick}>
       <AiOutlinePlus className="plus-icon" />
-    </button>
+     </button>
+    </Link>
   );
 };
 

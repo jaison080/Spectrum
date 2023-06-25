@@ -58,7 +58,7 @@ const AnswerForm = (props) => {
 
 
   return (
-    <div>
+    <div className='answer_form_recent_qn'>
       <form onSubmit={answerSubmitHandler} className='new_answer_form'>
         <textarea type='text' placeholder='Answer Here' className='answer_area' onChange={answerChangeHandler} value={enteredAnswer} style={{ textAlign: 'center' }}></textarea>
         {/* <div className='b2'>

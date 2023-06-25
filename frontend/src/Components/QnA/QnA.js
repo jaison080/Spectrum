@@ -19,10 +19,12 @@ const QnA = (props) => {
   const [loading, setLoading] = useState(true); 
 
   const addQnHandler = (recentQns) => {
+    fetchQuestions();
     setRecentQns((prevRecentQns) => {
       return [recentQns, ...prevRecentQns];
-    });
+    });  
   };
+  
 
   const token = localStorage.getItem('token');
 
@@ -76,6 +78,8 @@ const QnA = (props) => {
     fetchQnA();
     fetchQuestions();
   }, []);
+
+
 
   return (
     <div>
