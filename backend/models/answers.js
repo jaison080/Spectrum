@@ -23,10 +23,10 @@ const AnswerSchema = new mongoose.Schema({
         },
         content: { type: String, required: true },
         createdAt: { type: Date, default: Date.now },
-      },
+        isReported: {type: Boolean, default:false}
+      }, 
     ],
     isReported: {type:Boolean, default:false}
   });
 
-  const Answer = mongoose.model("Answer", AnswerSchema);
-  
+  module.exports = mongoose.model("Answer", AnswerSchema);

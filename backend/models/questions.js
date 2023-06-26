@@ -10,6 +10,7 @@ const QuestionSchema = new mongoose.Schema({
     dislikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     answers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Answer" }],
+    isReported: {type: Boolean, default:false}
   });
   
-  const Question = mongoose.model("Question", QuestionSchema);
+  module.exports = mongoose.model("Question", QuestionSchema);
