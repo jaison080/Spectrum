@@ -1,4 +1,4 @@
-const { Answer } = require('../../models/qna');
+const Answer = require('../../models/answers');
 
 const deleteComment = async (req, res) => {
     try {

@@ -1,4 +1,4 @@
-const {Answer} = require("../../models/qna");
+const Answer = require("../../models/answers");
 const getAllAnswersByUser = async (req, res) => {
   try {
     const answers = await Answer.find({ answerer: req.user.user_id}).populate('question').populate('answerer').populate('comments.commenter');

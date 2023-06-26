@@ -1,5 +1,5 @@
 //return all the questions asked by a user
-const { Question } = require("../../models/qna");
+const Question = require("../../models/questions");
 const getAllQuestionsByUser = async (req, res) => {
   try {
     const questions = await Question.find({ author: req.user.user_id })

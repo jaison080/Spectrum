@@ -1,4 +1,4 @@
-const { Question } = require("../../models/qna");
+const Question = require("../../models/questions");
 const getQuestionById = async (req, res) => {
   try {
     const question = await Question.findById(req.params.id)

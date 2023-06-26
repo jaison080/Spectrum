@@ -1,4 +1,4 @@
-const {Answer} = require('../../models/qna');
+const Answer = require('../../models/answers');
 const addComment = async (req, res) => {
     try {
         const answerId = req.params.id;
