@@ -4,12 +4,12 @@ const createPost = async (req,res) =>
 {
     
     try{
-        const {rent,type,rooms,bathroom,terrace,squareFeet,misc,contactNumber,address,mapcoordinate} =req.body
-        console.log("mappy"+mapcoordinate);
+        const {rent,type,rooms,bathroom,terrace,squareFeet,misc,contactNumber,address,mapcoordinate} =req.body  
         const user= req.user.user_id;
         let result = {
             secure_url: ''
         }
+        console.log(req.file);
         if(req.file)
         {
             console.log(req.file.path);
