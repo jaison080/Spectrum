@@ -1,4 +1,6 @@
-const {Question, Answer} = require('../../models/qna');
+const Question = require('../../models/questions');
+const Answer = require('../../models/answers');
+
 const postAnswer = async (req, res) => {
     try{
         const { content } = req.body;

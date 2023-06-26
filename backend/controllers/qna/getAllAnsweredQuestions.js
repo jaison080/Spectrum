@@ -1,4 +1,4 @@
-const { Question } = require("../../models/qna");
+const Question = require("../../models/questions");
 const getAllAnsweredQuestions = async (req, res) => {
   try {
     const questions = await Question.find({

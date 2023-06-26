@@ -1,4 +1,4 @@
-const {Question} = require('../../models/qna');
+const Question = require('../../models/questions');
 const createQuestion = async (req, res) => {
     try{
         const { title, content, isAnonymous, topics } = req.body;

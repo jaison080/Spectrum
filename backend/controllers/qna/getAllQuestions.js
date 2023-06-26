@@ -1,5 +1,5 @@
 //api to get all question and return them
-const { Question } = require("../../models/qna");
+const Question = require("../../models/questions");
 const getAllQuestions = async (req, res) => {
   try {
     const questions = await Question.find()

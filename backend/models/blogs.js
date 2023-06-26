@@ -11,7 +11,8 @@ const BlogSchema = new mongoose.Schema({
         commenter: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
         content: { type: String, required: true },
         createdAt: { type: Date, default: Date.now }
-    }]
+    }],
+    isReported:{type: Boolean, default:false}
 })
 
 module.exports = mongoose.model('Blog', BlogSchema);

@@ -1,4 +1,4 @@
-const { Question } = require("../../models/qna");
+const Question = require("../../models/questions");
 const dislikeQuestion = async (req, res) => {
   const questionId = req.params.questionId;
   const user = req.user.user_id;

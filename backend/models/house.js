@@ -12,7 +12,8 @@ const HouseSchema = new mongoose.Schema({
     owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     address: {type: String},
     lastModified: {type: Date},
-    coords:[{type : String}]  
+    coords:[{type : String}],
+    isReported: {type: Boolean, default:false}  
 })
 
 module.exports = mongoose.model('House',HouseSchema);
