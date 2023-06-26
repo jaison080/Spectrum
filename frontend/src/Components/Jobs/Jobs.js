@@ -8,7 +8,7 @@ const Jobs = (props) => {
   const [selectedJobId, setSelectedJobId] = useState(null);
   const [titleFilter, setTitleFilter] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
-
+   
   const seeDetailsHandler = (jobId) => {
     setSelectedJobId(jobId);
   };
@@ -73,8 +73,8 @@ const Jobs = (props) => {
   });
 
   return (
-    <div>
-      <div className="job_filter_container">
+    <div className="jobs_container">
+      <div className="filter_container">
         <input
           type="text"
           placeholder="Filter by title"
@@ -88,29 +88,32 @@ const Jobs = (props) => {
           onChange={handleLocationFilterChange}
         />
       </div>
-      <div className="job_list_left_container">
+      <div className="trending_jobs_container">
         <h3>Trending Jobs</h3>
-        {filteredJobs.map((job) => (
-          <JobItems
-            onSeeMore={seeDetailsHandler}
-            key={job.id}
-            id={job.id}
-            title={job.title}
-            jobDesc={job.jobDesc}
-            location={job.location}
-            jobType={job.jobType}
-            prerequisite={job.prerequisite}
-            responsibility={job.responsibility}
-            misc={job.misc}
-            dateOfPosting={job.dateOfPosting}
-            jobUrl={job.url}
-            company = {job.postedBy.name}
-          />
-        ))}
+        <div className="job_list_scrollable">
+          {filteredJobs.map((job) => (
+            <JobItems
+              onSeeMore={seeDetailsHandler}
+              key={job.id}
+              id={job.id}
+              title={job.title}
+              jobDesc={job.jobDesc}
+              location={job.location}
+              jobType={job.jobType}
+              prerequisite={job.prerequisite}
+              responsibility={job.responsibility}
+              misc={job.misc}
+              dateOfPosting={job.dateOfPosting}
+              jobUrl={job.url}
+              company={job.postedBy.name}
+              onClose={() => setSelectedJobId(null)}
+            />
+          ))}
+        </div>
       </div>
-      {selectedJobId && (
-        <div className="job_details">
-          {filteredJobs
+      <div className="job_details_container">
+        {selectedJobId &&
+          filteredJobs
             .filter((job) => job.id === selectedJobId)
             .map((job) => (
               <JobDetails
@@ -124,11 +127,11 @@ const Jobs = (props) => {
                 misc={job.misc}
                 dateOfPosting={job.dateOfPosting}
                 jobUrl={job.url}
-                company = {job.postedBy.name}
+                company={job.postedBy.name}
+                onClose={() => setSelectedJobId(null)}
               />
             ))}
-        </div>
-      )}
+      </div>
     </div>
   );
 };
