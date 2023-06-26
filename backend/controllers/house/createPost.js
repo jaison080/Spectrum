@@ -4,35 +4,38 @@ const createPost = async (req,res) =>
 {
     
     try{
-        const {rent,type,rooms,bathrooms,isTerrace,squareFeet,misc,contact,address} =req.body
+        const {rent,type,rooms,bathroom,terrace,squareFeet,misc,contactNumber,address,mapcoordinate} =req.body  
         const user= req.user.user_id;
         let result = {
             secure_url: ''
         }
+        console.log(req.file);
         if(req.file)
         {
+            console.log(req.file.path);
             result=await cloudinary.uploder.upload(req.file.path);
         }
         const house = await House.create({
             rent:rent,
             type:type,
-            rooms:rooms,
-            bathrooms:bathrooms,
-            isTerrace:isTerrace,
+            rooms:rooms, 
+            bathrooms:bathroom,
+            isTerrace:terrace,
             squareFeet:squareFeet,
             misc:misc,
-            contact:contact,
+            contact:contactNumber,
             owner:user,
             image:result.secure_url,
             address:address,
             lastModified: new Date(),
+            coords: mapcoordinate
         })
         res.status(200).send(house);
     }
     catch(error)
     {
         console.log(error);
-        res.status(500).send(error);
+        res.status(500).send(error.message);
     }
 }
 

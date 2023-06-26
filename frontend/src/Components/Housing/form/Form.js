@@ -25,6 +25,9 @@ const Form = () => {
   //const [image, setImage] = useState(null);
   const [images, setImages] = useState([]);
 
+  const token = localStorage.getItem("token");
+
+
   const handleImageChange = (e) => {
     const fileList = e.target.files;
     const newImages = Array.from(fileList);
@@ -171,30 +174,39 @@ const handleApartmentTypeChange = (e) => {
     formData.append('squareFeet', squareFeet);
     formData.append('terrace', terrace);
     formData.append('address', address);
-    formData.append('landmark', landmark);
     formData.append('contactNumber', contactNumber);
-    formData.append('mapcoordinate',pCoords)
+    //formData.append('mapcoordinate',pCoords)
     //formData.append('image', image);
+    pCoords.forEach((element, index) => {
+      formData.append(`mapcoordinate[${index}]`, element);
+    });
+    console.log(pCoords[0]);
+
 
     images.forEach((image, index) => {
       formData.append(`image[${index}]`, image);
     });
     try {
-      const response = await axios.post('/api/submit', formData);
+      const response = await axios.post('http://localhost:5000/api/house/create', formData,{
+        headers:{
+          'Content-Type': 'multipart/form-data',
+          'Authorization' : `Bearer ${token}` 
+        }
+      });
       console.log('Form submitted successfully:', response.data);
       // Reset the form fields
-      setName('');
-      setEmail('');
-      setRent('');
-      setRooms('');
-      setBathroom('');
-      setSquareFeet('');
-      setTerrace('');
-      setAddress('');
-      setLandmark('');
-      setContactNumber('');
-      //setImage(null);
-      setImages([])
+      // setName('');
+      // setEmail('');
+      // setRent('');
+      // setRooms('');
+      // setBathroom('');
+      // setSquareFeet('');
+      // setTerrace('');
+      // setAddress('');
+      // setLandmark('');
+      // setContactNumber('');
+      // //setImage(null);
+      // setImages([])
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -300,7 +312,7 @@ const handleApartmentTypeChange = (e) => {
           
          <div className="form-section">
             <label htmlFor="image">Image:</label>
-            <input type="file" className="choose-image-house-button" id="image" accept="image/*" onChange={handleImageChange} multiple />
+            <input type="file" className="choose-image-house-button" name="image" id="image" accept="image/*" onChange={handleImageChange} multiple enctype="multipart/form-data"/>
           <div className="image-preview">
            {images.map((image, index) => (
           <div className="image-preview-delete-item" key={index}>

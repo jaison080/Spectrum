@@ -20,6 +20,7 @@ app.use('/api/blogs', require('./routes/blogRoutes'))
 app.use('/api/qna', require('./routes/qnaRoutes'))
 app.use('/api/house',require('./routes/housingRoutes'));
 app.use('/api/jobs',require('./routes/jobRoutes'));
+app.use('/api/admin',require('./routes/adminRoutes'))
 
 
 

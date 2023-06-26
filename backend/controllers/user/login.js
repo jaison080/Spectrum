@@ -6,7 +6,6 @@ const loginUser = async (req, res) => {
 
     try {
       const { email, password } = req.body;
-      const role='user';
       console.log(email);
       console.log(password);
       if (!(email && password)) {
@@ -19,7 +18,7 @@ const loginUser = async (req, res) => {
           { user_id: user._id, email},
           process.env.JWT_SECRET,
           {
-            expiresIn: "2h",
+            expiresIn: "10h",
           }
         );
         user._doc.token = token;

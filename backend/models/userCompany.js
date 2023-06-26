@@ -9,7 +9,7 @@ const CompanySchema = new mongoose.Schema({
     website:{type: String},
     companyDesc: {type : String},
     logo:{type: String},
-    role: {type: String, default:"company"}
+    isApproved:{type: Boolean, default:false}
 })
 
 module.exports = mongoose.model('Company',CompanySchema);
