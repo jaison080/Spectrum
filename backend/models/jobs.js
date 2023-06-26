@@ -10,7 +10,8 @@ const  JobsSchema =  new mongoose.Schema({
     misc: {type: String, required: true},
     dateOfPosting: {type: Date, default: Date.now},
     url: {type: String, required: true},
-    postedBy: {type :mongoose.Schema.Types.ObjectId, ref: 'Company', required:true}
+    postedBy: {type :mongoose.Schema.Types.ObjectId, ref: 'Company', required:true},
+    isReported: {type :Boolean, default:false}
 });
 
 module.exports = mongoose.model('Jobs',JobsSchema);

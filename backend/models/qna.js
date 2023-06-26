@@ -25,6 +25,7 @@ const AnswerSchema = new mongoose.Schema({
       createdAt: { type: Date, default: Date.now },
     },
   ],
+  isReported: {type:Boolean, default:false}
 });
 
 const QuestionSchema = new mongoose.Schema({
