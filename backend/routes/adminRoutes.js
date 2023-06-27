@@ -5,12 +5,13 @@ const { pendingCompanyApproval } = require('../controllers/admin/pendingCompanyA
 const { reported } = require('../controllers/admin/reported')
 const { suspend } = require('../controllers/admin/suspend')
 const { login } = require('../controllers/admin/login')
+const { verifyAdmin } = require('../middlewares/adminAuth')
 
 //Base URL: /api/admin
-router.patch('/approveCompany/:id',approveCompany)
-router.get('/pendingCompanyApproval',pendingCompanyApproval)
-router.get('/reported/:content',reported)
-router.patch('/suspend/:content/:id',suspend)
+router.patch('/approveCompany/:id',verifyAdmin,approveCompany)
+router.get('/pendingCompanyApproval',verifyAdmin,pendingCompanyApproval)
+router.get('/reported/:content',verifyAdmin,reported)
+router.patch('/suspend/:content/:id',verifyAdmin,suspend)
 router.post('/login',login)
 
 module.exports = router

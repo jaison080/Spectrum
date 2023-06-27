@@ -4,17 +4,20 @@ const jwt = require("jsonwebtoken")
 const login = async (req,res) =>
 {
     try{
-        const username=req.body
-        const password = req.body;
-        if(!(username && password))
+        const uname=req.body.username
+        const password = req.body.password;
+        console.log(uname);
+        console.log(password);
+        console.log(process.env.UNAME);
+        console.log(process.env.PASSWORD);
+        if(!(uname && password))
         {
             res.status(400).send("All input is required")
         }
-        if(username===process.env.USERNAME && password===process.env.PASSWORD)
+        if(uname===process.env.UNAME && password===process.env.PASSWORD)
         {
-            const token = jwt.sign({username},process.env.JWT_SECRET,{expiresIn:"10h"})
-            user._doc.token = token;
-            return res.status(200).json(user)
+            const token = jwt.sign({uname},process.env.JWT_SECRET,{expiresIn:"10h"})
+            return res.status(200).json(token)
         }
         res.status(400).json({message: "Invalid Credentials"})
     }
