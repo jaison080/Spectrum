@@ -12,7 +12,10 @@ import ArticleDetails from './Components/Articles/ArticleDetails';
 import Housing from './Components/Housing/property/Property';
 import Details from './Components/Housing/propertyDetails/PropertyDetails';
 import Profile from './Components/Profile/Profile';
-import HouseForm from './Components/Housing/form/Form'
+import HouseForm from './Components/Housing/form/Form';
+import Admin from './Components/Admin/Home';
+import CompanyReg from './Components/Admin/Components/CompanyReg';
+import Report from './Components/Admin/Components/Report';
 const router = createBrowserRouter([
   {path: '/', element: <Login />},
   {path:'/signup', element: <Signup />},
@@ -28,7 +31,10 @@ const router = createBrowserRouter([
     {path:'/profile', element: <Profile/>},
     {path:'/housing',element: <Housing />},
     {path:'/housing/:id',element: <Details/> },
-    {path:'/housing/add',element:<HouseForm/>}
+    {path:'/housing/add',element:<HouseForm/>},
+    {path:'/admin',element:<Admin/>},
+    {path:'/admin/companyReg',element:<CompanyReg/>},
+    {path:'admin/report',element:<Report/>}
     ]
   }
   
