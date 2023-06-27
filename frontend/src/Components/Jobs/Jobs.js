@@ -77,7 +77,7 @@ const Jobs = (props) => {
       <div className="filter_container">
         <input
           type="text"
-          placeholder="Filter by title"
+          placeholder="Filter by role"
           value={titleFilter}
           onChange={handleTitleFilterChange}
         />

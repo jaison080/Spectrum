@@ -312,7 +312,7 @@ const handleApartmentTypeChange = (e) => {
           
          <div className="form-section">
             <label htmlFor="image">Image:</label>
-            <input type="file" className="choose-image-house-button" name="image" id="image" accept="image/*" onChange={handleImageChange} multiple enctype="multipart/form-data"/>
+            <input type="file" className="choose-image-house-button" name="image" id="image" accept="image/*" onChange={handleImageChange} multiple encType="multipart/form-data"/>
           <div className="image-preview">
            {images.map((image, index) => (
           <div className="image-preview-delete-item" key={index}>
