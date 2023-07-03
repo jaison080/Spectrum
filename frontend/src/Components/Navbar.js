@@ -36,9 +36,9 @@ const Navbar = () => {
                 <li><NavLink to="/housing" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }>Housing</NavLink></li>
-                <li><NavLink to="/therapy" className={({isActive}) => 
+                {/* <li><NavLink to="/therapy" className={({isActive}) => 
                     isActive ? 'active':undefined
-                }>Therapy</NavLink></li>
+                }>Therapy</NavLink></li> */}
                 <li><NavLink to="/profile" className={({isActive}) => 
                     isActive ? 'active':undefined
                 }>Profile</NavLink></li>
