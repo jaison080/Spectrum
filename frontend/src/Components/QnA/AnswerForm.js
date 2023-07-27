@@ -27,7 +27,7 @@ const AnswerForm = (props) => {
     setEnteredAnswer('');
     const token = localStorage.getItem('token');
     try{
-      const response = await fetch(`http://localhost:5000/api/qna/postAnswer/${props.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API}/qna/postAnswer/${props.id}`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

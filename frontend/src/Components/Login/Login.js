@@ -32,16 +32,16 @@ const Login = () => {
       body: JSON.stringify(item),
     };
 
-    if(item.email==="ADMIN"){
+    if (item.email === "ADMIN") {
       loginType = "admin";
     }
 
     try {
-      let loginUrl = "http://localhost:5000/api/admin/login";
+      let loginUrl = `${process.env.REACT_APP_API}/admin/login`;
       if (loginType === "user") {
-        loginUrl = "http://localhost:5000/api/users/login";
+        loginUrl = `${process.env.REACT_APP_API}/users/login`;
       } else if (loginType === "company") {
-        loginUrl = "http://localhost:5000/api/jobs/login";
+        loginUrl = `${process.env.REACT_APP_API}/jobs/login`;
       }
       console.log(loginUrl);
 
@@ -81,8 +81,7 @@ const Login = () => {
           } else {
             console.log("Error fetching jobs:", jobsResponse.statusText);
           }
-        }
-        else if (loginType === "admin") {
+        } else if (loginType === "admin") {
           window.location.href = "/admin";
         }
       } else {

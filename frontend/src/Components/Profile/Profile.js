@@ -56,7 +56,7 @@ const Profile = () => {
   const token = localStorage.getItem("token");
   const fetchUserArticle = async () => {
     try {
-      const result = await fetch("http://localhost:5000/api/blogs/user", {
+      const result = await fetch(`${process.env.REACT_APP_API}/blogs/user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ const Profile = () => {
   const fetchUserQuestions = async () => {
     try {
       const result = await fetch(
-        "http://localhost:5000/api/qna/getAllQuestionsByUser",
+        `${process.env.REACT_APP_API}/qna/getAllQuestionsByUser`,
         {
           method: "GET",
           headers: {
@@ -100,7 +100,7 @@ const Profile = () => {
   const fetchUserAnswers = async () => {
     try {
       const result = await fetch(
-        "http://localhost:5000/api/qna/getAllAnswersByUser",
+        `${process.env.REACT_APP_API}/qna/getAllAnswersByUser`,
         {
           method: "GET",
           headers: {
@@ -123,7 +123,7 @@ const Profile = () => {
   const deleteArticle = async (articleId) => {
     try {
       const result = await fetch(
-        `http://localhost:5000/api/blogs/delete/${articleId}`,
+        `${process.env.REACT_APP_API}/blogs/delete/${articleId}`,
         {
           method: "DELETE",
           headers: {
@@ -146,7 +146,7 @@ const Profile = () => {
   const deleteQuestion = async (questionId) => {
     try {
       const result = await fetch(
-        `http://localhost:5000/api/qna/deleteQuestion/${questionId}`,
+        `${process.env.REACT_APP_API}/qna/deleteQuestion/${questionId}`,
         {
           method: "DELETE",
           headers: {
@@ -169,7 +169,7 @@ const Profile = () => {
   const deleteAnswer = async (answerId) => {
     try {
       const result = await fetch(
-        `http://localhost:5000/api/qna/deleteAnswer/${answerId}`,
+        `${process.env.REACT_APP_API}/qna/deleteAnswer/${answerId}`,
         {
           method: "DELETE",
           headers: {

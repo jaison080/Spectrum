@@ -33,7 +33,7 @@ const Articles = (props) => {
   const handleLike = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/blogs/like/${props.id}`,
+        `${process.env.REACT_APP_API}/blogs/like/${props.id}`,
         {
           method: "PUT",
           headers: {
@@ -82,7 +82,7 @@ const Articles = (props) => {
     console.log(props._id);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/blogs/comment/${props.id}`,
+        `${process.env.REACT_APP_API}/blogs/comment/${props.id}`,
         {
           method: "GET",
           headers: {
@@ -109,7 +109,7 @@ const Articles = (props) => {
     const content = comment;
     try {
       const response = await fetch(
-        `http://localhost:5000/api/blogs/addcomment/${props.id}`,
+        `${process.env.REACT_APP_API}/blogs/addcomment/${props.id}`,
         {
           method: "PUT",
           headers: {

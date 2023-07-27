@@ -187,7 +187,7 @@ const handleApartmentTypeChange = (e) => {
       formData.append(`image[${index}]`, image);
     });
     try {
-      const response = await axios.post('http://localhost:5000/api/house/create', formData,{
+      const response = await axios.post(`${process.env.REACT_APP_API}/house/create`, formData,{
         headers:{
           'Content-Type': 'multipart/form-data',
           'Authorization' : `Bearer ${token}` 

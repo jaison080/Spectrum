@@ -31,7 +31,7 @@ const QnA = (props) => {
   const fetchQnA = async () => {
     try {
       const response = await fetch(
-        'http://localhost:5000/api/qna/getAllAnsweredQuestions',
+        `${process.env.REACT_APP_API}/qna/getAllAnsweredQuestions`,
         {
           method: 'GET',
           headers: {
@@ -55,7 +55,7 @@ const QnA = (props) => {
   const fetchQuestions = async () => {
     try {
       const response = await fetch(
-        'http://localhost:5000/api/qna/getAllUnansweredQuestions',
+        `${process.env.REACT_APP_API}/qna/getAllUnansweredQuestions`,
         {
           method: 'GET',
           headers: {

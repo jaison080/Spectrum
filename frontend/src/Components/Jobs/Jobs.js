@@ -25,7 +25,7 @@ const Jobs = (props) => {
 
   const jobFetchHandler = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/jobs", {
+      const response = await fetch(`${process.env.REACT_APP_API}/jobs`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
