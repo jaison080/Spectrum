@@ -31,7 +31,7 @@ const Login = () => {
     };
   
     try {
-      const response = await fetch('http://localhost:5000/api/users/login', requestOptions);
+      const response = await fetch(`${process.env.REACT_APP_API}/users/login`, requestOptions);
   
     if(response.ok) {
       const data = await response.json();
@@ -39,7 +39,7 @@ const Login = () => {
       console.log(data.token);
       localStorage.setItem("token",data.token);
   
-        const blogsResponse = await fetch('http://localhost:5000/api/blogs', {
+        const blogsResponse = await fetch(`${process.env.REACT_APP_API}/blogs`, {
           headers: {
             'Authorization': `Bearer ${data.token} user`,
           },

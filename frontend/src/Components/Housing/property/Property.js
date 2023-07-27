@@ -13,7 +13,7 @@ function Property() {
 
   const fetchHomes = async () =>
   {
-      const homes = await axios.get('http://localhost:5000/api/house/');
+      const homes = await axios.get(`${process.env.REACT_APP_API}/house/`);
       console.log(homes.data);
       setHouse(homes.data)
       console.log("done"+house);

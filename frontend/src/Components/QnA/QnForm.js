@@ -45,7 +45,7 @@ const QnForm = (props) => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/qna/postQuestion",
+        `${process.env.REACT_APP_API}/qna/postQuestion`,
         {
           method: "POST",
           headers: {

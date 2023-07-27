@@ -51,7 +51,7 @@ const UserDetails = (props) => {
             newPassword: password,
         }
         try{
-            const response = await fetch('http://localhost:5000/api/users/editpassword', {
+            const response = await fetch(`${process.env.REACT_APP_API}/users/editpassword`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const UserDetails = (props) => {
 
     const fetchUserDetails = async() => {
         try{
-            const result = await fetch('http://localhost:5000/api/users/', {
+            const result = await fetch(`${process.env.REACT_APP_API}/users/`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`,

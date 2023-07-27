@@ -26,7 +26,7 @@ function PropertyDetails() {
   const [ownerDetails, setOwnerDetails] = useState();
 
   const fetchById = async () => {
-    const houseData = await axios.get(`http://localhost:5000/api/house/${id}`, {
+    const houseData = await axios.get(`${process.env.REACT_APP_API}/house/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
