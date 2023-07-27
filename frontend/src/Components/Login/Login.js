@@ -54,7 +54,7 @@ const Login = () => {
 
         localStorage.setItem("token", data.token);
         if (loginType === "user") {
-          const blogsResponse = await fetch("http://localhost:5000/api/blogs", {
+          const blogsResponse = await fetch(`${process.env.REACT_APP_API}/blogs`, {
             headers: {
               Authorization: `Bearer ${data.token} user`,
             },
@@ -68,7 +68,7 @@ const Login = () => {
             console.log("Error fetching blogs:", blogsResponse.statusText);
           }
         } else if (loginType === "company") {
-          const jobsResponse = await fetch("http://localhost:5000/api/jobs/", {
+          const jobsResponse = await fetch(`${process.env.REACT_APP_API}/jobs/`, {
             headers: {
               Authorization: `Bearer ${data.token} company`,
             },

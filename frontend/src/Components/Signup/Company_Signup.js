@@ -54,7 +54,7 @@ const Company_Signup = () => {
           };
         
           try {
-            const response = await fetch('http://localhost:5000/api/jobs/register', requestOptions);
+            const response = await fetch(`${process.env.REACT_APP_API}/jobs/register`, requestOptions);
         
             if(response.ok) {
                 const data = await response.json();
@@ -62,7 +62,7 @@ const Company_Signup = () => {
                 console.log(data.token);
                 localStorage.setItem("token",data.token);
             
-                  const blogsResponse = await fetch('http://localhost:5000/api/jobs/', {
+                  const blogsResponse = await fetch(`${process.env.REACT_APP_API}/jobs/`, {
                     headers: {
                       'Authorization': `Bearer ${data.token}`,
                     },
