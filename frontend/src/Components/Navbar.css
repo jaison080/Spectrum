@@ -21,6 +21,12 @@
     text-align: right;
     font-weight: 600;
   }
+
+  .logo_image{
+    width: 8%;
+    margin-left: -5%;
+    border-radius: 10px;
+  }
   
   .navbar_list ul {
     list-style: none;
