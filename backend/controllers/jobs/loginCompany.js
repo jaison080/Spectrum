@@ -11,9 +11,10 @@ const loginCompany = async (req,res) =>{
         }
         const user = await Company.findOne({email});
         
-        if(user && (await bcrypt.compare(password,user.password))){
+        if(user && (await bcrypt.compare(password,user.password)) && user.isApproved){
             const token = jwt.sign({user_id:user._id,email},process.env.JWT_SECRET,{expiresIn:"2h"})
-            user._doc.token =token;
+            user._doc.token =token+" company";
+            console.log(token);
             return res.status(200).json(user);
         }
         res.status(400).json({message: 'Invalid Credentials'});

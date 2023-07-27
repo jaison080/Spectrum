@@ -14,8 +14,9 @@
             const encryptedPassword = await bcrypt.hash(req.body.password,10);
             req.body.password = encryptedPassword;
             let comp = await Company.create(req.body);
-            const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{expiresIn: "2h"})
-            comp._doc.token=token;
+            console.log(comp)
+            const token = jwt.sign({id: comp._id}, process.env.JWT_SECRET,{expiresIn: "2h"})
+            comp._doc.token=token+" "+"company";
             res.status(200).json(comp);
         }
         catch(err)

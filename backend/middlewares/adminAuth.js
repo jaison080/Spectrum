@@ -6,8 +6,11 @@ const verifyAdmin = (req,res,next) => {
     let token,role;
     if(req.headers.authorization && req.headers.authorization.startsWith("Bearer"))
     {
-        token = req.headers.authorization.split("")[1];
+        console.log(req.headers.authorization)
+        token = req.headers.authorization.split(" ")[1];
+        console.log(token);
         role=req.headers.authorization.split(" ")[2]
+        console.log(role);
     }
 
     if(!token && role!=='admin')
@@ -15,7 +18,8 @@ const verifyAdmin = (req,res,next) => {
     try
     {
         const decode = jwt.verify(token, config.JWT_SECRET);
-        req.user = decoded
+        console.log(decode)
+        req.user = decode
         console.log("decoded :",req.user);
     }
     catch(err){

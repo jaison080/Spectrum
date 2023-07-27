@@ -7,8 +7,7 @@ const CompanySchema = new mongoose.Schema({
     companyType:{type:String},
     location:{type :String},
     website:{type: String},
-    companyDesc: {type : String},
-    logo:{type: String},
+    description: {type : String},
     isApproved:{type: Boolean, default:false}
 })
 

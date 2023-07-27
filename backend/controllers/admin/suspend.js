@@ -5,7 +5,7 @@ const suspend = async (req,res) =>
         const type = req.params.content
         const id = req.params.id
         const DB = require(`../../models/${type}`)
-        const result = await DB.updateOne({_id:id},{$set: {isReported: false}})
+        const result = await DB.findByIdAndDelete({_id:id})
         if(result)
         {
             return res.status(200).send(result)

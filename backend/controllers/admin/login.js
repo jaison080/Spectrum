@@ -16,7 +16,7 @@ const login = async (req,res) =>
         }
         if(uname===process.env.UNAME && password===process.env.PASSWORD)
         {
-            const token = jwt.sign({uname},process.env.JWT_SECRET,{expiresIn:"10h"})
+            const token = jwt.sign({uname},process.env.JWT_SECRET,{expiresIn:"10h"}) + " admin"
             return res.status(200).json(token)
         }
         res.status(400).json({message: "Invalid Credentials"})
