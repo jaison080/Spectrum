@@ -8,7 +8,7 @@ const JobDashBoard = () => {
 
     const fetchJobsHandler = async () => {
         try{
-            const response = await fetch('http://localhost:5000/api/jobs/by-company');
+            const response = await fetch(`${process.env.REACT_APP_API}/jobs/by-company`);
             if(response.ok){
                 const data = await response.json();
                 console.log(data);

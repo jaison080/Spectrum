@@ -68,7 +68,7 @@ const JobPostForm = () => {
     };
     try {
         const response = await fetch(
-            "http://localhost:5000/api/jobs/add",
+          `${process.env.REACT_APP_API}/jobs/add`,
             {
                 method: "POST",
                 headers: {
