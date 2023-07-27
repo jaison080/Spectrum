@@ -1,0 +1,51 @@
+.Job_signup {
+    --blue: #1a0fb5;
+    --purple: #005138;
+    background: linear-gradient(60deg, var(--purple), var(--blue));
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.Job_signup_container{
+    background-color: #84BE94;
+    width: 50%;
+    margin: 8% auto;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.form_columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .form_column {
+    flex: 1;
+    width: 60%;
+  }
+  
+  .company_submit {
+    text-align: center;
+  }
+
+.company_data{
+    width: 80%;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    background-color: #DAE6CF;
+}
+
+.company_det{
+    width: 80%;
+    height: 10em;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    background-color: #DAE6CF;
+}
