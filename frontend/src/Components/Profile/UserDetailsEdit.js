@@ -70,7 +70,7 @@ const UserDetailsEdit = (props) => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:5000/api/users/edit", {
+      const response = await fetch(`${process.env.REACT_APP_API}/users/edit`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

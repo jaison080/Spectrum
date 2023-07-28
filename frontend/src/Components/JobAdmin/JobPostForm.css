@@ -1,0 +1,26 @@
+.new_job{
+    padding: 20px;
+    background-color: #84BE94;
+    margin: auto;
+    width: 85%;
+    border-radius: 10px;
+}
+
+.job_input{
+    width: 80%;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    background-color: #DAE6CF;
+}
+
+.job_textarea{
+    width: 80%;
+    height: 7em;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    background-color: #DAE6CF;
+}

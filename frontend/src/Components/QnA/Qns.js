@@ -51,7 +51,7 @@ const Qns = (props) => {
     console.log(props.id);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/qna/likeQuestion/${props.id}`,
+        `${process.env.REACT_APP_API}/qna/likeQuestion/${props.id}`,
         {
           method: "POST",
           headers: {
@@ -82,7 +82,7 @@ const Qns = (props) => {
     const content = comment;
     try {
       const response = await fetch(
-        `http://localhost:5000/api/qna/answer/${answerId}/comment`,
+        `${process.env.REACT_APP_API}/qna/answer/${answerId}/comment`,
         {
           method: "POST",
           headers: {

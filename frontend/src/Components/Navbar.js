@@ -19,8 +19,13 @@ const Navbar = () => {
     return(
         <div>
         <div className="navbar">
+        <img src="/images/Logo.png" alt="Logo" border="0" className="logo_image" />
         <div className="navbar_list">
+        
+        
             <ul>
+
+            
             
                 <li> <NavLink to="/blogs" className={({isActive}) => 
                     isActive ? 'active':undefined
