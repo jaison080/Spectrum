@@ -34,6 +34,7 @@ const Login = () => {
 
     if (item.email === "ADMIN") {
       loginType = "admin";
+      
     }
 
     try {
@@ -50,39 +51,21 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        console.log(data.token);
+        
 
         localStorage.setItem("token", data.token);
+
+        console.log(localStorage.getItem("token"));
+
         if (loginType === "user") {
-          const blogsResponse = await fetch(`${process.env.REACT_APP_API}/blogs`, {
-            headers: {
-              Authorization: `Bearer ${data.token} user`,
-            },
-          });
-
-          if (blogsResponse.ok) {
-            const blogsData = await blogsResponse.json();
-            console.log(blogsData);
-            window.location.href = "/blogs";
-          } else {
-            console.log("Error fetching blogs:", blogsResponse.statusText);
-          }
+          window.location.href = "/blogs";
         } else if (loginType === "company") {
-          const jobsResponse = await fetch(`${process.env.REACT_APP_API}/jobs/`, {
-            headers: {
-              Authorization: `Bearer ${data.token} company`,
-            },
-          });
-
-          if (jobsResponse.ok) {
-            const jobsData = await jobsResponse.json();
-            console.log(jobsData);
-            window.location.href = "/JobDashboard";
-          } else {
-            console.log("Error fetching jobs:", jobsResponse.statusText);
-          }
-        } else if (loginType === "admin") {
+          window.location.href = "/JobDashboard";
+        }
+         else if (loginType === "admin") {
+          localStorage.setItem("token", data);
           window.location.href = "/admin";
+          console.log(data.token)
         }
       } else {
         const errorsResponse = await response.json();
